@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>XRP Wallet</title>
+  <script src="https://unpkg.com/xrpl@4.2.5/build/xrpl-latest.js"></script>
+</head>
+<body>
+  <h3>Check console for output</h3>
+  <script>
+    // ✅ This is a known valid testnet ed25519 seed
+    const seed = "sEdSLA5a3K6c36LDjjwkRexrWK49DD9";
+
+    try {
+      const wallet = xrpl.Wallet.fromSeed(seed);
+      console.log("✅ Seed:", wallet.seed);
+      console.log("📤 Public Key:", wallet.publicKey);
+      console.log("🏦 XRP Address:", wallet.classicAddress);
+    } catch (e) {
+      console.error("❌ Error:", e.message);
+    }
+  </script>
+</body>
+</html>

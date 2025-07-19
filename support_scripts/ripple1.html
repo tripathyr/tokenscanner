@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>XRPL Wallet Generator</title>
+  <script src="https://unpkg.com/xrpl/build/xrpl-latest-min.js"></script>
+</head>
+<body>
+  <h1>XRPL Wallet Generator</h1>
+  <button onclick="generateWallet()">Generate Wallet</button>
+  <pre id="output"></pre>
+
+  <script>
+    function generateWallet() {
+      const wallet = xrpl.Wallet.generate();
+      document.getElementById("output").textContent = JSON.stringify({
+        seed: wallet.seed,
+        publicKey: wallet.publicKey,
+        address: wallet.classicAddress
+      }, null, 2);
+    }
+  </script>
+</body>
+</html>

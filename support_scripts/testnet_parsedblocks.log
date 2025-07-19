@@ -1,0 +1,4436 @@
+🔧 Running for network: testnet
+🔧 Database: rmtest_latestCache_db
+🔧 API URL: https://blockbook-testnet.ranchimall.net/api
+
+======= Block 461297 =======
+TxID: 0c3e701fbc16fb94ff47092b48417964500f9f92bc8e87229ff97ecb7ce1c74a
+Parsed floData:
+{
+  "type": "tokenIncorporation",
+  "flodata": "text:create 1 million teega#",
+  "tokenIdentification": "teega",
+  "tokenAmount": 1000000.0,
+  "stateF": false
+}
+DONE
+
+2025-07-12 10:48:32,288:__main__:Input address list : ['oPounjEbJxY7YCBaVBm61Lf2ym9DgFnAdu', 96.9988456]
+2025-07-12 10:48:32,288:__main__:Output address list : ['oY2NuQ3e3qWR8vS81nLWVRaCaLrySXBpGn', 20.0]
+
+oPounjEbJxY7YCBaVBm61Lf2ym9DgFnAdu gets 1 million FLOs
+-----------
+
+
+
+======= Block 461315 =======
+TxID: 52edd05e132eed665eb3280bc49c768a1ba702c8afae513727a6cf75f85e1e58
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:send 50 teega#",
+  "tokenIdentification": "teega",
+  "tokenAmount": 50.0,
+  "stateF": false
+}
+
+2025-07-12 10:48:33,270:__main__:Input address list : ['oY2NuQ3e3qWR8vS81nLWVRaCaLrySXBpGn', 20.0]
+2025-07-12 10:48:33,270:__main__:Output address list : ['oUcTc9HP9jjqHPD1QqU4B2k34MJgvAyAyn', 0.1]
+
+-----------
+
+======= Block 461316 =======
+TxID: 79964801f9323ca4c4638c94cff84204b63b73399f0381379cf1b936e3b8a2a6
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:send 100 teega#",
+  "tokenIdentification": "teega",
+  "tokenAmount": 100.0,
+  "stateF": false
+}
+-----------
+
+======= Block 461683 =======
+TxID: b6a5204c050acd2fbe1c1845f950e161ca218b9a53c8ffc757188146881a2f69
+Parsed floData:
+{
+  "type": "tokenIncorporation",
+  "flodata": "text:start 21000 rmt#",
+  "tokenIdentification": "rmt",
+  "tokenAmount": 21000.0,
+  "stateF": false
+}
+-----------
+
+======= Block 499094 =======
+TxID: 850480cd1ee21c04320241d371b4131d2888bf54e30ded853c16e3647c15e0ed
+Parsed floData:
+{
+  "type": "smartContractPays",
+  "contractName": "electionbetting",
+  "triggerCondition": "namo=lose",
+  "stateF": false
+}
+-----------
+
+======= Block 525778 =======
+TxID: 95eea6938f13e166a6d3f0b6865ef1aa940c5e818588abd16fde8512a9d8c85d
+Parsed floData:
+{
+  "type": "tokenIncorporation",
+  "flodata": "text:create 69 million teega#",
+  "tokenIdentification": "teega",
+  "tokenAmount": 69000000.0,
+  "stateF": false
+}
+-----------
+
+======= Block 542001 =======
+TxID: d4e9124bad5cf03580e3281a3aa8ed1393a1b8d1a33eea94c37385dd28d4c507
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:send 50 rmt#",
+  "tokenIdentification": "rmt",
+  "tokenAmount": 50.0,
+  "stateF": false
+}
+-----------
+
+======= Block 542003 =======
+TxID: dbcc51e7866345cf075423e194d85cf8cf01e6eef7070065c484a68227c96c4d
+Parsed floData:
+{
+  "type": "tokenIncorporation",
+  "flodata": "text:create 1 million tripathy#",
+  "tokenIdentification": "tripathy",
+  "tokenAmount": 1000000.0,
+  "stateF": false
+}
+-----------
+
+======= Block 546683 =======
+TxID: 02284b28fb91c63af6bdbd756a8ffeb6590325680b98b0843af29ff40cbf3737
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:transfer 100 rmt#",
+  "tokenIdentification": "rmt",
+  "tokenAmount": 100.0,
+  "stateF": false
+}
+-----------
+
+======= Block 566689 =======
+TxID: ca8916bda9dc1bff244313162eb6e3560fa673a7527fb8c65efe8839dd3612a9
+Parsed floData:
+{
+  "type": "tokenIncorporation",
+  "flodata": "text:create 21 million rmt#",
+  "tokenIdentification": "rmt",
+  "tokenAmount": 21000000.0,
+  "stateF": false
+}
+-----------
+
+======= Block 566690 =======
+TxID: 2ac3fa673cf162a0617bbdd440dfb7bd8d37ba851ceb13a03177af62f19029fe
+Parsed floData:
+{
+  "type": "tokenIncorporation",
+  "flodata": "text:create 100 million teega#",
+  "tokenIdentification": "teega",
+  "tokenAmount": 100000000.0,
+  "stateF": false
+}
+-----------
+
+======= Block 569048 =======
+TxID: 7c80da3cd0baf6be70e641ca1fe7d5e980f91c81c10b32c60d73be05bceed568
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:send 10 rmt#",
+  "tokenIdentification": "rmt",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 569049 =======
+TxID: 53df2f44baf466ce90e487978bb366746676d7ded90b9d5c34280d4fbfaf1c67
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:send 10 rmt#",
+  "tokenIdentification": "rmt",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+TxID: cbb4fdba52f3ae048e8e24914383f1a2f311db4cc508daf33299da21bbb3d930
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:send 10 rmt#",
+  "tokenIdentification": "rmt",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 569050 =======
+TxID: cdfecdad2918bb7f5a34d939165137bc2f6715d4c99fd304c15ce5ebc9fb8132
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:send 10 rmt#",
+  "tokenIdentification": "rmt",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+TxID: 6bdaf64375318c6fc0c99e8e85fd884b19ef6097895e500a615127f766369c9a
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:send 10 rmt#",
+  "tokenIdentification": "rmt",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 590795 =======
+TxID: 812291b1d36fb96d8566b83e039afc803b8ce59d321a452b4a7d4c0c1acc2274
+Parsed floData:
+{
+  "type": "tokenIncorporation",
+  "flodata": "text:create 21 million rmt#",
+  "tokenIdentification": "rmt",
+  "tokenAmount": 21000000.0,
+  "stateF": false
+}
+-----------
+
+======= Block 590818 =======
+TxID: f31e902a99fdd8e745d5a1313932b612bcea3ebc3fd7872609473fb325bc6ba9
+Parsed floData:
+{
+  "type": "tokenIncorporation",
+  "flodata": "text:create 21 million rmt#",
+  "tokenIdentification": "rmt",
+  "tokenAmount": 21000000.0,
+  "stateF": false
+}
+-----------
+
+======= Block 590828 =======
+TxID: 281f6af906af11d5f1e03b5d69ad9a75ce8bf8586dd3388449bfc6e53ddd3bee
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:send 10 rmt#",
+  "tokenIdentification": "rmt",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 590829 =======
+TxID: 3476502e2935debfa6e96058122000226d444e9307e3bbc3bb583b4d26c91229
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:send 10 rmt#",
+  "tokenIdentification": "rmt",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+TxID: 8d53cf59026d414149d2e07ac188c76ddacebda367d44353b2d22566cc900c35
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:send 10 rmt#",
+  "tokenIdentification": "rmt",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 590830 =======
+TxID: 8edd27cddf62e23c4fac11b8e1062be9fd90839d9ec3624d8c5ef80d5274c80c
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:send 10 rmt#",
+  "tokenIdentification": "rmt",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+TxID: f242d79bf9f8ed8ccd0e1b606ba659c7b103aaab7750a2c2896023285e4834ef
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:send 10 rmt#",
+  "tokenIdentification": "rmt",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 593656 =======
+TxID: 32b3c635b3cf99e0763461b1b0d07ee9c9f970683df9183fdd191dff793ac3b0
+Parsed floData:
+{
+  "type": "tokenIncorporation",
+  "flodata": "text:create 21 million rmt#",
+  "tokenIdentification": "rmt",
+  "tokenAmount": 21000000.0,
+  "stateF": false
+}
+-----------
+
+======= Block 593663 =======
+TxID: 5b738b166f6e16008903ad4e0f16b7d241b2f8d6da8ebc3d2f40ed6c9b54daaf
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:send 10 rmt#",
+  "tokenIdentification": "rmt",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 593664 =======
+TxID: 83bcaf78ae00d93417cdd2c735152573a15275fb6a8139d98a8d0671ca1db0c1
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:send 10 rmt#",
+  "tokenIdentification": "rmt",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+TxID: 6c664744f776be82ab87b0ebbdfef39febdb60ba5bac5ebb735b3f011e4d4a8e
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:send 27 rmt#",
+  "tokenIdentification": "rmt",
+  "tokenAmount": 27.0,
+  "stateF": false
+}
+-----------
+
+======= Block 593666 =======
+TxID: 00fa860649ca41f0c532268337a53bfc11b9f69db0ca67dabdae1fd0b8723596
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:send 15 rmt#",
+  "tokenIdentification": "rmt",
+  "tokenAmount": 15.0,
+  "stateF": false
+}
+-----------
+
+======= Block 593667 =======
+TxID: e09d0aa5abd87a868b4807261ff37174cd186b886de0683b1f47f390bb7c6ed8
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:send 20 rmt#",
+  "tokenIdentification": "rmt",
+  "tokenAmount": 20.0,
+  "stateF": false
+}
+-----------
+
+======= Block 605944 =======
+TxID: d8f8dae8fa99b8b716e688f37ccbd28d89d3dd789572f9afe6abe106a2cd0960
+Parsed floData:
+{
+  "type": "tokenIncorporation",
+  "flodata": "text:create 21million rmt#",
+  "tokenIdentification": "rmt",
+  "tokenAmount": 21000000.0,
+  "stateF": false
+}
+-----------
+
+======= Block 605948 =======
+TxID: d75ba501aade8f2beff83919b6439217f83fb30f4da44986ebdc734c8c821770
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:send 50 rmt#",
+  "tokenIdentification": "rmt",
+  "tokenAmount": 50.0,
+  "stateF": false
+}
+-----------
+
+======= Block 605952 =======
+TxID: 38fbb24258968d5930f1852e217a4d1cf8ac90a80a4ecd4a6a34add4eb85dabe
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:transfer 23 rmt#",
+  "tokenIdentification": "rmt",
+  "tokenAmount": 23.0,
+  "stateF": false
+}
+-----------
+TxID: 44b8c0a95a76c78374ec1c74a7ae6d244b0c262ac2ab1261154e76f6aa2b3e38
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:give 20 rmt#",
+  "tokenIdentification": "rmt",
+  "tokenAmount": 20.0,
+  "stateF": false
+}
+-----------
+
+======= Block 605953 =======
+TxID: 9749c308374bc539ce6dd5c65b48ea2b0228a3356f47ba088e37f0ae57683cec
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:send 15 rmt#",
+  "tokenIdentification": "rmt",
+  "tokenAmount": 15.0,
+  "stateF": false
+}
+-----------
+TxID: fcd8bc6d11b07a2248ffa2e7d1f704be2d64c7f4281ab4b98725a25c96a00c18
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:send 30 rmt#",
+  "tokenIdentification": "rmt",
+  "tokenAmount": 30.0,
+  "stateF": false
+}
+-----------
+
+======= Block 606099 =======
+TxID: 3d32bce6c77dea3deccd9a0bece9fa067adb070292ecee91247f41ea96c5df9e
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "text:send 0.001 rmt# to test1@ with the userchoice: 'narendra modi loses'",
+  "tokenIdentification": "rmt",
+  "operation": "transfer",
+  "tokenAmount": 0.001,
+  "contractName": "test1",
+  "userChoice": "narendra modi loses"
+}
+-----------
+
+======= Block 615253 =======
+TxID: b9be908ac11998bcd282c621744d1aa80dbe528eab9ada8b1801af68a61020e8
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "text:send 0.001 rmt# to test1@ with the userchoice: 'narendra modi loses'",
+  "tokenIdentification": "rmt",
+  "operation": "transfer",
+  "tokenAmount": 0.001,
+  "contractName": "test1",
+  "userChoice": "narendra modi loses"
+}
+-----------
+
+======= Block 615254 =======
+TxID: bade647440479fdefcef518a5610b468b28b3cfde61eab11c5f18ff534586225
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "text:send 0.001 rmt# to test1@ with the userchoice: 'narendra modi loses'",
+  "tokenIdentification": "rmt",
+  "operation": "transfer",
+  "tokenAmount": 0.001,
+  "contractName": "test1",
+  "userChoice": "narendra modi loses"
+}
+-----------
+TxID: 3ab06d43e3e2be9f89dad18a3860f2466596acdcd8e21c3e2d9bfff8940d2368
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "text:send 0.001 rmt# to test1@ with the userchoice: 'narendra modi loses'",
+  "tokenIdentification": "rmt",
+  "operation": "transfer",
+  "tokenAmount": 0.001,
+  "contractName": "test1",
+  "userChoice": "narendra modi loses"
+}
+-----------
+
+======= Block 615255 =======
+TxID: 8043b1e55e199981866b7b25302ab00cfd7fb5ea6b8170cb80ea1b4477934530
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "text:send 0.001 rmt# to test1@ with the userchoice: 'narendra modi wins'",
+  "tokenIdentification": "rmt",
+  "operation": "transfer",
+  "tokenAmount": 0.001,
+  "contractName": "test1",
+  "userChoice": "narendra modi wins"
+}
+-----------
+
+======= Block 615256 =======
+TxID: 9d43ebe2ca670a6c6cc6e8c3242e519be7fcecec843d9260e5e6a5feb9c69011
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "text:send 0.001 rmt# to test1@ with the userchoice: 'narendra modi wins'",
+  "tokenIdentification": "rmt",
+  "operation": "transfer",
+  "tokenAmount": 0.001,
+  "contractName": "test1",
+  "userChoice": "narendra modi wins"
+}
+-----------
+
+======= Block 615273 =======
+TxID: 914fc1566dca2f8ec216be70c1019bdffbf02299b746e371f81f791b23d4d1b2
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "text:send 0.001 rmt# to triggertest2@ to FLO address oH67VqyL6Z9DWXP6YnGV7fL8DPAh5x4EK5 with the userchoice: 'narendra modi loses'",
+  "tokenIdentification": "rmt",
+  "operation": "transfer",
+  "tokenAmount": 0.001,
+  "contractName": "triggertest2",
+  "userChoice": "narendra modi loses"
+}
+-----------
+TxID: 48fbe7178f75fc0673852bad1744c23d5bbb3cca9f844fb862c9fec611fa23bd
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "text:send 0.001 rmt# to triggertest2@ to FLO address oH67VqyL6Z9DWXP6YnGV7fL8DPAh5x4EK5 with the userchoice: 'narendra modi loses'",
+  "tokenIdentification": "rmt",
+  "operation": "transfer",
+  "tokenAmount": 0.001,
+  "contractName": "triggertest2",
+  "userChoice": "narendra modi loses"
+}
+-----------
+
+======= Block 615275 =======
+TxID: b7d58fbd47276b0446a20c2a94d2c23bc2eee2ef441661d7fed92386d651600a
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "text:send 0.001 rmt# to triggertest2@ to FLO address oH67VqyL6Z9DWXP6YnGV7fL8DPAh5x4EK5 with the userchoice: 'narendra modi wins'",
+  "tokenIdentification": "rmt",
+  "operation": "transfer",
+  "tokenAmount": 0.001,
+  "contractName": "triggertest2",
+  "userChoice": "narendra modi wins"
+}
+-----------
+TxID: 956fc799c316ed24b47ced6efc3334b83379a80740c89f946dea36d428e158c4
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "text:send 0.001 rmt# to triggertest2@ to FLO address oH67VqyL6Z9DWXP6YnGV7fL8DPAh5x4EK5 with the userchoice: 'narendra modi wins'",
+  "tokenIdentification": "rmt",
+  "operation": "transfer",
+  "tokenAmount": 0.001,
+  "contractName": "triggertest2",
+  "userChoice": "narendra modi wins"
+}
+-----------
+
+======= Block 615276 =======
+TxID: e314bde5ce07e9fc40571d3d0e2809a8447a72a961cb915be6a72b5d6b55f241
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "text:send 0.001 rmt# to triggertest2@ to FLO address oH67VqyL6Z9DWXP6YnGV7fL8DPAh5x4EK5 with the userchoice: 'narendra modi wins'",
+  "tokenIdentification": "rmt",
+  "operation": "transfer",
+  "tokenAmount": 0.001,
+  "contractName": "triggertest2",
+  "userChoice": "narendra modi wins"
+}
+-----------
+
+======= Block 736312 =======
+TxID: ff17171caaa92778b4faac12bda58044b07561abfbf6802e6b04bc8bd810814a
+Parsed floData:
+{
+  "type": "tokenIncorporation",
+  "flodata": "create 1 billion rupee#",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 1000000000.0,
+  "stateF": false
+}
+-----------
+
+======= Block 740415 =======
+TxID: 34e4dc385deac31a7f54b13e7c5890b45a604d93094c84ec607632ac5fb7800f
+Parsed floData:
+{
+  "type": "tokenIncorporation",
+  "flodata": "create 1 billion rupee#",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 1000000000.0,
+  "stateF": false
+}
+-----------
+
+======= Block 741409 =======
+TxID: ec289d40069bb4db8b633133560269004a35f834c4a146560887ac87f7789d35
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:transfer 5000 rupee# to otwjpupy3z7umdpcu5uxd521hbkcslusum",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 5000.0,
+  "stateF": false
+}
+-----------
+
+======= Block 751978 =======
+TxID: ac5946b081abb8c76e4bf6755c24ece466e79f0616a7f96724796bb8f8848560
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# to orr1v19gsi2ibhfelxwgjtwu4e8v6hdy2b.",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 752001 =======
+TxID: fbe8aa0fa1870964dc82f32e33be1c16c422c21e2b46c403ac40e5cd1b1eb123
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# to orr1v19gsi2ibhfelxwgjtwu4e8v6hdy2b.",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 752022 =======
+TxID: 4fc5f7304d6b549caca95bf4cb881cfcdfbc571c36f1f583e3955d46bd58b7e6
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# to orr1v19gsi2ibhfelxwgjtwu4e8v6hdy2b.",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 752036 =======
+TxID: 8c1847f206cd854421fafa3855a36bd1e809a23f1cea4dd23cf7083a8595496f
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# to orr1v19gsi2ibhfelxwgjtwu4e8v6hdy2b.",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 755832 =======
+TxID: 603009c8251dcad47f8162d67eaa6d71ca4ed68043ea84f083eb70d807c5a169
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:transfer 5000 rupee# on behalf of orr1v19gsi2ibhfelxwgjtwu4e8v6hdy2b",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 5000.0,
+  "stateF": false
+}
+-----------
+TxID: 01af9005339e5618af2137d8733e84dc958cd0e66fa7872571363c7fbdc7d3d6
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:transfer 5000 rupee# on behalf of orr1v19gsi2ibhfelxwgjtwu4e8v6hdy2b",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 5000.0,
+  "stateF": false
+}
+-----------
+
+======= Block 755901 =======
+TxID: e6e95090256787cabc25b197c23982ec09f4752a48c81eb5ee86113cd58fbbc4
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 100 rupee# to orr1v19gsi2ibhfelxwgjtwu4e8v6hdy2b.",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 100.0,
+  "stateF": false
+}
+-----------
+
+======= Block 775379 =======
+TxID: edfac8bc7a45c74ba144c508cc97acd5f0c3c36321ef7ba68288c33f888deaf9
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:transfer 100 rupee# on behalf of orr1v19gsi2ibhfelxwgjtwu4e8v6hdy2b",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 100.0,
+  "stateF": false
+}
+-----------
+
+======= Block 807091 =======
+TxID: b68cdf43014f543b12aa09c7f60829289a05aaa9cbbf68cedfd10401e2dadb0d
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:transfer 100 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 100.0,
+  "stateF": false
+}
+-----------
+
+======= Block 817606 =======
+TxID: 2b0bf3dad018bdb6e1395063ffe92246eb30b4efbfe2b711d18ec5c125bd5449
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:transfer 100 rupee# on behalf of orr1v19gsi2ibhfelxwgjtwu4e8v6hdy2b",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 100.0,
+  "stateF": false
+}
+-----------
+
+======= Block 817648 =======
+TxID: 13c1e087bf364404cec19b73bccc384fad597c1fc56ce1fb3701587db5af09e6
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# to orr1v19gsi2ibhfelxwgjtwu4e8v6hdy2b.",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 835903 =======
+TxID: 06315624599cc72c9237b28b5f0f26e03945c831ffb10027cec7c4bed5db2ad5
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:transfer 100 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 100.0,
+  "stateF": false
+}
+-----------
+
+======= Block 835928 =======
+TxID: 80b2f3db191fd0c344362f0ef701b6dbd53115bd9acc0f48491dbec37584cf8e
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:transfer 100 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 100.0,
+  "stateF": false
+}
+-----------
+
+======= Block 838579 =======
+TxID: cab8c68ca588ebafd8ceb92ebfa1ad0b7f27586a6ff074af560d088a400a7efc
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:transfer 100 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 100.0,
+  "stateF": false
+}
+-----------
+
+======= Block 854598 =======
+TxID: 571139a0bcae961336970d33d2dd9950019ba4fed32d2f1e42d3990084799c90
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 855504 =======
+TxID: 72cb750189e0320f7b43a2d69d988628e5c9514a20e8374e9366bb711ed0fecd
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# to ortxc1goesxy74uelkcawnedayp28srb6r.",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 855530 =======
+TxID: b70601b522b46a03c03abeff46935ec80108d2072eb756c72622347fc078a642
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# to ortxc1goesxy74uelkcawnedayp28srb6r.",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 855592 =======
+TxID: 936a4010294a9f381cfd7d11a2cc3245bbbd20db799ee98395bc7dd59710d633
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 50 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 50.0,
+  "stateF": false
+}
+-----------
+
+======= Block 855605 =======
+TxID: 4ac8307fb679bfc6bbd82519b09f4ac63d8165c1d4b9b9877ef0e805b394c78f
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# to ortxc1goesxy74uelkcawnedayp28srb6r.",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 855620 =======
+TxID: a35d5df1b16b2013b7039cd15a50f4a555f26e8390466a92aa9ac724606bb1b6
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# to ortxc1goesxy74uelkcawnedayp28srb6r.",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 855627 =======
+TxID: 853f753f148b5c3332fcc21740006836d3a7f55e91c16f6633bd4ae0b6320013
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# to ortxc1goesxy74uelkcawnedayp28srb6r.",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 855628 =======
+TxID: 0b38f2c973574b6c7b43c88c78937e770cdfc19cf07d2078b164764de733b56b
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# to ortxc1goesxy74uelkcawnedayp28srb6r.",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 855662 =======
+TxID: 99afb5fa03b84a73a016eaf0b61418890518ce7a1b8efadd918e3f2d14cd6c96
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 856814 =======
+TxID: b3fbb7b5c52417ac63964af1a8cf6e72b3e31ade7a83d9ebb20f3c47c600157e
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# to ojje8wkadkct28bmlkyf79fqbzeof21cxl for ortxc1goesxy74uelkcawnedayp28srb6r.",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 856817 =======
+TxID: 02cdd25f08c2aaa796926c6484647bc6ff2840c0f042d66c6024a9d7e2d50df4
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# to opyuhpezaypurdoqtbxvnu2gytbvbkgpnn for ortxc1goesxy74uelkcawnedayp28srb6r.",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 856820 =======
+TxID: a40f1202e32e685f43841f41ae26c637917229dec1ca5bc3a3adc98e3484fa5e
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# to ojje8wkadkct28bmlkyf79fqbzeof21cxl for ortxc1goesxy74uelkcawnedayp28srb6r.",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 864814 =======
+TxID: 534b7199d9a16e9e6d032f62aff5eaec077d559ea70e091c8dd83e311e559973
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 100 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 100.0,
+  "stateF": false
+}
+-----------
+
+======= Block 867519 =======
+TxID: 211ac35c1d260e7740fa246e1c952eda6bdebd2e10eceff83269509619b068f2
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:transfer 1000 rupee# to opyuhpezaypurdoqtbxvnu2gytbvbkgpnn",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 1000.0,
+  "stateF": false
+}
+-----------
+
+======= Block 867641 =======
+TxID: 933e442b420fa0921f24136ce9ec40ac46d9dc878d300d4f2c2f19a46b7a0755
+Parsed floData:
+{
+  "type": "tokenIncorporation",
+  "flodata": "create 1 million opeth#",
+  "tokenIdentification": "opeth",
+  "tokenAmount": 1000000.0,
+  "stateF": false
+}
+-----------
+
+======= Block 868894 =======
+TxID: c6fcdc1217c9830b27ce19735633dec8b7142388e2eeaf87180ba0ce4baf1a4d
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:transfer 1000 rupee# to opyuhpezaypurdoqtbxvnu2gytbvbkgpnn",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 1000.0,
+  "stateF": false
+}
+-----------
+
+======= Block 868994 =======
+TxID: d205bb35f014bed95e2def5aa7824a7db5b0e2daef3c11b51cc6e165a322580e
+Parsed floData:
+{
+  "type": "tokenIncorporation",
+  "flodata": "create 1 million opeth#",
+  "tokenIdentification": "opeth",
+  "tokenAmount": 1000000.0,
+  "stateF": false
+}
+-----------
+
+======= Block 869203 =======
+TxID: a5f7e89dc7f1eb46bc3be28c8247dc7dd182307d4eb234db9349f2f88995ce15
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.001 opeth# to india-elections-2019@ to FLO address oPuNCAUkFQuQpeGURquuKDNBF5s4UbzCh2 with the userchoice: 'narendra modi loses'",
+  "tokenIdentification": "opeth",
+  "operation": "transfer",
+  "tokenAmount": 0.001,
+  "contractName": "india-elections-2019",
+  "userChoice": "narendra modi loses"
+}
+-----------
+
+======= Block 869205 =======
+TxID: 0367f2f7e3a6e7078143feb4ef75f256199ad5ada84c04ee231af887a05ff45d
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.001 opeth# to india-elections-2019@ to FLO address oPuNCAUkFQuQpeGURquuKDNBF5s4UbzCh2 with the userchoice: 'narendra modi loses'",
+  "tokenIdentification": "opeth",
+  "operation": "transfer",
+  "tokenAmount": 0.001,
+  "contractName": "india-elections-2019",
+  "userChoice": "narendra modi loses"
+}
+-----------
+
+======= Block 869221 =======
+TxID: ef0b32c83b74d7a9e7ed32fca5453028a1b478d40f03b2a0ab0142dc2635cafa
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.001 opeth# to india-elections-2019@ to FLO address oPuNCAUkFQuQpeGURquuKDNBF5s4UbzCh2 with the userchoice: narendra modi loses",
+  "tokenIdentification": "opeth",
+  "operation": "transfer",
+  "tokenAmount": 0.001,
+  "contractName": "india-elections-2019",
+  "userChoice": "narendra modi loses"
+}
+-----------
+
+======= Block 890701 =======
+TxID: da3128ed614b12c567f93bc732b27c3469956144f73af1f841ba2321dbc0236b
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 100 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 100.0,
+  "stateF": false
+}
+-----------
+
+======= Block 890717 =======
+TxID: ff9441b645e1d27453317e577be53c076492b697c64623c5250553f4a0415f26
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# to opyuhpezaypurdoqtbxvnu2gytbvbkgpnn for ortxc1goesxy74uelkcawnedayp28srb6r.",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 890766 =======
+TxID: 2e475df4d1fb02eaab55dfaba0cf9ad32032a16421f4caf6d3fc7c8c31f80dcf
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 100 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 100.0,
+  "stateF": false
+}
+-----------
+
+======= Block 890796 =======
+TxID: b8b17afcea9cddb33116bad15bc164db229a3a735f125733bae66ccfb8ac77cb
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 892050 =======
+TxID: d39d929c3e74c011440affc26a79fcb2368c03cdfcc7c7ac667fc31102eec76c
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 100 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 100.0,
+  "stateF": false
+}
+-----------
+
+======= Block 892066 =======
+TxID: eaeb88726dac1cfa4b7c661c764976795ab6a8c4d258590fc3ac8aafc28783c1
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 892091 =======
+TxID: 0a4ee3b1ce1dccc52c8f2d3db113a50f8fe069496ceb8155c509b3666e0b6976
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# to ojje8wkadkct28bmlkyf79fqbzeof21cxl for ortxc1goesxy74uelkcawnedayp28srb6r.",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 893200 =======
+TxID: 40be97c42a9f108e51d3bbc56c764249d2aabab924c909d36ae5bd23ad62c978
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 100 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 100.0,
+  "stateF": false
+}
+-----------
+TxID: 30b7983895430c87aab7b65b2636d04c2fa16a4b46ecd3337262d7cedc63c61d
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# to ojje8wkadkct28bmlkyf79fqbzeof21cxl for ortxc1goesxy74uelkcawnedayp28srb6r.",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 900010 =======
+TxID: 35ada53700f6d36e24abe90d06c0723034003924f5b49d6c12e41cbc1fb09a39
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "text:send 5 rmt#",
+  "tokenIdentification": "rmt",
+  "tokenAmount": 5.0,
+  "stateF": false
+}
+-----------
+
+======= Block 912622 =======
+TxID: 33f43ca4a08aea3ae49152df19f266674206fcc80ed5348542205bf72546b4c2
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# to opyuhpezaypurdoqtbxvnu2gytbvbkgpnn for ortxc1goesxy74uelkcawnedayp28srb6r.",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 996988 =======
+TxID: c9793d0dce6d8577209058646bc13f83dd4fc16d358a346f27851e78adc108fb
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 50 rupee# to opyuhpezaypurdoqtbxvnu2gytbvbkgpnn for ortxc1goesxy74uelkcawnedayp28srb6r.",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 50.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1001275 =======
+TxID: 8c184598758832889355b631a5221dd53a78c1d98d28186d8762a6e9c654dd38
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 6 rupee# to opyuhpezaypurdoqtbxvnu2gytbvbkgpnn for ortxc1goesxy74uelkcawnedayp28srb6r.",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 6.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1001339 =======
+TxID: a071ebb89c93141983a8c28682aa6c6a4c9ee0833fc6ee4c138aa1543de1f152
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 4310 rupee# to opyuhpezaypurdoqtbxvnu2gytbvbkgpnn",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 4310.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1001383 =======
+TxID: 385779c40685ae9fd647d3257a0292299cd722b798023ca40ff53e6d5e1f665d
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 4000 rupee# to opyuhpezaypurdoqtbxvnu2gytbvbkgpnn",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 4000.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1001387 =======
+TxID: 7f319359961dfdbb6ae6cfd70a0eebf5c9cc94d7ee92b01480a7f5baddbcc1fa
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 1250 rupee# on behalf of orr1v19gsi2ibhfelxwgjtwu4e8v6hdy2b",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 1250.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1003392 =======
+TxID: f4af4aa0c7263db4648277375aea07dea159840ccf523373d46d42215bcb3a5c
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# to opyuhpezaypurdoqtbxvnu2gytbvbkgpnn for ortxc1goesxy74uelkcawnedayp28srb6r.",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1005837 =======
+TxID: 4d4cd82896180535f98930a5af6b81a96ecb268f64c4743e2e04e51ce1e75dad
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 500 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 500.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1008550 =======
+TxID: eebd5eece70d549f5885b6a52fa18054699e393014491f6fb5bd78d7529d696d
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 100 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 100.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1018628 =======
+TxID: bfbed8da08fbd281716851280975674e7dc4d0fdba7a47c5fc909694d82cb0b9
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 100 rupee# on behalf of orr1v19gsi2ibhfelxwgjtwu4e8v6hdy2b",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 100.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1019834 =======
+TxID: 8d136a74ad6150aa1ccccc4cfb7a9033b33966f8f452c62da413a0a00ff2edbb
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 2194 rupee# to ojje8wkadkct28bmlkyf79fqbzeof21cxl",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 2194.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1019864 =======
+TxID: a70d28757164c7884d18e4c0028295219e046029c8749553797238bbef743f37
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 100 rupee# on behalf of orr1v19gsi2ibhfelxwgjtwu4e8v6hdy2b",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 100.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1019885 =======
+TxID: 0dc6fcb75ed4c3b989d10bd6c0e62d722a821a23df6cf99d56efa45a4f0bdde1
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 100 rupee# on behalf of orr1v19gsi2ibhfelxwgjtwu4e8v6hdy2b",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 100.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1019918 =======
+TxID: 486a1f3473d073ce2fa0b3bbcdf79f2d28ffebda4843f955bafbfa0e5d6e3595
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 100 rupee# on behalf of orr1v19gsi2ibhfelxwgjtwu4e8v6hdy2b",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 100.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1021168 =======
+TxID: 48f56c5d8b646a909224a3e74ac734f9c1204302e042e4e81d96b68c766a089c
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 300 rupee# to ojje8wkadkct28bmlkyf79fqbzeof21cxl",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 300.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1021174 =======
+TxID: 39d210f83d504c47b18c48ba8a1407f0085c2b54d0f14c5ab11768a167379bb1
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 100 rupee# on behalf of orr1v19gsi2ibhfelxwgjtwu4e8v6hdy2b",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 100.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1022431 =======
+TxID: 8d5710ae59c8b2fc8ac7bfd7f1f28ba151075f8172ebfb384296fc4a021d4365
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 100 rupee# on behalf of orr1v19gsi2ibhfelxwgjtwu4e8v6hdy2b",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 100.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1026643 =======
+TxID: a2aadebcacdd11dec7fc461fc0efcb8a1fec852fa0c9a98182608db5ddae06a3
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1026653 =======
+TxID: 3487b01cceab4f6e0755446e004ec26db583d61bfc64d6e36e31cb3b9b313e54
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 90 rupee# on behalf of orr1v19gsi2ibhfelxwgjtwu4e8v6hdy2b",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 90.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1027724 =======
+TxID: ddfeb6e9d0ac6ab0fb96a11df27502865de62137849cfcaeab5f7e890fa6f82e
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1027729 =======
+TxID: 0312e614fc7387c0e8f7c8e969885311bcca1de7d802bc9852dd499388be0429
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 90 rupee# on behalf of orr1v19gsi2ibhfelxwgjtwu4e8v6hdy2b",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 90.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1030198 =======
+TxID: 8c2bef099ecf365cb81cff8b366ea68a55e019b5f7720896b6c34259d782517f
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 50 rupee# on behalf of oxwgn9gtknwluvqpdegalhv8cajtybcshc",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 50.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1030199 =======
+TxID: f20bc694cafb0f006709d4e7435184dd11434855ad143126948ed2a397789b44
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1030233 =======
+TxID: af5ebcd28bcb97954b57ba2a66c54bf6ec5b1234d6bf7140d96bc9d6157deb27
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 100 rupee# on behalf of orr1v19gsi2ibhfelxwgjtwu4e8v6hdy2b",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 100.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1035423 =======
+TxID: 377f674199cbabc5c8f4b513e860f681b19c8bfbf6a5c413c07ad7e733a91e20
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1056977 =======
+TxID: ffb249c75f62e5be1ee297c9c22edc0a3716d411422934fc9e7c83bce58c540d
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1057090 =======
+TxID: 44d3df67617936e3addeb0f58b8eaf920bd2d8480244a0819c741c97a32596c0
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1061431 =======
+TxID: cdc3fab118f0e5aef107eb79dbda16c3a6a6bcf11472fe38f4049cf1da921f5c
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1061457 =======
+TxID: f8118194e448819ebf05cda845cab6422e71a9e36cdee9d33a256ad49c099294
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# to ojje8wkadkct28bmlkyf79fqbzeof21cxl for ortxc1goesxy74uelkcawnedayp28srb6r.",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1067035 =======
+TxID: d1eee09eadd0084dfa5d42d95909f2aec5e6d850b0471c6fb5ab325f14fa0717
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 20 rupee# on behalf of os1mnywd2qexppxpzyvabdifyczuacif31",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 20.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1092492 =======
+TxID: 617bae1fa557a207890ebd7fc0fae07950e686306ba792f7674dcf9cc38ed84f
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1094096 =======
+TxID: 4cbeaec0920c32f61f341eb5ef38e6f3b4bf4976bcf4c18c65baa91d7bafa513
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# on behalf of ow9xrvk2p1td4lpgsscnfj1ksh9lfrdcde",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1099770 =======
+TxID: 82f3e62f37e960ea5465b34e75ee855b2fd85c18def7a868d56f11cf348c434b
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1107995 =======
+TxID: ba7e6a3662f8c0fdff6f7227c26f1c9d2b27c19b1b94471d5d73fd802c61d3a8
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1108031 =======
+TxID: 3040e5d66650fd9a28de05bfaf678cc28a817aa530fdc406d3384a4088beae78
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1173158 =======
+TxID: 25c43ae00b7d994228a0e6dbd998317bea5c38c3aba33ae65d83dc79600bf975
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1173168 =======
+TxID: 73b045aaa75fd07746be4e31e2cccf8562afae09d917b81bdbd242a01bbdf94a
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 12 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 12.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1178764 =======
+TxID: 01572508e47303df1f8e92982e88f5e309127f86a2528af628f32d7ae44e2058
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1178772 =======
+TxID: c108ddc39ddfd96d52b43647fa801f1dc0e6b8aaaea3ed53f005911c10bc62b9
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 3 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 3.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1286074 =======
+TxID: d5c9deed9affac32269d89227009b0be3bf8c410e5e0e48c6864ebaf75fa8b5a
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 1 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 1.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1286083 =======
+TxID: 68f915cfaed3b0e6895a259dae703cd47b78b7b783582bbb7b64625c2b2b4827
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 1 rupee# to opyuhpezaypurdoqtbxvnu2gytbvbkgpnn for ortxc1goesxy74uelkcawnedayp28srb6r.",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 1.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1286158 =======
+TxID: cf481049093ed6412ca01df082db51274432dd2be6a1b44a3ed8f62fc86c51b4
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 1 rupee# to ojje8wkadkct28bmlkyf79fqbzeof21cxl for ortxc1goesxy74uelkcawnedayp28srb6r.",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 1.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1286195 =======
+TxID: 7b42827fe373000477f9a7714a142ae0695a6f6f5853d4e7ecfb2ecb2038594d
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 5 rupee# on behalf of ortxc1goesxy74uelkcawnedayp28srb6r",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 5.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1286201 =======
+TxID: aeff3bcdab3e1990aadd2753550d88c10c07bbb0015be04fe0ff9d4cd5d9887a
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 1 rupee# to ojje8wkadkct28bmlkyf79fqbzeof21cxl for ortxc1goesxy74uelkcawnedayp28srb6r.",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 1.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1636682 =======
+TxID: 79af3c170b4f4befb6a0de0870be257f225667df39034974da297c15d1c7fa88
+Parsed floData:
+{
+  "type": "tokenIncorporation",
+  "flodata": "create 100 million bioscope#",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 100000000.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1769285 =======
+TxID: ac132bd22758111d0dd22282cb8078f260cea85ae2ed9b6781e93019add77c2c
+Parsed floData:
+{
+  "type": "tokenIncorporation",
+  "flodata": "create 10 million tokens with name loney#",
+  "tokenIdentification": "loney",
+  "tokenAmount": 10000000.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1810570 =======
+TxID: fec1be48683c8f9a7d22e9fc6afddb68a641a364a26716fdfeaf3c21f27346c0
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 30 rupee#",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 30.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1932625 =======
+TxID: 1e85f9562b937a263ac75ba4a8314c6a02f809dc30c6adda4564a59b3f1f3b5d
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 50 rupee#",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 50.0,
+  "stateF": false
+}
+-----------
+
+======= Block 1952419 =======
+TxID: d6700e0c931521f02ea4da8bb7ea5637f9da68d8d02b6432b81d0608449dae11
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 2 rupee#",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 2.0,
+  "stateF": false
+}
+-----------
+
+======= Block 2210536 =======
+TxID: cc7c2d5c18ca05162aa9e03165d6477b5c54908d5128fdad6fb23c23d76d3a7e
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 10 bioscope#",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 2210541 =======
+TxID: e4547c09ab010f256b8ea04a64beb92cf6c103f3a844bfab03f35f4804120295
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 10 bioscope#",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 2211621 =======
+TxID: b5fc88aee22f4fbfad1ba6fd7a7def494bf9bdb1c2b41f28b9999d82af7e8c31
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 10 bioscope#",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 2211659 =======
+TxID: c4f6c666f86ce3737378e8b628d0749fcebe2d3fce57d3329561333424054a1d
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 0.3 bioscope#",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.3,
+  "stateF": false
+}
+-----------
+TxID: e666530433d5a68967ba841e2ea34a770d86d48471637ee8ceaefc9c68b187dd
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "Send 0.2 bioscope# to simple-crowd-fund@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.2,
+  "contractName": "simple-crowd-fund"
+}
+-----------
+TxID: 1c6f4f3052e10e909bca95542db6730a4bbdf3cbe16c0a83621d07d3d559211c2025-07-12 13:07:32,937:parsing:Error parsing expiry time
+2025-07-12 13:07:32,939:parsing:Error parsing expiry time
+
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "Send 0.1 bioscope# to simple-crowd-fund@ crowdfunding bioscope",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.1,
+  "contractName": "simple-crowd-fund"
+}
+-----------
+TxID: ce4927e33adac9810ce87d88deb05c1a9697c8a40a2ae5cd3998c4845bf07efe
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "Send 0.1 bioscope# to simple-crowd-fund@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.1,
+  "contractName": "simple-crowd-fund"
+}
+-----------
+
+======= Block 2211665 =======
+TxID: 7f450cf54b2bf5c44d124be1798bfade7ec024562555db46f9af4127b11841e0
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "Transfer bioscope# simple-crowd-fund@ 0.02",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.02,
+  "contractName": "simple-crowd-fund"
+}
+-----------
+
+======= Block 2211685 =======
+TxID: 0aa75e795b7ca087beae90cab9b1a78641dd154d83db3178e6f5053ca71e9f5e
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "Send 0.3 bioscope# to simple-crowd-fund@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.3,
+  "contractName": "simple-crowd-fund"
+}
+-----------
+TxID: 9f859b22cf1223f10333bab3f62c30492bebffb11fd8f57533c5382cfc525aa3
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "Send 0.1 bioscope# to simple-crowd-fund@ crowdfunding bioscope project",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.1,
+  "contractName": "simple-crowd-fund"
+}
+-----------
+
+======= Block 2211686 =======
+TxID: 9f5f70bb286b0f7c7d2571faa52e4f97f96526aaa6084b578e23198e6ade6087
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "Transfer 0.2 bioscope# to simple-crowd-fund@ !$%^&*() hellooooooooooooooooblockchainworlddddddddddddddddd this is smart contract for crowdfundiong the bioscope music project on the flo blockchain",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.2,
+  "contractName": "simple-crowd-fund"
+}
+-----------
+
+======= Block 2211689 =======
+TxID: f150d32397a18bf202df05b8b14c75a92cc653ed4b5715c7c9d374136a565b71
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 1.367341 bioscope#",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 1.367341,
+  "stateF": false
+}
+-----------
+TxID: bc5249d9a2b3e69fce1efdc9977c045e7d8e3f605c2df1816107aa583fae3cdb
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "2 bioscope# Send to simple-crowd-fund@ hellooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 2.0,
+  "contractName": "simple-crowd-fund"
+}
+-----------
+
+======= Block 2291732 =======
+TxID: 7ad118a89591b11296a5e21af014bd3c77dd4c2dcd3fa1c574f50ce92e4bcc27
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 0.5 bioscope#",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.5,
+  "stateF": false
+}
+-----------
+
+======= Block 2291736 =======
+TxID: ea9aed29cdf0c27d528219710f8399a9239c6acd5d7ccaebc8d23640e808abd0
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 0.5 bioscope#",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.5,
+  "stateF": false
+}
+-----------
+
+======= Block 2291739 =======
+TxID: cc2aed9fce408a2c078882ecb78d1510ec6590fdc9f4b680522d1d9a61bbdf91
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 0.7 bioscope#",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.7,
+  "stateF": false
+}
+-----------
+
+======= Block 2291756 =======
+TxID: 7a3742ad66bffda1ab4b48f492d675e29ca1771711a96fa0ad2090662a9e5dc6
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 0.1 bioscope#",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.1,
+  "stateF": false
+}
+-----------
+TxID: d4996e383088084fece19cd41b05d903b2832f293c5403a1c663840ab15465cd
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 0.2 bioscope#",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.2,
+  "stateF": false
+}
+-----------
+
+======= Block 2291758 =======
+TxID: 7b4e9dfef78a6c7bfe455ec2a4b17c66256d27c841376c207a9e0d32b2d446c8
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 0.1 bioscope#",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.1,
+  "stateF": false
+}
+-----------
+
+======= Block 2292652 =======
+TxID: 8927c414c467fa76bdbbef4f17ba27c812af2d09e2a9366424ba5fac71705a7c
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.5 bioscope# to all-crowd-fund-2@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.5,
+  "contractName": "all-crowd-fund-2"
+}
+-----------
+
+======= Block 2292653 =======
+TxID: 8b7a7337ea9c560ab90e6249533977455af282ec8f888a16ac3035c0b0e5d87b
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.7 bioscope# to all-crowd-fund-2@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.7,
+  "contractName": "all-crowd-fund-2"
+}
+-----------
+TxID: 4e31e0467d229323e0b88e0a07514603d514a0bdcfdac6af875bbd32ad8c13c8
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.5 bioscope# to all-crowd-fund-2@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.5,
+  "contractName": "all-crowd-fund-2"
+}
+-----------
+
+======= Block 2292660 =======
+TxID: cbe45c9fa29b806eb880aa46c2581ba2e93e008d0ce623e5ee6686ede7dff3d2
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.2 bioscope# to all-crowd-fund-4@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.2,
+  "contractName": "all-crowd-fund-4"
+}
+-----------
+
+======= Block 2292663 =======
+TxID: c5ced803ef7e214e5936c25c539df168cdd8d21f2ab9d00ad29dd0831970757f
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.1 bioscope# to all-crowd-fund-4@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.1,
+  "contractName": "all-crowd-fund-4"
+}
+-----------
+
+======= Block 2292664 =======
+TxID: 7033691ec6f40d2caee98f5fdc512df0384d95ace4aa37c1f1edde886ba75775
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.1 bioscope# to all-crowd-fund-4@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.1,
+  "contractName": "all-crowd-fund-4"
+}
+-----------
+
+======= Block 2292899 =======
+TxID: 46387afe6c4b70fd9ecc975ad0f7749a10e511b4ac6cc440cd5d69e07ebb60e0
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.4 bioscope# to all-crowd-fund-5@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.4,
+  "contractName": "all-crowd-fund-5"
+}
+-----------
+
+======= Block 2292900 =======
+TxID: 131e5d6b14526d2c2d7a2ad12b7bb7bd2810422f458ea72a640b48fceac45325
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.4 bioscope# to all-crowd-fund-5@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.4,
+  "contractName": "all-crowd-fund-5"
+}
+-----------
+
+======= Block 2292901 =======
+TxID: 6abecb5b4f9b6e312902d7c287f93e62ea0d240a8c258990054bdb6609068538
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.4 bioscope# to all-crowd-fund-5@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.4,
+  "contractName": "all-crowd-fund-5"
+}
+-----------
+TxID: f2d5eb7450427f2577c3f454a7bae314f2b8f2a61705f16e5109720c5737c44f
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.4 bioscope# to all-crowd-fund-5@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.4,
+  "contractName": "all-crowd-fund-5"
+}
+-----------
+
+======= Block 2292910 =======
+TxID: d117de61ba7228bbd0f6999806564008c40c9bc162f2372905d56feaf045e598
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.6 bioscope# to all-crowd-fund-6@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.6,
+  "contractName": "all-crowd-fund-6"
+}
+-----------
+TxID: ca265b05c44d4331dd0c26010769166ee4e23af8c8648b6971f3d12fcd26b4a1
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.6 bioscope# to all-crowd-fund-6@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.6,
+  "contractName": "all-crowd-fund-6"
+}
+-----------
+
+======= Block 2294025 =======
+TxID: 3345cb8162c200db6fe0ff4ce7f2a48c77935b9507579dfaf2df6a361cfb1d30
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 2.2 bioscope# to all-crowd-fund-7@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 2.2,
+  "contractName": "all-crowd-fund-7"
+}
+-----------
+
+======= Block 2294026 =======
+TxID: 706effc95ddb23f23af26c1e090cc617a2698d0a9bfff8dc4bd7cfb4f7c35468
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 2.2 bioscope# to all-crowd-fund-7@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 2.2,
+  "contractName": "all-crowd-fund-7"
+}
+-----------
+TxID: 6d75b0ff9086441e86d557c72887f1479ed609ca00cc0a67e2e62e0fa52a6ed2
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 500 bioscope# to all-crowd-fund-7@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 500.0,
+  "contractName": "all-crowd-fund-7"
+}
+-----------
+TxID: 3e68f5acaa19647a349af11a485febc625d13c13afb8b98cf770dc69d6bb1098
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.2 bioscope# to all-crowd-fund-7@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.2,
+  "contractName": "all-crowd-fund-7"
+}
+-----------
+
+======= Block 2294151 =======
+TxID: eb356ce126ebae641336f819926d67fb9a410625f1337ea6bf47ce80bc56f7a9
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.02 bioscope# to twitter-survive@ to FLO address oVbebBNuERWbouDg65zLhgvghhvhEMTnsL8r with the userchoice: survives",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.02,
+  "contractName": "twitter-survive",
+  "userChoice": "survives"
+}
+-----------
+
+======= Block 2294305 =======
+TxID: 70a16f1e305592bc99d1ad7d31f5c886489c5d36e4ebd34918298f8f35a68823
+Parsed floData:
+{
+  "type": "smartContractPays",
+  "contractName": "twitter-survive",
+  "triggerCondition": "survives",
+  "stateF": false
+}
+-----------
+
+======= Block 2324066 =======
+TxID: 077b0024689cc8155c2bf34006b4d8ab60ec49b147a3dc5dc5cc0fd6726a8288
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 5 bioscope#",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 5.0,
+  "stateF": false
+}
+-----------
+TxID: 0c529b9c367c109e0bba8baca83a92f85fdeba97c2e9697dff5621e37e440f72
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 5 bioscope#",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 5.0,
+  "stateF": false
+}
+-----------
+
+======= Block 2427814 =======
+TxID: 780df449ee3a01e79cac2c497e6dbbd82329a02cc258d0307dc287d3979bea07
+Parsed floData:
+{
+  "type": "tokenIncorporation",
+  "flodata": "create 10000 multisig#",
+  "tokenIdentification": "multisig",
+  "tokenAmount": 10000.0,
+  "stateF": false
+}
+-----------
+
+======= Block 2429528 =======
+TxID: 5ef8b7229956b8dceefbdc6087d17012e6555c67de06ba503e19f6f6bf563a76
+Parsed floData:
+{
+  "type": "nftIncorporation",
+  "flodata": "create 20 testphoto# as nft with 6934f84c22f5e1ff50bafff0fb2def8ccc0c9ac836a5c1973e048bb609771f1b as asset hash",
+  "tokenIdentification": "testphoto",
+  "tokenAmount": 20.0,
+  "nftHash": "6934f84c22f5e1ff50bafff0fb2def8ccc0c9ac836a5c1973e048bb609771f1b",
+  "stateF": false
+}
+-----------
+
+======= Block 2429608 =======
+TxID: 11571ce7e5eed0bce30e24de89bb1ba6cc432df7b5b40bbc9f0225b98968cb47
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "nft",
+  "flodata": "transfer 2 testphoto# nft",
+  "tokenIdentification": "testphoto",
+  "tokenAmount": 2.0,
+  "stateF": false
+}
+-----------
+
+======= Block 2434803 =======
+TxID: 374dd9c22668c1d0cb6e013157bef5719cc051764b5ca8b96ce7a0edc4700117
+Parsed floData:
+{
+  "type": "tokenIncorporation",
+  "flodata": "create 100000 teega#",
+  "tokenIdentification": "teega",
+  "tokenAmount": 100000.0,
+  "stateF": false
+}
+-----------
+
+======= Block 2434807 =======
+TxID: f18b1e00426c6e8368d8467f0975f6b21186a215e3ae864505f3b573573f01d6
+Parsed floData:
+{
+  "type": "tokenIncorporation",
+  "flodata": "create 10000 teega#",
+  "tokenIdentification": "teega",
+  "tokenAmount": 10000.0,
+  "stateF": false
+}
+-----------
+
+======= Block 2434881 =======
+TxID: 65df008efef1a48e66b874cf1d9a8b18d0032b5d1c9aac2c8a029cb0efc9a657
+Parsed floData:
+{
+  "type": "tokenIncorporation",
+  "flodata": "create 10 million testsalvador#",
+  "tokenIdentification": "testsalvador",
+  "tokenAmount": 10000000.0,
+  "stateF": false
+}
+-----------
+
+======= Block 2434886 =======
+TxID: 9e580dbb0bf2d742f017eaedd470071627d2e7cf5a6267e049511db1a55337f5
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 100 testsalvador#",
+  "tokenIdentification": "testsalvador",
+  "tokenAmount": 100.0,
+  "stateF": false
+}
+-----------
+
+======= Block 2434895 =======
+TxID: cfea19fb79f97cb88617e4f39aa82e4e9de45b0cc7b0089ac921c334e38de067
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "transfer 10 testsalvador#",
+  "tokenIdentification": "testsalvador",
+  "tokenAmount": 10.0,
+  "stateF": false
+}
+-----------
+
+======= Block 2443809 =======
+TxID: f4a5246904fa96599e2209f399aabb5fbd362895eae54bd7eaac67a2cbbb103a
+Parsed floData:
+{
+  "type": "infiniteTokenIncorporation",
+  "flodata": "create usd# as infinite-token",
+  "tokenIdentification": "usd",
+  "stateF": false
+}
+-----------
+
+======= Block 2443862 =======
+TxID: e586856b7fb7e48a327a9f736443bae280b01f0736a1ee3af710b763caf7f964
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 2 usd#",
+  "tokenIdentification": "usd",
+  "tokenAmount": 2.0,
+  "stateF": false
+}
+-----------
+
+======= Block 2470672 =======
+TxID: ccd38e6bc922fce3eaeb7502e6d7c62ead24071b49b1d28c78e05ef4bb9b6e87
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 5 rupee#",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 5.0,
+  "stateF": false
+}
+-----------
+
+======= Block 2470687 =======
+TxID: cdb84b188f8e717d76dc96cd5dce99a72827ad1cde936da9b18615bf51be0e10
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 1 bioscope#",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 1.0,
+  "stateF": false
+}
+-----------
+
+======= Block 2470703 =======
+TxID: d36b744d6b9d8a694a93476dbd1134dbdc8223cf3d1a604447acb09221aa3b49
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.1 rupee# swap-rupee-bioscope-1@ from participant to smart contract address",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 0.1,
+  "contractName": "swap-rupee-bioscope-1"
+}
+-----------
+
+======= Block 2470717 =======
+TxID: 22dc9327bcb504fedbd07741aa9f32c17cc5e34cab22579acfc5cc412a4c4187
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.001 rupee# swap-rupee-bioscope-1@ with new price",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 0.001,
+  "contractName": "swap-rupee-bioscope-1"
+}
+-----------
+TxID: ef4cf64c0b8f04b2c876545e6d4f558be49b740c24b31b30c62efb1517796546
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.3 rupee# swap-rupee-bioscope-1@ from participant to smart contract address",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 0.3,
+  "contractName": "swap-rupee-bioscope-1"
+}
+-----------
+
+======= Block 2489225 =======
+TxID: 004ce1d2b31f5345d7e5601c2e460b63d8706f9b31e853a9f729239ddda7844b
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 5 bioscope#",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 5.0,
+  "stateF": false
+}
+-----------
+
+======= Block 2489246 =======
+TxID: 06e0a1195fc36c5d7c568aa9c004d4fcb2e5f0c3f91749ba8f5e8e93192c3bef
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 1.25 rupee# swap-rupee-bioscope-1@",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 1.25,
+  "contractName": "swap-rupee-bioscope-1"
+}
+-----------
+
+======= Block 2498008 =======
+TxID: 94624ebce3f2ed00d66eee7f6021dcdfb58ef81e8c5f794ed2df7212423f36e7
+Parsed floData:
+{
+  "type": "smartContractPays",
+  "contractName": "twitter-survive",
+  "triggerCondition": "survives",
+  "stateF": false
+}
+-----------
+
+======= Block 2503776 =======
+TxID: 1697d764d1d1294a1bb19ed84b947949cca4ed11b9fefede432adc342a78ed6f
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 1 bioscope# to twitter-survive@ to FLO address oVbebBNuERWbouDg65zLfdataWEMTnsL8r with the userchoice: survives",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 1.0,
+  "contractName": "twitter-survive",
+  "userChoice": "survives"
+}
+-----------
+
+======= Block 2503778 =======
+TxID: a2e52d86e91d037b3c6a74d2d0b246d9bdcaa59ac0570bbbcfbf3e369fec617b
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 1 rupee# to swap-rupee-bioscope-1@",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 1.0,
+  "contractName": "swap-rupee-bioscope-1"
+}
+-----------
+
+======= Block 2511356 =======
+TxID: e7b3571ca84f20fda60ccc6f03b50f2fffff03094f1fcd42110f85d63a50fe34
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.1 bioscope# to album-fund-2@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.1,
+  "contractName": "album-fund-2"
+}
+-----------
+
+======= Block 2513856 =======
+TxID: 3f55cf64edd807fc4aaff17b4cfba3d13016d58297fb30c36458bfe143809cf0
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.1 bioscope# to balaji-srinivasan-bitcoin-prediction@ to FLO address oaALNw1n8sXPeWuG7HWbks8DwkTr6v1vGn with the userchoice: bitcoin 100000",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.1,
+  "contractName": "balaji-srinivasan-bitcoin-prediction",
+  "userChoice": "bitcoin 100000"
+}
+-----------
+TxID: 2d0bb4de0bef5148d5dad63479f015cd5720c23bab946aeadf64c78215181637
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.1 bioscope# to balaji-srinivasan-bitcoin-prediction@ to FLO address oaALNw1n8sXPeWuG7HWbks8DwkTr6v1vGn with the userchoice: bitcoin not 100000",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.1,
+  "contractName": "balaji-srinivasan-bitcoin-prediction",
+  "userChoice": "bitcoin not 100000"
+}
+-----------
+
+======= Block 2513865 =======
+TxID: 6852506507345e924a717855840545664311d12be7c92c0c5407c07c4e01163b
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.1 bioscope# to balaji-srinivasan-bitcoin-prediction@ to FLO address oaALNw1n8sXPeWuG7HWbks8DwkTr6v1vGn with the userchoice: bitcoin 100000",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.1,
+  "contractName": "balaji-srinivasan-bitcoin-prediction",
+  "userChoice": "bitcoin 100000"
+}
+-----------
+
+======= Block 2513885 =======
+TxID: 18e0bdea0bb72bd761dccb0bd7a48655dd16af3480fc7148ab0a64b4f532819e
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.1 bioscope# to russia-ukraine-war@ to FLO address oaALNw1n8sXPeWuG7HWbks8DwkTr6v1vGn with the userchoice: ukraine",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.1,
+  "contractName": "russia-ukraine-war",
+  "userChoice": "ukraine"
+}
+-----------
+
+======= Block 2513901 =======
+TxID: 25793a873d7477ec98c8a98590aaa5e8aa62527bca93047b26e2371d1deb3893
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.1 rupee# to swap-rupee-bioscope@",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 0.1,
+  "contractName": "swap-rupee-bioscope"
+}
+-----------
+
+======= Block 2513902 =======
+TxID: 94f416fcee242a6a6cd89a0abc537963ca668556ae80efbc04109209081b7f01
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.35 rupee# to swap-rupee-bioscope-1@",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 0.35,
+  "contractName": "swap-rupee-bioscope-1"
+}
+-----------
+
+======= Block 2513908 =======
+TxID: d8cfe29288b67718bfc047bca8949e2467363b808e4645dcd4babded8624c50c
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.2 rupee# to swap-rupee-bioscope-1@",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 0.2,
+  "contractName": "swap-rupee-bioscope-1"
+}
+-----------
+
+======= Block 2686904 =======
+TxID: 796186166c2a6893369fc3bda89035b8a5882fd1ef14335ea95eac6af071a8b2
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.001 bioscope# to minimum-subscription-test@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.001,
+  "contractName": "minimum-subscription-test"
+}
+-----------
+
+======= Block 2686905 =======
+TxID: 3a28c6c710e627eadcda2414f0cb50844543b4d2093e9c1db273dc185dd9de6f
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.002 bioscope# to minimum-subscription-test@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.002,
+  "contractName": "minimum-subscription-test"
+}
+-----------
+
+======= Block 2704529 =======
+TxID: d35a717e6fc05b3fdbbc926ceb67d7c1180c01e6cf8f287b1d488f44a12b3039
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.4 bioscope# to maximum-subscription-test@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.4,
+  "contractName": "maximum-subscription-test"
+}
+-----------
+
+======= Block 2705917 =======
+TxID: b810d06779fb6050fbdfc0a7e6f07e21f08565941fef380d677daea80a65d2af
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.02 bioscope# to world-cup-winner@ to FLO address oV2yXU9pAWEB1HXrS5qVa5ANPFEKqu4Eoh with the userchoice: india",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.02,
+  "contractName": "world-cup-winner",
+  "userChoice": "india"
+}
+-----------
+
+======= Block 2705935 =======
+TxID: 6de645d08c0984dfd041f6f3761ccaafeb9c8ee4419404f15af7a2041f22a9de
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.01 bioscope# to world-cup-winner@ to FLO address oV2yXU9pAWEB1HXrS5qVa5ANPFEKqu4Eoh with the userchoice: pakistan",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.01,
+  "contractName": "world-cup-winner",
+  "userChoice": "pakistan"
+}
+-----------
+
+======= Block 2705937 =======
+TxID: 499b5ca74cc6f627a668c922d0141bf84353419c1becb8cc6247773d92d1b4c7
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.001 bioscope# to world-cup-winner@ to FLO address oV2yXU9pAWEB1HXrS5qVa5ANPFEKqu4Eoh with the userchoice: india",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.001,
+  "contractName": "world-cup-winner",
+  "userChoice": "india"
+}
+-----------
+
+======= Block 2706131 =======
+TxID: fba40a0ad2e9544776f04745ce08261a7b463756a4ed8ee6da835c3e5271b02e
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.01 bioscope# to icc-winner-2023@ to FLO address oasgK1ZGWSDHFL5moHfEAycwJRjT3DS66J with the userchoice: india",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.01,
+  "contractName": "icc-winner-2023",
+  "userChoice": "india"
+}
+-----------
+
+======= Block 2706132 =======
+TxID: 068760934b35ddf634535b663e6f291c478f7e028a58b463876bedb442e11a05
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.01 bioscope# to icc-winner-2023@ to FLO address oasgK1ZGWSDHFL5moHfEAycwJRjT3DS66J with the userchoice: pakistan",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.01,
+  "contractName": "icc-winner-2023",
+  "userChoice": "pakistan"
+}
+-----------
+
+======= Block 2706133 =======
+TxID: 5f9162e933b5c384c8b08e274d40a01c5564a8bcc36254d7e30b9b18dd46242a
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.04 bioscope# to icc-winner-2023@ to FLO address oasgK1ZGWSDHFL5moHfEAycwJRjT3DS66J with the userchoice: india",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.04,
+  "contractName": "icc-winner-2023",
+  "userChoice": "india"
+}
+-----------
+
+======= Block 2706134 =======
+TxID: de7efeadbcef5af3e392e219bcc0209380fe0d122b3ffc594e3aae795e9ba94e
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.04 bioscope# to icc-winner-2023@ to FLO address oasgK1ZGWSDHFL5moHfEAycwJRjT3DS66J with the userchoice: pakistan",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.04,
+  "contractName": "icc-winner-2023",
+  "userChoice": "pakistan"
+}
+-----------
+
+======= Block 2706140 =======
+TxID: 604a5be68a150e05f83a8a3fe96367e4b88f05849fff97894d563528efc2988f
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.001 bioscope# to icc-winner-2023@ to FLO address oasgK1ZGWSDHFL5moHfEAycwJRjT3DS66J with the userchoice: india",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.001,
+  "contractName": "icc-winner-2023",
+  "userChoice": "india"
+}
+-----------
+
+======= Block 2706142 =======
+TxID: 2248b87719e53bce782427672a00b097743068d897224db64a1a1592d08f551d
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.001 bioscope# to icc-winner-2023@ to FLO address oasgK1ZGWSDHFL5moHfEAycwJRjT3DS66J with the userchoice: pakistan",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.001,
+  "contractName": "icc-winner-2023",
+  "userChoice": "pakistan"
+}
+-----------
+
+======= Block 2706409 =======
+TxID: 9707317f97a6372a7c5d984efaf30beaf09af540ebe3dd6c00b826e4c6627205
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.001 bioscope# to nfl-winner-2023@ to FLO address oUmSj8w4aQPikn7DAv4RgR11LJ18kwL2uB with the userchoice: kansas",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.001,
+  "contractName": "nfl-winner-2023",
+  "userChoice": "kansas"
+}
+-----------
+
+======= Block 2706418 =======
+TxID: 6b9aa67a4e430d1789248ecabb591b12d3072c1fd20567bffde3dea1a0397907
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.002 bioscope# to nfl-winner-2023@ to FLO address oUmSj8w4aQPikn7DAv4RgR11LJ18kwL2uB with the userchoice: denver",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.002,
+  "contractName": "nfl-winner-2023",
+  "userChoice": "denver"
+}
+-----------
+
+======= Block 2706420 =======
+TxID: 4f5ffa812279d951f1e44e0b09f663a98a19707cb57d47b40c9a99dafd4346df
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.002 bioscope# to nfl-winner-2023@ to FLO address oUmSj8w4aQPikn7DAv4RgR11LJ18kwL2uB with the userchoice: kansas",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.002,
+  "contractName": "nfl-winner-2023",
+  "userChoice": "kansas"
+}
+-----------
+
+======= Block 2706438 =======
+TxID: c312c0854854668dba10c9a9838a15dc782f3f515c762ce3169eeee97da8d1d7
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to nfl-winner-2023@ to FLO address oUmSj8w4aQPikn7DAv4RgR11LJ18kwL2uB with the userchoice: denver",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.0001,
+  "contractName": "nfl-winner-2023",
+  "userChoice": "denver"
+}
+-----------
+
+======= Block 2706445 =======
+TxID: 4e268853f9a0c35dea0b6b0097b62d1d6e173db85bdbb8e2edaf2001c8cafc06
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to nfl-winner-2023@ to FLO address oUmSj8w4aQPikn7DAv4RgR11LJ18kwL2uB with the userchoice: kansas",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.0001,
+  "contractName": "nfl-winner-2023",
+  "userChoice": "kansas"
+}
+-----------
+
+======= Block 2706487 =======
+TxID: 805d3d37b6ee9a45a7f7b7de239f3cc89f55ce9fd8d5aad2f8e6d2319acb8162
+Parsed floData:
+{
+  "type": "smartContractPays",
+  "contractName": "nfl-winner-2023",
+  "triggerCondition": "kansas",
+  "stateF": false
+}
+-----------
+
+======= Block 2706685 =======
+TxID: ca362becaec92a4079e53afd59a220a27dfb71b7c9e88f74ebe6b29ad2074ded
+Parsed floData:
+{
+  "type": "smartContractPays",
+  "contractName": "icc-winner-2023",
+  "triggerCondition": "india",
+  "stateF": false
+}
+-----------
+
+======= Block 2709758 =======
+TxID: 2b77a2c8da21c38f6f6950e1528dfc7012bd2638bb6d481cf5cd1442c5ab2505
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 2 teega#",
+  "tokenIdentification": "teega",
+  "tokenAmount": 2.0,
+  "stateF": false
+}
+-----------
+
+======= Block 2709760 =======
+TxID: 28f5e0b401ca584432deb0256ea592bbd9810d65dc6501a3e1ca9513c99f6f18
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 5 bioscope#",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 5.0,
+  "stateF": false
+}
+-----------
+
+======= Block 2709871 =======
+TxID: 627819a91833b0a94fe37d06d298e8169b8d45ed6678f5f79a5f6615302f75df
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.25 bioscope# to swap-teega-bioscope@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.25,
+  "contractName": "swap-teega-bioscope"
+}
+-----------
+
+======= Block 2709896 =======
+TxID: 55d048e167ee42140bfa841fb6967ed224cd3b3c68b4ac8283d27f1b3da8bf7f
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0005 bioscope# to swap-teega-bioscope@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0005,
+  "contractName": "swap-teega-bioscope"
+}
+-----------
+TxID: 49eb16b33f76c42e3e85a8a6f30964b1235886d8e3b9ae3b5f449900eaa2b972
+Parsed floData:
+{
+  "type": "smartContractDeposit",
+  "tokenIdentification": "teega",
+  "depositAmount": 0.5,
+  "contractName": "swap-teega-bioscope",
+  "flodata": "Deposit 0.5 teega# to swap-teega-bioscope@ its FLO address being oNKUkFHWBFCLhkS5z2LqAnCYfta3DRwVvg$ with deposit-conditions: (1) expiryTime= Tue Sep 26 2023 15:40:00 GMT+0530 (India Standard Time)",
+  "depositConditions": {
+    "expiryTime": "tue sep 26 2023 15:40:00 gmt+0530 (india standard time)"
+  },
+  "stateF": false
+}
+-----------
+
+======= Block 2709907 =======
+TxID: 280bf3687a6a9b6e2a3d0cf5fb3a0a05be9936d295a3712432325d9549f9c35d
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to swap-teega-bioscope@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0001,
+  "contractName": "swap-teega-bioscope"
+}
+-----------
+
+======= Block 2709912 =======
+TxID: 39f985f35f9dd1cb981477e9ad5d35fb9234a71e5ef51db89aa8db6cbeb7c8d0
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0008 bioscope# to swap-teega-bioscope@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0008,
+  "contractName": "swap-teega-bioscope"
+}
+-----------
+
+======= Block 2710199 =======
+TxID: 338689672c2edb57b56bea98be4f4bd219dc402776c907e8455cd2f7fc4e7e72
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 0.1 bioscope#",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.1,
+  "stateF": false
+}
+-----------
+
+======= Block 2710201 =======
+TxID: 8946148aa881cdf564032018a28df2491c4d8fe8aa1a2c2d6e56adf911d3f31d
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 0.1 bioscope#",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.1,
+  "stateF": false
+}
+-----------
+
+======= Block 2710219 =======
+TxID: ef8bc7a2bfeaa0dc2232c811dc1e702edce2fe9f1a767f5790e1bf5d1284b83e
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to zelensky-vs-putin@ to FLO address oUiT9trTJHpt4oZVJxh1mpfLYjJgc99ck6 with the userchoice: putin",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.0001,
+  "contractName": "zelensky-vs-putin",
+  "userChoice": "putin"
+}
+-----------
+
+======= Block 2710231 =======
+TxID: f4400ba894cdf5509039fbd31bdd9a4d24a56854e3023ee1cb8199793af1331c
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to zelensky-vs-putin@ to FLO address oUiT9trTJHpt4oZVJxh1mpfLYjJgc99ck6 with the userchoice: putin",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.0001,
+  "contractName": "zelensky-vs-putin",
+  "userChoice": "putin"
+}
+-----------
+
+======= Block 2710232 =======
+TxID: 556534c823ab3c3fa5b4c09aa6800a8efc841df447aa3414ca140d25d6395450
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to zelensky-vs-putin@ to FLO address oUiT9trTJHpt4oZVJxh1mpfLYjJgc99ck6 with the userchoice: zelensky",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.0001,
+  "contractName": "zelensky-vs-putin",
+  "userChoice": "zelensky"
+}
+-----------
+
+======= Block 2710260 =======
+TxID: b91c2bed4a0f58e86e12ed260b72c80e98f38c78a9b778d4c9af46ba5b3c1eed
+Parsed floData:
+{
+  "type": "smartContractPays",
+  "contractName": "zelensky-vs-putin",
+  "triggerCondition": "putin",
+  "stateF": false
+}
+-----------
+
+======= Block 2716829 =======
+TxID: 2fc99299c55dc1ee1357c818afb66bd87e3b8ffa29fc8cf06f0f291d91d4fa61
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to ranchimall-tshirt-crowdfunding@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0001,
+  "contractName": "ranchimall-tshirt-crowdfunding"
+}
+-----------
+
+======= Block 2716830 =======
+TxID: 7d05e19d4a4c01aeadca9e687380bb6ca67842af8f57ba442fa790d821784f7c
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.00001 bioscope# to ranchimall-tshirt-crowdfunding@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 1e-05,
+  "contractName": "ranchimall-tshirt-crowdfunding"
+}
+-----------
+
+======= Block 2716855 =======
+TxID: 9e0943f9319e9b67ce67de01f415209d208491b37bf50ae3035664e0b0874cc5
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to iphone-15-crowdfund@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0001,
+  "contractName": "iphone-15-crowdfund"
+}
+-----------
+TxID: 33233910c3e08f8c264151018dff9146b42f2a392aabc2adef5971c70dd69185
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.00001 bioscope# to iphone-15-crowdfund@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 1e-05,
+  "contractName": "iphone-15-crowdfund"
+}
+-----------
+
+======= Block 2716857 =======
+TxID: 46ed86c39f52e000f8e514e48d19b6780380ce6062a4daf376899eaa0eb485fe
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.001 bioscope# to iphone-15-crowdfund@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.001,
+  "contractName": "iphone-15-crowdfund"
+}
+-----------
+
+======= Block 2716896 =======
+TxID: fa7ef50f653cb2de6bfbe7bd7777e500c16696071da5eb881090be53f811c7db
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to oculus-vr-set-crowdfunding@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0001,
+  "contractName": "oculus-vr-set-crowdfunding"
+}
+-----------
+
+======= Block 2716897 =======
+TxID: 496563a5ee6ea8fab101ce237952005df0f52984df5a734013839e8fcea3461d
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.001 bioscope# to oculus-vr-set-crowdfunding@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.001,
+  "contractName": "oculus-vr-set-crowdfunding"
+}
+-----------
+
+======= Block 2716898 =======
+TxID: aa2e5d8160c83a02de6d6a9bb73d04ee3e37b3c4654541b7956e5cea8e8883ed
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.00001 bioscope# to oculus-vr-set-crowdfunding@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 1e-05,
+  "contractName": "oculus-vr-set-crowdfunding"
+}
+-----------
+
+======= Block 2719799 =======
+TxID: cece6fdc1f4900512ca4de2f94a51736c7257743159458e280f55c9a9c09e631
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 0.001 teega#",
+  "tokenIdentification": "teega",
+  "tokenAmount": 0.001,
+  "stateF": false
+}
+-----------
+
+======= Block 2719828 =======
+TxID: 4260b15ef094ef446636e04d511af58bf92e44cb4087d3025195f10f04c355bc
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.000063 bioscope# to trade-teega-bioscope@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 6.3e-05,
+  "contractName": "trade-teega-bioscope"
+}
+-----------
+
+======= Block 2725110 =======
+TxID: 35ee40bb871d4d47696801a47ceb6b085f5927fdc643186b2b55f74e3ddf952d
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 0.0001 bioscope#",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0001,
+  "stateF": false
+}
+-----------
+
+======= Block 2725117 =======
+TxID: 9cf5bbb6a21e55123b8cfe93ffb0039d5c286ee0c760285216bbd1407edb506f
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 0.0001 bioscope#",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0001,
+  "stateF": false
+}
+-----------
+
+======= Block 2725482 =======
+TxID: 0534e30600b68c1457ba8299369d1aa87661033c1e461195336fe1394b6bf35c
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to anti-covid-vaccine-development-crowdfunding@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0001,
+  "contractName": "anti-covid-vaccine-development-crowdfunding"
+}
+-----------
+
+======= Block 2725488 =======
+TxID: 3c648080eb491b8a7556bdeacf3f8e3627f5f5ec5fda8f08eac6174610a5526f
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0002 bioscope# to anti-covid-vaccine-development-crowdfunding@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0002,
+  "contractName": "anti-covid-vaccine-development-crowdfunding"
+}
+-----------
+
+======= Block 2725499 =======
+TxID: 099825279ef686c26089d2f54525c4fe0ed2ddb9a6e77226c5131e4f75bcbaf8
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0003 bioscope# to anti-covid-vaccine-development-crowdfunding@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0003,
+  "contractName": "anti-covid-vaccine-development-crowdfunding"
+}
+-----------
+
+======= Block 2725504 =======
+TxID: 97d2bc8a863d9415176176d3284b16dbabc9811624c130890def235c0ccc3c74
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0002 bioscope# to anti-covid-vaccine-development-crowdfunding@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0002,
+  "contractName": "anti-covid-vaccine-development-crowdfunding"
+}
+-----------
+TxID: 4a429a9b94d7fe6703b2deb0744367974502ddde14263f0a3f074c0e7d5fcfd8
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to anti-covid-vaccine-development-crowdfunding@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0001,
+  "contractName": "anti-covid-vaccine-development-crowdfunding"
+}
+-----------
+
+======= Block 2725507 =======
+TxID: 4531e42d45a9d15e3b95875c5379d6c196d2621ace1fa91f7eff1b7c64869aba
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0006 bioscope# to anti-covid-vaccine-development-crowdfunding@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0006,
+  "contractName": "anti-covid-vaccine-development-crowdfunding"
+}
+-----------
+
+======= Block 2725540 =======
+TxID: d27abdd5574ca512b8dcfc343fae4bd75eebd5d2e0a49e81880e0472e0ed75ff
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to ico-launch-crowdfunding@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0001,
+  "contractName": "ico-launch-crowdfunding"
+}
+-----------
+TxID: 61e566355970797a04b41bee7cb0ecd1c22a7dec59aba1705f44b91e31be2224
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to ico-launch-crowdfunding@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0001,
+  "contractName": "ico-launch-crowdfunding"
+}
+-----------
+
+======= Block 2725547 =======
+TxID: 3eb52c67eb6b2219f93dd09984d0f6d515244ed3bc1fb8ed22ac6376d7f94416
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0003 bioscope# to ico-launch-crowdfunding@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0003,
+  "contractName": "ico-launch-crowdfunding"
+}
+-----------
+
+======= Block 2729334 =======
+TxID: 5ea26b0e1dcbbe1adb3968dc113994e919deea62f461ec8342e26a575a73dde3
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0002 bioscope# to def-token-crowdfund@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0002,
+  "contractName": "def-token-crowdfund"
+}
+-----------
+
+======= Block 2729336 =======
+TxID: 5932c9ccd32bef87d45b4234aecda03a9bf8c19ca1f957e243de6dabd3c2411e
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0002 bioscope# to def-token-crowdfund@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0002,
+  "contractName": "def-token-crowdfund"
+}
+-----------
+
+======= Block 2729345 =======
+TxID: 15fdd5b0ff452a107f0f7248405bb5f90fd4b6bf3c907711dafa4fd60579c000
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to def-token-crowdfund@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0001,
+  "contractName": "def-token-crowdfund"
+}
+-----------
+
+======= Block 2729353 =======
+TxID: 1e510739ae1fa0087899bdb4d5379dd9a9a2292baf7fd0bd0274275f72097dcf
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to anti-covid-vaccine-development-crowdfunding@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0001,
+  "contractName": "anti-covid-vaccine-development-crowdfunding"
+}
+-----------
+
+======= Block 2729356 =======
+TxID: df0f5fb7e92a35ac814b3bd2b19292802e57c642d9c3e7acb0dfeefb2d007936
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to def-token-crowdfund@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0001,
+  "contractName": "def-token-crowdfund"
+}
+-----------
+TxID: 71931b0cb00be28182ccaadcfd8815b1d21af9b659b6a94473f952595f19ccfe
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to anti-covid-vaccine-development-crowdfunding@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0001,
+  "contractName": "anti-covid-vaccine-development-crowdfunding"
+}
+-----------
+
+======= Block 2729381 =======
+TxID: 61803a03ad7bc2f19764affac201c38a79de359da7562108df6e50d9e74b861f
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0002 bioscope# to ghi-token-crowdfund@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0002,
+  "contractName": "ghi-token-crowdfund"
+}
+-----------
+
+======= Block 2729383 =======
+TxID: 0c05d04c7cf5872790805511c35c9fbbce7a135e963dbb5b56b62aad96f4ec4e
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0002 bioscope# to ghi-token-crowdfund@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0002,
+  "contractName": "ghi-token-crowdfund"
+}
+-----------
+
+======= Block 2729384 =======
+TxID: 666f4118fda723d5f8a4ef18975f214a7b24f9c6b1d7cace89301562c05436cc
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0002 bioscope# to ghi-token-crowdfund@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0002,
+  "contractName": "ghi-token-crowdfund"
+}
+-----------
+
+======= Block 2729428 =======
+TxID: 678264081d82799101475d437a3eb117cd23de01ea4e271bd3b96b70d96e5300
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.000001 bioscope# to jkl-token-crowdfund@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 1e-06,
+  "contractName": "jkl-token-crowdfund"
+}
+-----------
+
+======= Block 2730133 =======
+TxID: 5117532bb7de848fa03e830c787e689b8c29dda1f02481f36b20c5b65d31a593
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0002 bioscope# to mno-token-crowdfund@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0002,
+  "contractName": "mno-token-crowdfund"
+}
+-----------
+
+======= Block 2730136 =======
+TxID: 087cbd628d520579e1ffd9a29b8b8c23fee371328f887cff98f7d73780db82c1
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0002 bioscope# to mno-token-crowdfund@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0002,
+  "contractName": "mno-token-crowdfund"
+}
+-----------
+
+======= Block 2730138 =======
+TxID: 9e7a567f366c7f3770f52393eb6fe928ccfbe7f3ee27c01edce053b828a092d8
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to mno-token-crowdfund@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0001,
+  "contractName": "mno-token-crowdfund"
+}
+-----------
+
+======= Block 2730144 =======
+TxID: b331f99d48120e5ce4a8e9728f4c0e7bfd99b37391cf097dbbfad1716d8b8e01
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to mno-token-crowdfund@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0001,
+  "contractName": "mno-token-crowdfund"
+}
+-----------
+
+======= Block 2730148 =======
+TxID: 30839f03134fc7d68fa82dacfd7cdcb58fd7bd8b614193797e1934662d210504
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 0.1 bioscope#",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.1,
+  "stateF": false
+}
+-----------
+
+======= Block 2730153 =======
+TxID: 64d90843c2a495e2163a816153d386f6f773a1ff5c24bb080bba880aa46b5dfb
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to mno-token-crowdfund@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0001,
+  "contractName": "mno-token-crowdfund"
+}
+-----------
+
+======= Block 2731360 =======
+TxID: c749b90e4b5d01b4516ae40df54cf4e25fc21a6cc6e1de3ca387ba6af753fe9c
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0002 bioscope# to stu-token-crowdfund@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0002,
+  "contractName": "stu-token-crowdfund"
+}
+-----------
+
+======= Block 2731391 =======
+TxID: 55333421b27e07ae031eec231a21ec0a1ce89af5a1ff4402a61f9c278b7c9988
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0002 bioscope# to stu-token-crowdfund@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0002,
+  "contractName": "stu-token-crowdfund"
+}
+-----------
+
+======= Block 2731392 =======
+TxID: 47e257c74af7faa22bf36a8b893bfada9c9d99ef75e49cd50202cdc3f1759b57
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 0.01 bioscope#",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.01,
+  "stateF": false
+}
+-----------
+
+======= Block 2731394 =======
+TxID: c84ed83ac550b1155a70320bd424d1a4e0a71eaaf63f1cca8b9d8c8bbcb9bb1e
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0003 bioscope# to anti-covid-vaccine-development-crowdfunding@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0003,
+  "contractName": "anti-covid-vaccine-development-crowdfunding"
+}
+-----------
+
+======= Block 2731396 =======
+TxID: 21f5dc80bfa88f93dfc34b59539e371607c79ceb2b47ed15aafd91e0ce573cff
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0004 bioscope# to stu-token-crowdfund@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0004,
+  "contractName": "stu-token-crowdfund"
+}
+-----------
+
+======= Block 2731401 =======
+TxID: 2a5fff32d5ef4f572353a2753c2f4f7ed7598f69425b6011fd986c9f5f2508ce
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0005 bioscope# to anti-covid-vaccine-development-crowdfunding@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0005,
+  "contractName": "anti-covid-vaccine-development-crowdfunding"
+}
+-----------
+TxID: 4206076539baa05336977e35e760664c0a5a7ecb131e5f0a1723a1ce4f748add
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to stu-token-crowdfund@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0001,
+  "contractName": "stu-token-crowdfund"
+}
+-----------
+
+======= Block 2731405 =======
+TxID: 678d39055c1224853c1184788f353d7ab700f9bd66cc0ef22f31e7acb679f130
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0002 bioscope# to stu-token-crowdfund@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0002,
+  "contractName": "stu-token-crowdfund"
+}
+-----------
+
+======= Block 2731481 =======
+TxID: 5a8de8b835fc3cddeb47c821004d069b46b2f92bb025a5512884ffce293a44c6
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to anti-covid-vaccine-development-crowdfunding@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0001,
+  "contractName": "anti-covid-vaccine-development-crowdfunding"
+}
+-----------
+
+======= Block 2733151 =======
+TxID: 01d45e1d76a6b61ed40f7a65da372f6c351bcc0825251c59c2a9746782bca3a1
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to xyz-token-crwodfunding@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0001,
+  "contractName": "xyz-token-crwodfunding"
+}
+-----------
+
+======= Block 2733153 =======
+TxID: 530d43550c7bb100fb0843a5b6ab3fe62a19dcd6acf3b365bd89a9a53ff568a3
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to xyz-token-crwodfunding@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0001,
+  "contractName": "xyz-token-crwodfunding"
+}
+-----------
+
+======= Block 2733160 =======
+TxID: 1e9ce876338237f2bee73d315b946418cb7fcc8730a12d2bcce26dea630d0049
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to xyz-token-crwodfunding@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0001,
+  "contractName": "xyz-token-crwodfunding"
+}
+-----------
+
+======= Block 2733163 =======
+TxID: 27c085dc59d55a67c6687383fff846ef433f080519477d47da3f47d963ade335
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to xyz-token-crwodfunding@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0001,
+  "contractName": "xyz-token-crwodfunding"
+}
+-----------
+
+======= Block 2733214 =======
+TxID: 1634a70130d70ec5e2d64de567d55f188a1765c7c496030bdc2bfaba3728bda3
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to bcd-token-crowdfund@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0001,
+  "contractName": "bcd-token-crowdfund"
+}
+-----------
+
+======= Block 2733215 =======
+TxID: 3e860668b0e5b4fda8825990b5c5600770ccf2746bc47d0ade0cbc2a59bd946e
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to bcd-token-crowdfund@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0001,
+  "contractName": "bcd-token-crowdfund"
+}
+-----------
+
+======= Block 2733217 =======
+TxID: 248be4518bad92f06b96801f8b5b32a086a1307c065ea6ec0ba05e4d1287f008
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to bcd-token-crowdfund@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0001,
+  "contractName": "bcd-token-crowdfund"
+}
+-----------
+TxID: 2b73b88b9f7ba4151ce84459e5fbae231cf0ddbaaa69e4ab819d2995dc3081dd
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to bcd-token-crowdfund@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0001,
+  "contractName": "bcd-token-crowdfund"
+}
+-----------
+
+======= Block 2733246 =======
+TxID: 7c2b59113eab7c6eb0e5717f56db2aa1b2e0051c8219dfda899277c8b409cad7
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 3.4 bioscope#",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 3.4,
+  "stateF": false
+}
+-----------
+
+======= Block 2733248 =======
+TxID: 53b1a6f5e6776d35d348e345f21d016a84ba83ea80a857fb663fa4c74f845934
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 3.5 bioscope# and load tflo",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 3.5,
+  "stateF": false
+}
+-----------
+
+======= Block 2733289 =======
+TxID: a09caa399795c40ca7dbdb9cf0ec3575c6ac6b5e89d38029b39f060394520e5a
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 1 bioscope#",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 1.0,
+  "stateF": false
+}
+-----------
+
+======= Block 2733295 =======
+TxID: 788cf8cb3efba9c7ac060744f2f7dfedc68a7cf55191ea0fb3dfb9ba710ba26e
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 1 bioscope#",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 1.0,
+  "stateF": false
+}
+-----------
+
+======= Block 2733300 =======
+TxID: eb47eb5054f8a33e65fd3303aa901b284f334c8c7c3a107cafaa029317ae895f
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 1 bioscope#",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 1.0,
+  "stateF": false
+}
+-----------
+
+======= Block 2733322 =======
+TxID: 78c2a4406b0315db4d83d80e2b5c9f837a2ee9a1aa36dce3794f7ec0db8d5490
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.00003 bioscope# to ab-contest@ to FLO address ocU6xUcBpFQzqSSqea2atoeXBx6r4DQByr with the userchoice: a",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 3e-05,
+  "contractName": "ab-contest",
+  "userChoice": "a"
+}
+-----------
+
+======= Block 2733325 =======
+TxID: dfa9cf18fefbfd177715df0f61c272a4fcc4b1ee909a1165f09b359d2b0c84ed
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.00002 bioscope# to ab-contest@ to FLO address ocU6xUcBpFQzqSSqea2atoeXBx6r4DQByr with the userchoice: b",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 2e-05,
+  "contractName": "ab-contest",
+  "userChoice": "b"
+}
+-----------
+
+======= Block 2733329 =======
+TxID: 2fbd6f6f6f095bae678aec11cb07daff579bb3c69dca3dcfd9f23f113a0ca30c
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.00002 bioscope# to ab-contest@ to FLO address ocU6xUcBpFQzqSSqea2atoeXBx6r4DQByr with the userchoice: b",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 2e-05,
+  "contractName": "ab-contest",
+  "userChoice": "b"
+}
+-----------
+TxID: d7e6fb23fe97ec05f4c9eb0beb831d2fc2e3cfd831428da3a65684e3937c10a8
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.00003 bioscope# to ab-contest@ to FLO address ocU6xUcBpFQzqSSqea2atoeXBx6r4DQByr with the userchoice: a",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 3e-05,
+  "contractName": "ab-contest",
+  "userChoice": "a"
+}
+-----------
+TxID: 4f556e67d7b16bacc07f58259f913d179d9fabecf4dc7ecb9418346b88100fe6
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.00002 bioscope# to ab-contest@ to FLO address ocU6xUcBpFQzqSSqea2atoeXBx6r4DQByr with the userchoice: c",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 2e-05,
+  "contractName": "ab-contest",
+  "userChoice": "c"
+}2025-07-12 13:07:32,962:parsing:Error parsing expiry time
+
+-----------
+
+======= Block 2733335 =======
+TxID: 4d804f39491124e91f16e80b47d9030f3e300cbb72e3dc2eaa1c2ec02bf71ebf
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.00001 bioscope# to ab-contest@ to FLO address ocU6xUcBpFQzqSSqea2atoeXBx6r4DQByr with the userchoice: a",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 1e-05,
+  "contractName": "ab-contest",
+  "userChoice": "a"
+}
+-----------
+TxID: 31c58dd342df8139148c220190361284818a28c39dfff8cfc0bfc65604ceadfe
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.00001 bioscope# to ab-contest@ to FLO address ocU6xUcBpFQzqSSqea2atoeXBx6r4DQByr with the userchoice: c",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 1e-05,
+  "contractName": "ab-contest",
+  "userChoice": "c"
+}
+-----------
+
+======= Block 2733337 =======
+TxID: 31702754fc334c4caf37471e42386f4e06d9ac659be23c55457c572c7a42e179
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.00001 bioscope# to ab-contest@ to FLO address ocU6xUcBpFQzqSSqea2atoeXBx6r4DQByr with the userchoice: c",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 1e-05,
+  "contractName": "ab-contest",
+  "userChoice": "c"
+}
+-----------
+
+======= Block 2733382 =======
+TxID: f2430a7a2bd9e0abf6a2f20ff67e4144a19321389a6dba8887b9a20524c18d92
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to bc-contest@ to FLO address obXHLHTg9tshEhANdbjuRaZVBvRUMHgqAA with the userchoice: a",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.0001,
+  "contractName": "bc-contest",
+  "userChoice": "a"
+}
+-----------
+
+======= Block 2733383 =======
+TxID: facc883ca7a00fc23810de4fb51e113fe9f207d0ec3ec90f7c18e6bc049e4584
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to bc-contest@ to FLO address obXHLHTg9tshEhANdbjuRaZVBvRUMHgqAA with the userchoice: b",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.0001,
+  "contractName": "bc-contest",
+  "userChoice": "b"
+}
+-----------
+
+======= Block 2733386 =======
+TxID: e7e18981b582edf1521618b29a113b9498a530669acefddd8f75c3722e2e36fc
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to bc-contest@ to FLO address obXHLHTg9tshEhANdbjuRaZVBvRUMHgqAA with the userchoice: a",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.0001,
+  "contractName": "bc-contest",
+  "userChoice": "a"
+}
+-----------
+
+======= Block 2733391 =======
+TxID: 0ccea3c391484e29c341a56e725e21351fdc6663fdcfd7debdc6954ae5cf46e0
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.00001 bioscope# to bc-contest@ to FLO address obXHLHTg9tshEhANdbjuRaZVBvRUMHgqAA with the userchoice: a",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 1e-05,
+  "contractName": "bc-contest",
+  "userChoice": "a"
+}
+-----------
+
+======= Block 2733394 =======
+TxID: 1ea6cf504577370f786d9798e89b03d46977d48d4797e4d2f77ae34dcb1cbc24
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.00001 bioscope# to bc-contest@ to FLO address obXHLHTg9tshEhANdbjuRaZVBvRUMHgqAA with the userchoice: b",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 1e-05,
+  "contractName": "bc-contest",
+  "userChoice": "b"
+}
+-----------
+
+======= Block 2733437 =======
+TxID: 81ef5838e2a67a3fb97728fb0f2eb4ba67f8c5b777e67455c5ff2ed0f733ea6a
+Parsed floData:
+{
+  "type": "smartContractPays",
+  "contractName": "bc-contest",
+  "triggerCondition": "a",
+  "stateF": false
+}
+-----------
+
+======= Block 2733439 =======
+TxID: 2c9bca417da20b6fd00285a2b76e220ac9fb7b9c03a75d002037665fa201a262
+Parsed floData:
+{
+  "type": "smartContractPays",
+  "contractName": "ab-contest",
+  "triggerCondition": "a",
+  "stateF": false
+}
+-----------
+
+======= Block 2733609 =======
+TxID: 5b32fbd11f64357d283db2ea1102f4bfadf7a05a8617692d453e7c9540b884fc
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to cd-contest@ to FLO address od7HZTPsndHDiwiieSxxmtYiCaLf3vNZ6m with the userchoice: b",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.0001,
+  "contractName": "cd-contest",
+  "userChoice": "b"
+}
+-----------
+
+======= Block 2733616 =======
+TxID: 8943a5278ea38d7d08da20fda22a3e8c30ffc816191710e18311a4af1ae2a8bb
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to cd-contest@ to FLO address od7HZTPsndHDiwiieSxxmtYiCaLf3vNZ6m with the userchoice: a",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.0001,
+  "contractName": "cd-contest",
+  "userChoice": "a"
+}
+-----------
+
+======= Block 2733638 =======
+TxID: 8d7efe4d294ba804b43fefe3d0a8b7d538b3457476a3a7f5818b2237bde1f70c
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to de-contest@ to FLO address oevLu6mqHitiUY8CFSYiPdKp2ZAYTGFGX4 with the userchoice: b",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.0001,
+  "contractName": "de-contest",
+  "userChoice": "b"
+}
+-----------
+TxID: 3287bfca1737fc377c4836719c58c286ae35239aef98858b7a87da0fec57e3a9
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to de-contest@ to FLO address oevLu6mqHitiUY8CFSYiPdKp2ZAYTGFGX4 with the userchoice: a",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.0001,
+  "contractName": "de-contest",
+  "userChoice": "a"
+}
+-----------
+
+======= Block 2733639 =======
+TxID: 321282fe4f6a7a4ae624c1f3f94ff9a7ff9ddea622b0533027677f4867633d27
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to de-contest@ to FLO address oevLu6mqHitiUY8CFSYiPdKp2ZAYTGFGX4 with the userchoice: b",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.0001,
+  "contractName": "de-contest",
+  "userChoice": "b"
+}
+-----------
+
+======= Block 2733656 =======
+TxID: 6e96cdacdcf3a8cacb6b11159bb3900827fbce6f6006eb12ee87c9994b6103da
+Parsed floData:
+{
+  "type": "smartContractPays",
+  "contractName": "de-contest",
+  "triggerCondition": "a",
+  "stateF": false
+}
+-----------
+
+======= Block 2733662 =======
+TxID: 0f7727261a4d1ff79ce113b211aef493918e6c087c5c0e63183a421f6ed4415a
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to fg-contest@ to FLO address oHK4GJqE6UsiPw6BfZA7dNXLJVwq7MBxqh with the userchoice: a",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.0001,
+  "contractName": "fg-contest",
+  "userChoice": "a"
+}
+-----------
+
+======= Block 2733673 =======
+TxID: deff731a44a98a40018319bd8340605c24a61f3ef329e17a33a76ebc817edd53
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to fg-contest@ to FLO address oHK4GJqE6UsiPw6BfZA7dNXLJVwq7MBxqh with the userchoice: a",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.0001,
+  "contractName": "fg-contest",
+  "userChoice": "a"
+}
+-----------
+
+======= Block 2733674 =======
+TxID: 9276e29af37e2aa5043226b05503130d24fb76c67abb8fa0a7a0d470ce06525c
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to fg-contest@ to FLO address oHK4GJqE6UsiPw6BfZA7dNXLJVwq7MBxqh with the userchoice: a",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.0001,
+  "contractName": "fg-contest",
+  "userChoice": "a"
+}
+-----------
+
+======= Block 2733692 =======
+TxID: ecc17731ca5e186cc8dac53b16f90d9f8c733c752dff16c207acc92a4e543c4b
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to gh-contest@ to FLO address oXcrhCwntF6F3NSKCcCEUG9Ypna7vFsGkX with the userchoice: a",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.0001,
+  "contractName": "gh-contest",
+  "userChoice": "a"
+}
+-----------
+
+======= Block 2733695 =======
+TxID: a74f984701508773ffc623170de7f49aab43ecbda865c095ab8c54eb585eba0e
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to gh-contest@ to FLO address oXcrhCwntF6F3NSKCcCEUG9Ypna7vFsGkX with the userchoice: a",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.0001,
+  "contractName": "gh-contest",
+  "userChoice": "a"
+}
+-----------
+TxID: f0f630c7232433b981a8d958877506318fe839b47b08b40725f949be812da815
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to gh-contest@ to FLO address oXcrhCwntF6F3NSKCcCEUG9Ypna7vFsGkX with the userchoice: a",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.0001,
+  "contractName": "gh-contest",
+  "userChoice": "a"
+}
+-----------
+
+======= Block 2733757 =======
+TxID: 764ca49cd7e35882b10915adde4c08aac2f2cb35d140099461d543719ee5fef8
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0002 bioscope# to ef-contest@ to FLO address ob8WXSUDXPQzWVvrVGRYT3yxZqshB1GJpF with the userchoice: a",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.0002,
+  "contractName": "ef-contest",
+  "userChoice": "a"
+}
+-----------
+
+======= Block 2733760 =======
+TxID: 02480a510f5f4821fb110ee5bd5102b3bb2a371ba5484937bebfe957bd94e2a2
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0002 bioscope# to ef-contest@ to FLO address ob8WXSUDXPQzWVvrVGRYT3yxZqshB1GJpF with the userchoice: a",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.0002,
+  "contractName": "ef-contest",
+  "userChoice": "a"
+}
+-----------
+TxID: 6e6f2abcc3040acc49cb4db5cb491b3e951427a206a94ad108b194cd38dec4d1
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0002 bioscope# to ef-contest@ to FLO address ob8WXSUDXPQzWVvrVGRYT3yxZqshB1GJpF with the userchoice: a",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.0002,
+  "contractName": "ef-contest",
+  "userChoice": "a"
+}
+-----------
+
+======= Block 2733763 =======
+TxID: 30f42390fbdb3a71edbdc73c3070c742a69b640e7b37bb0d03e9b415f92ce0ee
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0002 bioscope# to ef-contest@ to FLO address ob8WXSUDXPQzWVvrVGRYT3yxZqshB1GJpF with the userchoice: a",
+  "tokenIdentification": "bioscope",
+  "operation": "transfer",
+  "tokenAmount": 0.0002,
+  "contractName": "ef-contest",
+  "userChoice": "a"
+}
+-----------
+
+======= Block 2733766 =======
+TxID: cd1176b2567ca2ae15624962008d3d935ebd36b99e419f5ad745dadd5858669f
+Parsed floData:
+{
+  "type": "smartContractPays",
+  "contractName": "gh-contest",
+  "triggerCondition": "b",
+  "stateF": false
+}
+-----------
+
+======= Block 2745268 =======
+TxID: f94bef5520736b7cf5ab3e912f0f822be4e8f95355dbd05560c88089a0c0748d
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 0.1 teega#",
+  "tokenIdentification": "teega",
+  "tokenAmount": 0.1,
+  "stateF": false
+}
+-----------
+
+======= Block 2745269 =======
+TxID: 5a18ad8652ed16c96d75499e95bb0d679ca2159af87fd0bd30ae3bfb419d96b9
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 0.1 teega#",
+  "tokenIdentification": "teega",
+  "tokenAmount": 0.1,
+  "stateF": false
+}
+-----------
+
+======= Block 2745295 =======
+TxID: cf50facd27f7b08cacd215a928708f1b5561c3679c34bd298018096526007fe3
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.00001 bioscope# to exchange-teega-bioscope@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 1e-05,
+  "contractName": "exchange-teega-bioscope"
+}
+-----------
+
+======= Block 2745381 =======
+TxID: f09b63a9f9bc5412c2e339196994441f99cf46e6fa98a0656cba62d7f2cad9c8
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "smartContract",
+  "flodata": "send 0.0001 bioscope# to exchange-teega-bioscope@",
+  "tokenIdentification": "bioscope",
+  "tokenAmount": 0.0001,
+  "contractName": "exchange-teega-bioscope"
+}
+-----------
+
+======= Block 2937994 =======
+TxID: 38358a866acfc78d80010a03a9744441a91361ac7ddcc84338b5b3c6137a4cf9
+Parsed floData:
+{
+  "type": "transfer",
+  "transferType": "token",
+  "flodata": "send 0.001 rupee#",
+  "tokenIdentification": "rupee",
+  "tokenAmount": 0.001,
+  "stateF": false
+}
+-----------
+
+======= Block 2938135 =======
+TxID: f07e71f51a8db78f8cf3ec1bd00011bad32802b149dd50752cfbaad1adaee5e6
+Parsed floData:
+{
+  "type": "tokenIncorporation",
+  "flodata": "create 1000 himashree#",
+  "tokenIdentification": "himashree",
+  "tokenAmount": 1000.0,
+  "stateF": false
+}
+-----------
+
+======= Block 2944130 =======
+TxID: 22886553ee95631a23fe2ce4496830ccf127041002c128590a864d61fcc1562d
+Parsed floData:
+{
+  "type": "tokenIncorporation",
+  "flodata": "create 1000 happy#",
+  "tokenIdentification": "happy",
+  "tokenAmount": 1000.0,
+  "stateF": false
+}
+-----------

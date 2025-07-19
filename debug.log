@@ -1,0 +1,605 @@
+INFO:__main__:Subscribed to ZMQ block notifications on tcp://127.0.0.1:38366
+INFO:__main__:Fetching latest block height from chain...
+Running on 0.0.0.0:80 over http (CTRL + C to quit)
+INFO:__main__:Latest block on chain: 7426396
+INFO:__main__:Fetching processed blocks from database...
+INFO:__main__:Terminated connection ID 1611 (idle for 39 seconds)
+INFO:__main__:Terminated 1 idle connections.
+INFO:__main__:Found 92 missing blocks.
+INFO:__main__:Preparing to process 67 missing block ranges.
+INFO:__main__:Processing missing range: 1809211 to 1809211
+INFO:__main__:Processing batch 1809211 to 1809211 (1/1 blocks processed so far)
+INFO:__main__:Processing block 1809211
+ERROR:__main__:Error processing block 1809211: Server disconnected
+INFO:__main__:Successfully processed block 1809211
+INFO:__main__:Successfully processed batch 1809211 to 1809211 in 5.66 seconds
+INFO:__main__:Processed blocks 1809211 to 1809211.
+INFO:__main__:Processing missing range: 2113172 to 2113172
+INFO:__main__:Processing batch 2113172 to 2113172 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2113172
+ERROR:__main__:Error processing block 2113172: Server disconnected
+INFO:__main__:Successfully processed block 2113172
+INFO:__main__:Successfully processed batch 2113172 to 2113172 in 5.01 seconds
+INFO:__main__:Processed blocks 2113172 to 2113172.
+INFO:__main__:Processing missing range: 2113177 to 2113179
+INFO:__main__:Processing batch 2113177 to 2113177 (1/3 blocks processed so far)
+INFO:__main__:Processing block 2113177
+ERROR:__main__:Error processing block 2113177: Server disconnected
+INFO:__main__:Successfully processed block 2113177
+INFO:__main__:Successfully processed batch 2113177 to 2113177 in 5.01 seconds
+INFO:__main__:Processing batch 2113178 to 2113178 (2/3 blocks processed so far)
+INFO:__main__:Processing block 2113178
+ERROR:__main__:Error processing block 2113178: Server disconnected
+INFO:__main__:Successfully processed block 2113178
+INFO:__main__:Successfully processed batch 2113178 to 2113178 in 5.01 seconds
+INFO:__main__:Processing batch 2113179 to 2113179 (3/3 blocks processed so far)
+INFO:__main__:Processing block 2113179
+ERROR:__main__:Error processing block 2113179: Server disconnected
+INFO:__main__:Successfully processed block 2113179
+INFO:__main__:Successfully processed batch 2113179 to 2113179 in 5.01 seconds
+INFO:__main__:Processed blocks 2113177 to 2113179.
+INFO:__main__:Processing missing range: 2113193 to 2113194
+INFO:__main__:Processing batch 2113193 to 2113193 (1/2 blocks processed so far)
+INFO:__main__:Processing block 2113193
+ERROR:__main__:Error processing block 2113193: Server disconnected
+INFO:__main__:Successfully processed block 2113193
+INFO:__main__:Successfully processed batch 2113193 to 2113193 in 5.01 seconds
+INFO:__main__:Processing batch 2113194 to 2113194 (2/2 blocks processed so far)
+INFO:__main__:Processing block 2113194
+ERROR:__main__:Error processing block 2113194: Server disconnected
+INFO:__main__:Successfully processed block 2113194
+INFO:__main__:Successfully processed batch 2113194 to 2113194 in 5.01 seconds
+INFO:__main__:Processed blocks 2113193 to 2113194.
+INFO:__main__:Processing missing range: 2113201 to 2113201
+INFO:__main__:Processing batch 2113201 to 2113201 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2113201
+ERROR:__main__:Error processing block 2113201: Server disconnected
+INFO:__main__:Successfully processed block 2113201
+INFO:__main__:Successfully processed batch 2113201 to 2113201 in 5.01 seconds
+INFO:__main__:Processed blocks 2113201 to 2113201.
+INFO:__main__:Processing missing range: 2113205 to 2113205
+INFO:__main__:Processing batch 2113205 to 2113205 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2113205
+ERROR:__main__:Error processing block 2113205: Server disconnected
+INFO:__main__:Successfully processed block 2113205
+INFO:__main__:Successfully processed batch 2113205 to 2113205 in 5.01 seconds
+INFO:__main__:Processed blocks 2113205 to 2113205.
+INFO:__main__:Processing missing range: 2487467 to 2487467
+INFO:__main__:Processing batch 2487467 to 2487467 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2487467
+ERROR:__main__:Error processing block 2487467: Server disconnected
+INFO:__main__:Successfully processed block 2487467
+INFO:__main__:Successfully processed batch 2487467 to 2487467 in 5.03 seconds
+INFO:__main__:Processed blocks 2487467 to 2487467.
+INFO:__main__:Processing missing range: 2487470 to 2487470
+INFO:__main__:Processing batch 2487470 to 2487470 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2487470
+ERROR:__main__:Error processing block 2487470: Server disconnected
+INFO:__main__:Successfully processed block 2487470
+INFO:__main__:Successfully processed batch 2487470 to 2487470 in 5.04 seconds
+INFO:__main__:Processed blocks 2487470 to 2487470.
+INFO:__main__:Processing missing range: 2487476 to 2487476
+INFO:__main__:Processing batch 2487476 to 2487476 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2487476
+ERROR:__main__:Error processing block 2487476: Server disconnected
+INFO:__main__:Successfully processed block 2487476
+INFO:__main__:Successfully processed batch 2487476 to 2487476 in 5.04 seconds
+INFO:__main__:Processed blocks 2487476 to 2487476.
+INFO:__main__:Processing missing range: 2487480 to 2487480
+INFO:__main__:Processing batch 2487480 to 2487480 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2487480
+ERROR:__main__:Error processing block 2487480: Server disconnected
+INFO:__main__:Successfully processed block 2487480
+INFO:__main__:Successfully processed batch 2487480 to 2487480 in 5.01 seconds
+INFO:__main__:Processed blocks 2487480 to 2487480.
+INFO:__main__:Processing missing range: 2487500 to 2487500
+INFO:__main__:Processing batch 2487500 to 2487500 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2487500
+ERROR:__main__:Error processing block 2487500: Server disconnected
+INFO:__main__:Successfully processed block 2487500
+INFO:__main__:Successfully processed batch 2487500 to 2487500 in 5.02 seconds
+INFO:__main__:Processed blocks 2487500 to 2487500.
+INFO:__main__:Processing missing range: 2487515 to 2487515
+INFO:__main__:Processing batch 2487515 to 2487515 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2487515
+ERROR:__main__:Error processing block 2487515: Server disconnected
+INFO:__main__:Successfully processed block 2487515
+INFO:__main__:Successfully processed batch 2487515 to 2487515 in 5.01 seconds
+INFO:__main__:Processed blocks 2487515 to 2487515.
+INFO:__main__:Processing missing range: 2487519 to 2487519
+INFO:__main__:Processing batch 2487519 to 2487519 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2487519
+ERROR:__main__:Error processing block 2487519: Server disconnected
+INFO:__main__:Successfully processed block 2487519
+INFO:__main__:Successfully processed batch 2487519 to 2487519 in 5.04 seconds
+INFO:__main__:Processed blocks 2487519 to 2487519.
+INFO:__main__:Processing missing range: 2497614 to 2497614
+INFO:__main__:Processing batch 2497614 to 2497614 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2497614
+ERROR:__main__:Error processing block 2497614: Server disconnected
+INFO:__main__:Successfully processed block 2497614
+INFO:__main__:Successfully processed batch 2497614 to 2497614 in 5.01 seconds
+INFO:__main__:Processed blocks 2497614 to 2497614.
+INFO:__main__:Processing missing range: 2538755 to 2538755
+INFO:__main__:Processing batch 2538755 to 2538755 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2538755
+ERROR:__main__:Error processing block 2538755: Server disconnected
+INFO:__main__:Successfully processed block 2538755
+INFO:__main__:Successfully processed batch 2538755 to 2538755 in 5.03 seconds
+INFO:__main__:Processed blocks 2538755 to 2538755.
+INFO:__main__:Processing missing range: 2538780 to 2538780
+INFO:__main__:Processing batch 2538780 to 2538780 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2538780
+ERROR:__main__:Error processing block 2538780: Server disconnected
+INFO:__main__:Successfully processed block 2538780
+INFO:__main__:Successfully processed batch 2538780 to 2538780 in 5.02 seconds
+INFO:__main__:Processed blocks 2538780 to 2538780.
+INFO:__main__:Processing missing range: 2553824 to 2553824
+INFO:__main__:Processing batch 2553824 to 2553824 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2553824
+ERROR:__main__:Error processing block 2553824: Server disconnected
+INFO:__main__:Successfully processed block 2553824
+INFO:__main__:Successfully processed batch 2553824 to 2553824 in 5.01 seconds
+INFO:__main__:Processed blocks 2553824 to 2553824.
+INFO:__main__:Processing missing range: 2553830 to 2553830
+INFO:__main__:Processing batch 2553830 to 2553830 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2553830
+ERROR:__main__:Error processing block 2553830: Server disconnected
+INFO:__main__:Successfully processed block 2553830
+INFO:__main__:Successfully processed batch 2553830 to 2553830 in 5.04 seconds
+INFO:__main__:Processed blocks 2553830 to 2553830.
+INFO:__main__:Processing missing range: 2553838 to 2553838
+INFO:__main__:Processing batch 2553838 to 2553838 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2553838
+ERROR:__main__:Error processing block 2553838: Server disconnected
+INFO:__main__:Successfully processed block 2553838
+INFO:__main__:Successfully processed batch 2553838 to 2553838 in 5.01 seconds
+INFO:__main__:Processed blocks 2553838 to 2553838.
+INFO:__main__:Processing missing range: 2566941 to 2566941
+INFO:__main__:Processing batch 2566941 to 2566941 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2566941
+ERROR:__main__:Error processing block 2566941: Server disconnected
+INFO:__main__:Successfully processed block 2566941
+INFO:__main__:Successfully processed batch 2566941 to 2566941 in 5.02 seconds
+INFO:__main__:Processed blocks 2566941 to 2566941.
+INFO:__main__:Processing missing range: 2566944 to 2566944
+INFO:__main__:Processing batch 2566944 to 2566944 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2566944
+ERROR:__main__:Error processing block 2566944: Server disconnected
+INFO:__main__:Successfully processed block 2566944
+INFO:__main__:Successfully processed batch 2566944 to 2566944 in 5.01 seconds
+INFO:__main__:Processed blocks 2566944 to 2566944.
+INFO:__main__:Processing missing range: 2566956 to 2566956
+INFO:__main__:Processing batch 2566956 to 2566956 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2566956
+ERROR:__main__:Error processing block 2566956: Server disconnected
+INFO:__main__:Successfully processed block 2566956
+INFO:__main__:Successfully processed batch 2566956 to 2566956 in 5.02 seconds
+INFO:__main__:Processed blocks 2566956 to 2566956.
+INFO:__main__:Processing missing range: 2566958 to 2566958
+INFO:__main__:Processing batch 2566958 to 2566958 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2566958
+ERROR:__main__:Error processing block 2566958: Server disconnected
+INFO:__main__:Successfully processed block 2566958
+INFO:__main__:Successfully processed batch 2566958 to 2566958 in 5.02 seconds
+INFO:__main__:Processed blocks 2566958 to 2566958.
+INFO:__main__:Processing missing range: 2566961 to 2566961
+INFO:__main__:Processing batch 2566961 to 2566961 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2566961
+ERROR:__main__:Error processing block 2566961: Server disconnected
+INFO:__main__:Successfully processed block 2566961
+INFO:__main__:Successfully processed batch 2566961 to 2566961 in 5.04 seconds
+INFO:__main__:Processed blocks 2566961 to 2566961.
+INFO:__main__:Processing missing range: 2572406 to 2572406
+INFO:__main__:Processing batch 2572406 to 2572406 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2572406
+ERROR:__main__:Error processing block 2572406: Server disconnected
+INFO:__main__:Successfully processed block 2572406
+INFO:__main__:Successfully processed batch 2572406 to 2572406 in 5.03 seconds
+INFO:__main__:Processed blocks 2572406 to 2572406.
+INFO:__main__:Processing missing range: 2659205 to 2659207
+INFO:__main__:Processing batch 2659205 to 2659205 (1/3 blocks processed so far)
+INFO:__main__:Processing block 2659205
+ERROR:__main__:Error processing block 2659205: Server disconnected
+INFO:__main__:Successfully processed block 2659205
+INFO:__main__:Successfully processed batch 2659205 to 2659205 in 5.03 seconds
+INFO:__main__:Processing batch 2659206 to 2659206 (2/3 blocks processed so far)
+INFO:__main__:Processing block 2659206
+ERROR:__main__:Error processing block 2659206: Server disconnected
+INFO:__main__:Successfully processed block 2659206
+INFO:__main__:Successfully processed batch 2659206 to 2659206 in 5.04 seconds
+INFO:__main__:Processing batch 2659207 to 2659207 (3/3 blocks processed so far)
+INFO:__main__:Processing block 2659207
+ERROR:__main__:Error processing block 2659207: Server disconnected
+INFO:__main__:Successfully processed block 2659207
+INFO:__main__:Successfully processed batch 2659207 to 2659207 in 5.01 seconds
+INFO:__main__:Processed blocks 2659205 to 2659207.
+INFO:__main__:Processing missing range: 2659216 to 2659216
+INFO:__main__:Processing batch 2659216 to 2659216 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2659216
+ERROR:__main__:Error processing block 2659216: Server disconnected
+INFO:__main__:Successfully processed block 2659216
+INFO:__main__:Successfully processed batch 2659216 to 2659216 in 5.01 seconds
+INFO:__main__:Processed blocks 2659216 to 2659216.
+INFO:__main__:Processing missing range: 2659222 to 2659222
+INFO:__main__:Processing batch 2659222 to 2659222 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2659222
+ERROR:__main__:Error processing block 2659222: Server disconnected
+INFO:__main__:Successfully processed block 2659222
+INFO:__main__:Successfully processed batch 2659222 to 2659222 in 5.01 seconds
+INFO:__main__:Processed blocks 2659222 to 2659222.
+INFO:__main__:Processing missing range: 2659225 to 2659225
+INFO:__main__:Processing batch 2659225 to 2659225 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2659225
+ERROR:__main__:Error processing block 2659225: Server disconnected
+INFO:__main__:Successfully processed block 2659225
+INFO:__main__:Successfully processed batch 2659225 to 2659225 in 5.03 seconds
+INFO:__main__:Processed blocks 2659225 to 2659225.
+INFO:__main__:Processing missing range: 2659239 to 2659240
+INFO:__main__:Processing batch 2659239 to 2659239 (1/2 blocks processed so far)
+INFO:__main__:Processing block 2659239
+ERROR:__main__:Error processing block 2659239: Server disconnected
+INFO:__main__:Successfully processed block 2659239
+INFO:__main__:Successfully processed batch 2659239 to 2659239 in 5.21 seconds
+INFO:__main__:Processing batch 2659240 to 2659240 (2/2 blocks processed so far)
+INFO:__main__:Processing block 2659240
+ERROR:__main__:Error processing block 2659240: Server disconnected
+INFO:__main__:Successfully processed block 2659240
+INFO:__main__:Successfully processed batch 2659240 to 2659240 in 5.02 seconds
+INFO:__main__:Processed blocks 2659239 to 2659240.
+INFO:__main__:Processing missing range: 2661457 to 2661457
+INFO:__main__:Processing batch 2661457 to 2661457 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2661457
+ERROR:__main__:Error processing block 2661457: Server disconnected
+INFO:__main__:Successfully processed block 2661457
+INFO:__main__:Successfully processed batch 2661457 to 2661457 in 5.04 seconds
+INFO:__main__:Processed blocks 2661457 to 2661457.
+INFO:__main__:Processing missing range: 2663381 to 2663382
+INFO:__main__:Processing batch 2663381 to 2663381 (1/2 blocks processed so far)
+INFO:__main__:Processing block 2663381
+ERROR:__main__:Error processing block 2663381: Server disconnected
+INFO:__main__:Successfully processed block 2663381
+INFO:__main__:Successfully processed batch 2663381 to 2663381 in 5.05 seconds
+INFO:__main__:Processing batch 2663382 to 2663382 (2/2 blocks processed so far)
+INFO:__main__:Processing block 2663382
+ERROR:__main__:Error processing block 2663382: Server disconnected
+INFO:__main__:Successfully processed block 2663382
+INFO:__main__:Successfully processed batch 2663382 to 2663382 in 5.03 seconds
+INFO:__main__:Processed blocks 2663381 to 2663382.
+INFO:__main__:Processing missing range: 2663388 to 2663388
+INFO:__main__:Processing batch 2663388 to 2663388 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2663388
+ERROR:__main__:Error processing block 2663388: Server disconnected
+INFO:__main__:Successfully processed block 2663388
+INFO:__main__:Successfully processed batch 2663388 to 2663388 in 5.03 seconds
+INFO:__main__:Processed blocks 2663388 to 2663388.
+INFO:__main__:Processing missing range: 2665343 to 2665343
+INFO:__main__:Processing batch 2665343 to 2665343 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2665343
+ERROR:__main__:Error processing block 2665343: Server disconnected
+INFO:__main__:Successfully processed block 2665343
+INFO:__main__:Successfully processed batch 2665343 to 2665343 in 5.05 seconds
+INFO:__main__:Processed blocks 2665343 to 2665343.
+INFO:__main__:Processing missing range: 2727295 to 2727295
+INFO:__main__:Processing batch 2727295 to 2727295 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2727295
+ERROR:__main__:Error processing block 2727295: Server disconnected
+INFO:__main__:Successfully processed block 2727295
+INFO:__main__:Successfully processed batch 2727295 to 2727295 in 5.02 seconds
+INFO:__main__:Processed blocks 2727295 to 2727295.
+INFO:__main__:Processing missing range: 2738718 to 2738718
+INFO:__main__:Processing batch 2738718 to 2738718 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2738718
+ERROR:__main__:Error processing block 2738718: Server disconnected
+INFO:__main__:Successfully processed block 2738718
+INFO:__main__:Successfully processed batch 2738718 to 2738718 in 5.12 seconds
+INFO:__main__:Processed blocks 2738718 to 2738718.
+INFO:__main__:Processing missing range: 2738724 to 2738724
+INFO:__main__:Processing batch 2738724 to 2738724 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2738724
+ERROR:__main__:Error processing block 2738724: Server disconnected
+INFO:__main__:Successfully processed block 2738724
+INFO:__main__:Successfully processed batch 2738724 to 2738724 in 5.01 seconds
+INFO:__main__:Processed blocks 2738724 to 2738724.
+INFO:__main__:Processing missing range: 2739106 to 2739106
+INFO:__main__:Processing batch 2739106 to 2739106 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2739106
+ERROR:__main__:Error processing block 2739106: Server disconnected
+INFO:__main__:Successfully processed block 2739106
+INFO:__main__:Successfully processed batch 2739106 to 2739106 in 5.01 seconds
+INFO:__main__:Processed blocks 2739106 to 2739106.
+INFO:__main__:Processing missing range: 2739368 to 2739368
+INFO:__main__:Processing batch 2739368 to 2739368 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2739368
+ERROR:__main__:Error processing block 2739368: Server disconnected
+INFO:__main__:Successfully processed block 2739368
+INFO:__main__:Successfully processed batch 2739368 to 2739368 in 5.01 seconds
+INFO:__main__:Processed blocks 2739368 to 2739368.
+INFO:__main__:Processing missing range: 2741566 to 2741566
+INFO:__main__:Processing batch 2741566 to 2741566 (1/1 blocks processed so far)
+INFO:__main__:Processing block 2741566
+ERROR:__main__:Error processing block 2741566: Server disconnected
+INFO:__main__:Successfully processed block 2741566
+INFO:__main__:Successfully processed batch 2741566 to 2741566 in 5.04 seconds
+INFO:__main__:Processed blocks 2741566 to 2741566.
+INFO:__main__:Processing missing range: 3099385 to 3099385
+INFO:__main__:Processing batch 3099385 to 3099385 (1/1 blocks processed so far)
+INFO:__main__:Processing block 3099385
+ERROR:__main__:Error processing block 3099385: Server disconnected
+INFO:__main__:Successfully processed block 3099385
+INFO:__main__:Successfully processed batch 3099385 to 3099385 in 5.02 seconds
+INFO:__main__:Processed blocks 3099385 to 3099385.
+INFO:__main__:Processing missing range: 3683479 to 3683479
+INFO:__main__:Processing batch 3683479 to 3683479 (1/1 blocks processed so far)
+INFO:__main__:Processing block 3683479
+ERROR:__main__:Error processing block 3683479: Server disconnected
+INFO:__main__:Successfully processed block 3683479
+INFO:__main__:Successfully processed batch 3683479 to 3683479 in 5.01 seconds
+INFO:__main__:Processed blocks 3683479 to 3683479.
+INFO:__main__:Processing missing range: 4775821 to 4775822
+INFO:__main__:Processing batch 4775821 to 4775821 (1/2 blocks processed so far)
+INFO:__main__:Processing block 4775821
+ERROR:__main__:Error processing block 4775821: Server disconnected
+INFO:__main__:Successfully processed block 4775821
+INFO:__main__:Successfully processed batch 4775821 to 4775821 in 5.04 seconds
+INFO:__main__:Processing batch 4775822 to 4775822 (2/2 blocks processed so far)
+INFO:__main__:Processing block 4775822
+ERROR:__main__:Error processing block 4775822: Server disconnected
+INFO:__main__:Successfully processed block 4775822
+INFO:__main__:Successfully processed batch 4775822 to 4775822 in 5.04 seconds
+INFO:__main__:Processed blocks 4775821 to 4775822.
+INFO:__main__:Processing missing range: 4778719 to 4778719
+INFO:__main__:Processing batch 4778719 to 4778719 (1/1 blocks processed so far)
+INFO:__main__:Processing block 4778719
+ERROR:__main__:Error processing block 4778719: Server disconnected
+INFO:__main__:Successfully processed block 4778719
+INFO:__main__:Successfully processed batch 4778719 to 4778719 in 5.04 seconds
+INFO:__main__:Processed blocks 4778719 to 4778719.
+INFO:__main__:Processing missing range: 4806699 to 4806700
+INFO:__main__:Processing batch 4806699 to 4806699 (1/2 blocks processed so far)
+INFO:__main__:Processing block 4806699
+ERROR:__main__:Error processing block 4806699: Server disconnected
+INFO:__main__:Successfully processed block 4806699
+INFO:__main__:Successfully processed batch 4806699 to 4806699 in 5.02 seconds
+INFO:__main__:Processing batch 4806700 to 4806700 (2/2 blocks processed so far)
+INFO:__main__:Processing block 4806700
+ERROR:__main__:Error processing block 4806700: Server disconnected
+INFO:__main__:Successfully processed block 4806700
+INFO:__main__:Successfully processed batch 4806700 to 4806700 in 5.01 seconds
+INFO:__main__:Processed blocks 4806699 to 4806700.
+INFO:__main__:Processing missing range: 4915356 to 4915356
+INFO:__main__:Processing batch 4915356 to 4915356 (1/1 blocks processed so far)
+INFO:__main__:Processing block 4915356
+ERROR:__main__:Error processing block 4915356: Server disconnected
+INFO:__main__:Successfully processed block 4915356
+INFO:__main__:Successfully processed batch 4915356 to 4915356 in 5.03 seconds
+INFO:__main__:Processed blocks 4915356 to 4915356.
+INFO:__main__:Processing missing range: 5181150 to 5181150
+INFO:__main__:Processing batch 5181150 to 5181150 (1/1 blocks processed so far)
+INFO:__main__:Processing block 5181150
+ERROR:__main__:Error processing block 5181150: Server disconnected
+INFO:__main__:Successfully processed block 5181150
+INFO:__main__:Successfully processed batch 5181150 to 5181150 in 5.04 seconds
+INFO:__main__:Processed blocks 5181150 to 5181150.
+INFO:__main__:Processing missing range: 5227481 to 5227481
+INFO:__main__:Processing batch 5227481 to 5227481 (1/1 blocks processed so far)
+INFO:__main__:Processing block 5227481
+ERROR:__main__:Error processing block 5227481: Server disconnected
+INFO:__main__:Successfully processed block 5227481
+INFO:__main__:Successfully processed batch 5227481 to 5227481 in 5.05 seconds
+INFO:__main__:Processed blocks 5227481 to 5227481.
+INFO:__main__:Processing missing range: 5227487 to 5227489
+INFO:__main__:Processing batch 5227487 to 5227487 (1/3 blocks processed so far)
+INFO:__main__:Processing block 5227487
+ERROR:__main__:Error processing block 5227487: Server disconnected
+INFO:__main__:Successfully processed block 5227487
+INFO:__main__:Successfully processed batch 5227487 to 5227487 in 5.02 seconds
+INFO:__main__:Processing batch 5227488 to 5227488 (2/3 blocks processed so far)
+INFO:__main__:Processing block 5227488
+ERROR:__main__:Error processing block 5227488: Server disconnected
+INFO:__main__:Successfully processed block 5227488
+INFO:__main__:Successfully processed batch 5227488 to 5227488 in 5.01 seconds
+INFO:__main__:Processing batch 5227489 to 5227489 (3/3 blocks processed so far)
+INFO:__main__:Processing block 5227489
+ERROR:__main__:Error processing block 5227489: Server disconnected
+INFO:__main__:Successfully processed block 5227489
+INFO:__main__:Successfully processed batch 5227489 to 5227489 in 5.01 seconds
+INFO:__main__:Processed blocks 5227487 to 5227489.
+INFO:__main__:Processing missing range: 5707035 to 5707036
+INFO:__main__:Processing batch 5707035 to 5707035 (1/2 blocks processed so far)
+INFO:__main__:Processing block 5707035
+ERROR:__main__:Error processing block 5707035: Server disconnected
+INFO:__main__:Successfully processed block 5707035
+INFO:__main__:Successfully processed batch 5707035 to 5707035 in 5.02 seconds
+INFO:__main__:Processing batch 5707036 to 5707036 (2/2 blocks processed so far)
+INFO:__main__:Processing block 5707036
+ERROR:__main__:Error processing block 5707036: Server disconnected
+INFO:__main__:Successfully processed block 5707036
+INFO:__main__:Successfully processed batch 5707036 to 5707036 in 5.04 seconds
+INFO:__main__:Processed blocks 5707035 to 5707036.
+INFO:__main__:Processing missing range: 5743170 to 5743170
+INFO:__main__:Processing batch 5743170 to 5743170 (1/1 blocks processed so far)
+INFO:__main__:Processing block 5743170
+ERROR:__main__:Error processing block 5743170: Server disconnected
+INFO:__main__:Successfully processed block 5743170
+INFO:__main__:Successfully processed batch 5743170 to 5743170 in 5.02 seconds
+INFO:__main__:Processed blocks 5743170 to 5743170.
+INFO:__main__:Processing missing range: 5743172 to 5743172
+INFO:__main__:Processing batch 5743172 to 5743172 (1/1 blocks processed so far)
+INFO:__main__:Processing block 5743172
+ERROR:__main__:Error processing block 5743172: Server disconnected
+INFO:__main__:Successfully processed block 5743172
+INFO:__main__:Successfully processed batch 5743172 to 5743172 in 5.04 seconds
+INFO:__main__:Processed blocks 5743172 to 5743172.
+INFO:__main__:Processing missing range: 5836278 to 5836278
+INFO:__main__:Processing batch 5836278 to 5836278 (1/1 blocks processed so far)
+INFO:__main__:Processing block 5836278
+ERROR:__main__:Error processing block 5836278: Server disconnected
+INFO:__main__:Successfully processed block 5836278
+INFO:__main__:Successfully processed batch 5836278 to 5836278 in 5.02 seconds
+INFO:__main__:Processed blocks 5836278 to 5836278.
+INFO:__main__:Processing missing range: 5838367 to 5838370
+INFO:__main__:Processing batch 5838367 to 5838367 (1/4 blocks processed so far)
+INFO:__main__:Processing block 5838367
+ERROR:__main__:Error processing block 5838367: Server disconnected
+INFO:__main__:Successfully processed block 5838367
+INFO:__main__:Successfully processed batch 5838367 to 5838367 in 5.04 seconds
+INFO:__main__:Processing batch 5838368 to 5838368 (2/4 blocks processed so far)
+INFO:__main__:Processing block 5838368
+ERROR:__main__:Error processing block 5838368: Server disconnected
+INFO:__main__:Successfully processed block 5838368
+INFO:__main__:Successfully processed batch 5838368 to 5838368 in 5.04 seconds
+INFO:__main__:Processing batch 5838369 to 5838369 (3/4 blocks processed so far)
+INFO:__main__:Processing block 5838369
+ERROR:__main__:Error processing block 5838369: Server disconnected
+INFO:__main__:Successfully processed block 5838369
+INFO:__main__:Successfully processed batch 5838369 to 5838369 in 5.04 seconds
+INFO:__main__:Processing batch 5838370 to 5838370 (4/4 blocks processed so far)
+INFO:__main__:Processing block 5838370
+ERROR:__main__:Error processing block 5838370: Server disconnected
+INFO:__main__:Successfully processed block 5838370
+INFO:__main__:Successfully processed batch 5838370 to 5838370 in 5.03 seconds
+INFO:__main__:Processed blocks 5838367 to 5838370.
+INFO:__main__:Processing missing range: 5851345 to 5851345
+INFO:__main__:Processing batch 5851345 to 5851345 (1/1 blocks processed so far)
+INFO:__main__:Processing block 5851345
+ERROR:__main__:Error processing block 5851345: Server disconnected
+INFO:__main__:Successfully processed block 5851345
+INFO:__main__:Successfully processed batch 5851345 to 5851345 in 5.04 seconds
+INFO:__main__:Processed blocks 5851345 to 5851345.
+INFO:__main__:Processing missing range: 6062384 to 6062384
+INFO:__main__:Processing batch 6062384 to 6062384 (1/1 blocks processed so far)
+INFO:__main__:Processing block 6062384
+ERROR:__main__:Error processing block 6062384: Server disconnected
+INFO:__main__:Successfully processed block 6062384
+INFO:__main__:Successfully processed batch 6062384 to 6062384 in 5.04 seconds
+INFO:__main__:Processed blocks 6062384 to 6062384.
+INFO:__main__:Processing missing range: 6082772 to 6082772
+INFO:__main__:Processing batch 6082772 to 6082772 (1/1 blocks processed so far)
+INFO:__main__:Processing block 6082772
+ERROR:__main__:Error processing block 6082772: Server disconnected
+INFO:__main__:Successfully processed block 6082772
+INFO:__main__:Successfully processed batch 6082772 to 6082772 in 5.01 seconds
+INFO:__main__:Processed blocks 6082772 to 6082772.
+INFO:__main__:Processing missing range: 6325511 to 6325512
+INFO:__main__:Processing batch 6325511 to 6325511 (1/2 blocks processed so far)
+INFO:__main__:Processing block 6325511
+ERROR:__main__:Error processing block 6325511: Server disconnected
+INFO:__main__:Successfully processed block 6325511
+INFO:__main__:Successfully processed batch 6325511 to 6325511 in 5.01 seconds
+INFO:__main__:Processing batch 6325512 to 6325512 (2/2 blocks processed so far)
+INFO:__main__:Processing block 6325512
+ERROR:__main__:Error processing block 6325512: Server disconnected
+INFO:__main__:Successfully processed block 6325512
+INFO:__main__:Successfully processed batch 6325512 to 6325512 in 5.03 seconds
+INFO:__main__:Processed blocks 6325511 to 6325512.
+INFO:__main__:Processing missing range: 6332955 to 6332955
+INFO:__main__:Processing batch 6332955 to 6332955 (1/1 blocks processed so far)
+INFO:__main__:Processing block 6332955
+ERROR:__main__:Error processing block 6332955: Server disconnected
+INFO:__main__:Successfully processed block 6332955
+INFO:__main__:Successfully processed batch 6332955 to 6332955 in 5.04 seconds
+INFO:__main__:Processed blocks 6332955 to 6332955.
+INFO:__main__:Processing missing range: 6344706 to 6344707
+INFO:__main__:Processing batch 6344706 to 6344706 (1/2 blocks processed so far)
+INFO:__main__:Processing block 6344706
+ERROR:__main__:Error processing block 6344706: Server disconnected
+INFO:__main__:Successfully processed block 6344706
+INFO:__main__:Successfully processed batch 6344706 to 6344706 in 5.04 seconds
+INFO:__main__:Processing batch 6344707 to 6344707 (2/2 blocks processed so far)
+INFO:__main__:Processing block 6344707
+ERROR:__main__:Error processing block 6344707: Server disconnected
+INFO:__main__:Successfully processed block 6344707
+INFO:__main__:Successfully processed batch 6344707 to 6344707 in 5.05 seconds
+INFO:__main__:Processed blocks 6344706 to 6344707.
+INFO:__main__:Processing missing range: 6353720 to 6353721
+INFO:__main__:Processing batch 6353720 to 6353720 (1/2 blocks processed so far)
+INFO:__main__:Processing block 6353720
+ERROR:__main__:Error processing block 6353720: Server disconnected
+INFO:__main__:Successfully processed block 6353720
+INFO:__main__:Successfully processed batch 6353720 to 6353720 in 5.01 seconds
+INFO:__main__:Processing batch 6353721 to 6353721 (2/2 blocks processed so far)
+INFO:__main__:Processing block 6353721
+ERROR:__main__:Error processing block 6353721: Server disconnected
+INFO:__main__:Successfully processed block 6353721
+INFO:__main__:Successfully processed batch 6353721 to 6353721 in 5.01 seconds
+INFO:__main__:Processed blocks 6353720 to 6353721.
+INFO:__main__:Processing missing range: 6370981 to 6370981
+INFO:__main__:Processing batch 6370981 to 6370981 (1/1 blocks processed so far)
+INFO:__main__:Processing block 6370981
+ERROR:__main__:Error processing block 6370981: Server disconnected
+INFO:__main__:Successfully processed block 6370981
+INFO:__main__:Successfully processed batch 6370981 to 6370981 in 5.01 seconds
+INFO:__main__:Processed blocks 6370981 to 6370981.
+INFO:__main__:Processing missing range: 6413425 to 6413431
+INFO:__main__:Processing batch 6413425 to 6413425 (1/7 blocks processed so far)
+INFO:__main__:Processing block 6413425
+ERROR:__main__:Error processing block 6413425: Server disconnected
+INFO:__main__:Successfully processed block 6413425
+INFO:__main__:Successfully processed batch 6413425 to 6413425 in 5.03 seconds
+INFO:__main__:Processing batch 6413426 to 6413426 (2/7 blocks processed so far)
+INFO:__main__:Processing block 6413426
+ERROR:__main__:Error processing block 6413426: Server disconnected
+INFO:__main__:Successfully processed block 6413426
+INFO:__main__:Successfully processed batch 6413426 to 6413426 in 5.01 seconds
+INFO:__main__:Processing batch 6413427 to 6413427 (3/7 blocks processed so far)
+INFO:__main__:Processing block 6413427
+ERROR:__main__:Error processing block 6413427: Server disconnected
+INFO:__main__:Successfully processed block 6413427
+INFO:__main__:Successfully processed batch 6413427 to 6413427 in 5.01 seconds
+INFO:__main__:Processing batch 6413428 to 6413428 (4/7 blocks processed so far)
+INFO:__main__:Processing block 6413428
+ERROR:__main__:Error processing block 6413428: Server disconnected
+INFO:__main__:Successfully processed block 6413428
+INFO:__main__:Successfully processed batch 6413428 to 6413428 in 5.01 seconds
+INFO:__main__:Processing batch 6413429 to 6413429 (5/7 blocks processed so far)
+INFO:__main__:Processing block 6413429
+ERROR:__main__:Error processing block 6413429: Server disconnected
+INFO:__main__:Successfully processed block 6413429
+INFO:__main__:Successfully processed batch 6413429 to 6413429 in 5.01 seconds
+INFO:__main__:Processing batch 6413430 to 6413430 (6/7 blocks processed so far)
+INFO:__main__:Processing block 6413430
+ERROR:__main__:Error processing block 6413430: Server disconnected
+INFO:__main__:Successfully processed block 6413430
+INFO:__main__:Successfully processed batch 6413430 to 6413430 in 5.01 seconds
+INFO:__main__:Processing batch 6413431 to 6413431 (7/7 blocks processed so far)
+INFO:__main__:Processing block 6413431
+ERROR:__main__:Error processing block 6413431: Server disconnected
+INFO:__main__:Successfully processed block 6413431
+INFO:__main__:Successfully processed batch 6413431 to 6413431 in 5.04 seconds
+INFO:__main__:Processed blocks 6413425 to 6413431.
+INFO:__main__:Processing missing range: 6446688 to 6446688
+INFO:__main__:Processing batch 6446688 to 6446688 (1/1 blocks processed so far)
+INFO:__main__:Processing block 6446688
+ERROR:__main__:Error processing block 6446688: Server disconnected
+INFO:__main__:Successfully processed block 6446688
+INFO:__main__:Successfully processed batch 6446688 to 6446688 in 5.04 seconds
+INFO:__main__:Processed blocks 6446688 to 6446688.
+INFO:__main__:Processing missing range: 7126810 to 7126811
+INFO:__main__:Processing batch 7126810 to 7126810 (1/2 blocks processed so far)
+INFO:__main__:Processing block 7126810
+ERROR:__main__:Error processing block 7126810: Server disconnected
+INFO:__main__:Successfully processed block 7126810
+INFO:__main__:Successfully processed batch 7126810 to 7126810 in 5.04 seconds
+INFO:__main__:Processing batch 7126811 to 7126811 (2/2 blocks processed so far)
+INFO:__main__:Processing block 7126811
+ERROR:__main__:Error processing block 7126811: Server disconnected
+INFO:__main__:Successfully processed block 7126811
+INFO:__main__:Successfully processed batch 7126811 to 7126811 in 5.01 seconds
+INFO:__main__:Processed blocks 7126810 to 7126811.
+INFO:__main__:Processing missing range: 7126815 to 7126815
+INFO:__main__:Processing batch 7126815 to 7126815 (1/1 blocks processed so far)
+INFO:__main__:Processing block 7126815
+ERROR:__main__:Error processing block 7126815: Server disconnected
+INFO:__main__:Successfully processed block 7126815
+INFO:__main__:Successfully processed batch 7126815 to 7126815 in 5.01 seconds
+INFO:__main__:Processed blocks 7126815 to 7126815.
+INFO:__main__:Processing missing range: 7126818 to 7126818
+INFO:__main__:Processing batch 7126818 to 7126818 (1/1 blocks processed so far)
+INFO:__main__:Processing block 7126818
+ERROR:__main__:Error processing block 7126818: Server disconnected
+INFO:__main__:Successfully processed block 7126818
+INFO:__main__:Successfully processed batch 7126818 to 7126818 in 5.01 seconds
+INFO:__main__:Processed blocks 7126818 to 7126818.
+INFO:__main__:Missing block processing complete.
+
