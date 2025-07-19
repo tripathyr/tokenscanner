@@ -1,0 +1,11 @@
+# Ignore logs
+*.log
+
+# Ignore SQLite and SQL dumps (optional)
+*.db
+*.sql
+*.sqlite
+*.bak
+
+# Ignore backups
+
