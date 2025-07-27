@@ -4,7 +4,7 @@
 import datetime
 import logging
 import sys
-from tracktokens32_fix10_1 import (
+from tracktokens33_fix3 import (
     process_contract_time_trigger,
     create_database_session_orm,
     TimeActions
@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 def main():
     try:
         # Use a block time AFTER the trigger time to activate contract triggers
-        trigger_time_str = "Fri Sep 29 2023 19:10:00 GMT+0530"  # 1 minute after expiry
+        trigger_time_str = "Fri Sep 29 2025 19:10:00 GMT+0530"  # 1 minute after expiry
         dt = datetime.datetime.strptime(trigger_time_str, "%a %b %d %Y %H:%M:%S GMT%z")
         trigger_timestamp = int(dt.timestamp())
         block_time_after_trigger = trigger_timestamp  # exactly at trigger time

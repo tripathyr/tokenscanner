@@ -114,59 +114,59 @@ def delete_database(blockNumber, dbname):
 
 
 
-def inspect_parsed_flodata(parsed_flodata, inputAddress, outputAddress):
-    if parsed_flodata['type'] == 'transfer':
-        if parsed_flodata['transferType'] == 'token':
-            return {'type':'tokentransfer', 'token_db':f"{parsed_flodata['tokenIdentification']}", 'token_amount':f"{parsed_flodata['tokenAmount']}"}
-        if parsed_flodata['transferType'] == 'smartContract':
-            return {'type':'smartContract', 'contract_db': f"{parsed_flodata['contractName']}-{outputAddress}" ,'accepting_token_db':f"{parsed_flodata['']}", 'receiving_token_db':f"{parsed_flodata['tokenIdentification']}" ,'token_amount':f"{parsed_flodata['tokenAmount']}"}
-        if parsed_flodata['transferType'] == 'swapParticipation':
-            return {'type':'swapParticipation', 'contract_db': f"{parsed_flodata['contractName']}-{outputAddress}" ,'accepting_token_db':f"{parsed_flodata['']}", 'receiving_token_db':f"{parsed_flodata['tokenIdentification']}" ,'token_amount':f"{parsed_flodata['tokenAmount']}"}
-        if parsed_flodata['transferType'] == 'nft':
-            return {'type':'nfttransfer', 'nft_db':f"{parsed_flodata['tokenIdentification']}", 'token_amount':f"{parsed_flodata['tokenAmount']}"}
-    if parsed_flodata['type'] == 'tokenIncorporation':
-        return {'type':'tokenIncorporation', 'token_db':f"{parsed_flodata['tokenIdentification']}", 'token_amount':f"{parsed_flodata['tokenAmount']}"}
-    if parsed_flodata['type'] == 'smartContractPays':
+def inspect_parsed_floData(parsed_floData, inputAddress, outputAddress):
+    if parsed_floData['type'] == 'transfer':
+        if parsed_floData['transferType'] == 'token':
+            return {'type':'tokentransfer', 'token_db':f"{parsed_floData['tokenIdentification']}", 'token_amount':f"{parsed_floData['tokenAmount']}"}
+        if parsed_floData['transferType'] == 'smartContract':
+            return {'type':'smartContract', 'contract_db': f"{parsed_floData['contractName']}-{outputAddress}" ,'accepting_token_db':f"{parsed_floData['']}", 'receiving_token_db':f"{parsed_floData['tokenIdentification']}" ,'token_amount':f"{parsed_floData['tokenAmount']}"}
+        if parsed_floData['transferType'] == 'swapParticipation':
+            return {'type':'swapParticipation', 'contract_db': f"{parsed_floData['contractName']}-{outputAddress}" ,'accepting_token_db':f"{parsed_floData['']}", 'receiving_token_db':f"{parsed_floData['tokenIdentification']}" ,'token_amount':f"{parsed_floData['tokenAmount']}"}
+        if parsed_floData['transferType'] == 'nft':
+            return {'type':'nfttransfer', 'nft_db':f"{parsed_floData['tokenIdentification']}", 'token_amount':f"{parsed_floData['tokenAmount']}"}
+    if parsed_floData['type'] == 'tokenIncorporation':
+        return {'type':'tokenIncorporation', 'token_db':f"{parsed_floData['tokenIdentification']}", 'token_amount':f"{parsed_floData['tokenAmount']}"}
+    if parsed_floData['type'] == 'smartContractPays':
         # contract address, token | both of them come from 
-        sc_session = create_database_session_orm('smart_contract', {'contract_name':f"{parsed_flodata['contractName']}", 'contract_address':f"{outputAddress}"}, ContractBase)
+        sc_session = create_database_session_orm('smart_contract', {'contract_name':f"{parsed_floData['contractName']}", 'contract_address':f"{outputAddress}"}, ContractBase)
         token_db = sc_session.query(ContractStructure.value).filter(ContractStructure.attribute=='tokenIdentification').first()[0]
-        return {'type':'smartContractPays', 'token_db':f"{token_db}" , 'contract_db':f"{parsed_flodata['contractName']}-{outputAddress}", 'triggerCondition':f"{parsed_flodata['triggerCondition']}"}
-    if parsed_flodata['type'] == 'smartContractIncorporation':
-        return {'type':'smartContractIncorporation', 'contract_db':f"{parsed_flodata['contractName']}-{outputAddress}", 'triggerCondition':f"{parsed_flodata['triggerCondition']}"}
+        return {'type':'smartContractPays', 'token_db':f"{token_db}" , 'contract_db':f"{parsed_floData['contractName']}-{outputAddress}", 'triggerCondition':f"{parsed_floData['triggerCondition']}"}
+    if parsed_floData['type'] == 'smartContractIncorporation':
+        return {'type':'smartContractIncorporation', 'contract_db':f"{parsed_floData['contractName']}-{outputAddress}", 'triggerCondition':f"{parsed_floData['triggerCondition']}"}
 
 
-def getDatabase_from_parsedFloData(parsed_flodata, inputAddress, outputAddress):
+def getDatabase_from_parsedFloData(parsed_floData, inputAddress, outputAddress):
     tokenlist = []
     contractlist = []
-    if parsed_flodata['type'] == 'transfer':
-        if parsed_flodata['transferType'] == 'token':
-            #return {'type':'token_db', 'token_db':f"{parsed_flodata['tokenIdentification']}"}
-            tokenlist.append(parsed_flodata['tokenIdentification'])
-        elif parsed_flodata['transferType'] == 'smartContract':
-            #return {'type':'smartcontract_db', 'contract_db': f"{parsed_flodata['contractName']}-{outputAddress}" ,'token_db':f"{parsed_flodata['tokenIdentification']}"}
-            tokenlist.append(parsed_flodata['tokenIdentification'])
-            contractlist.append(f"{parsed_flodata['contractName']}-{outputAddress}")
-        elif parsed_flodata['transferType'] == 'swapParticipation':
-            #return {'type':'swapcontract_db', 'contract_db': f"{parsed_flodata['contractName']}-{outputAddress}" ,'accepting_token_db':f"{parsed_flodata['contract-conditions']['accepting_token']}", 'selling_token_db':f"{parsed_flodata['contract-conditions']['selling_token']}"}
-            tokenlist.append(parsed_flodata['contract-conditions']['accepting_token'])
-            tokenlist.append(parsed_flodata['contract-conditions']['selling_token'])
-            contractlist.append(f"{parsed_flodata['contractName']}-{outputAddress}")
-        elif parsed_flodata['transferType'] == 'nft':
-            #return {'type':'nft_db', 'token_db':f"{parsed_flodata['tokenIdentification']}"}
-            tokenlist.append(parsed_flodata['tokenIdentification'])
-    elif parsed_flodata['type'] == 'smartContractPays':
+    if parsed_floData['type'] == 'transfer':
+        if parsed_floData['transferType'] == 'token':
+            #return {'type':'token_db', 'token_db':f"{parsed_floData['tokenIdentification']}"}
+            tokenlist.append(parsed_floData['tokenIdentification'])
+        elif parsed_floData['transferType'] == 'smartContract':
+            #return {'type':'smartcontract_db', 'contract_db': f"{parsed_floData['contractName']}-{outputAddress}" ,'token_db':f"{parsed_floData['tokenIdentification']}"}
+            tokenlist.append(parsed_floData['tokenIdentification'])
+            contractlist.append(f"{parsed_floData['contractName']}-{outputAddress}")
+        elif parsed_floData['transferType'] == 'swapParticipation':
+            #return {'type':'swapcontract_db', 'contract_db': f"{parsed_floData['contractName']}-{outputAddress}" ,'accepting_token_db':f"{parsed_floData['contract-conditions']['accepting_token']}", 'selling_token_db':f"{parsed_floData['contract-conditions']['selling_token']}"}
+            tokenlist.append(parsed_floData['contract-conditions']['accepting_token'])
+            tokenlist.append(parsed_floData['contract-conditions']['selling_token'])
+            contractlist.append(f"{parsed_floData['contractName']}-{outputAddress}")
+        elif parsed_floData['transferType'] == 'nft':
+            #return {'type':'nft_db', 'token_db':f"{parsed_floData['tokenIdentification']}"}
+            tokenlist.append(parsed_floData['tokenIdentification'])
+    elif parsed_floData['type'] == 'smartContractPays':
         # contract address, token | both of them come from 
-        sc_session = create_database_session_orm('smart_contract', {'contract_name':f"{parsed_flodata['contractName']}", 'contract_address':f"{outputAddress}"}, ContractBase)
+        sc_session = create_database_session_orm('smart_contract', {'contract_name':f"{parsed_floData['contractName']}", 'contract_address':f"{outputAddress}"}, ContractBase)
         token_db = sc_session.query(ContractStructure.value).filter(ContractStructure.attribute=='tokenIdentification').first()[0]
-        #return {'type':'smartcontract_db', 'contract_db':f"{parsed_flodata['contractName']}-{outputAddress}", 'token_db':f"{token_db}"}
+        #return {'type':'smartcontract_db', 'contract_db':f"{parsed_floData['contractName']}-{outputAddress}", 'token_db':f"{token_db}"}
         tokenlist.append(token_db)
-        contractlist.append(f"{parsed_flodata['contractName']}-{outputAddress}")
-    elif parsed_flodata['type'] == 'smartContractIncorporation':
-        #return {'type':'smartcontract_db', 'contract_db':f"{parsed_flodata['contractName']}-{outputAddress}"}
-        contractlist.append(f"{parsed_flodata['contractName']}-{outputAddress}")
-    elif parsed_flodata['type'] == 'tokenIncorporation':
-        #return {'type':'token_db', 'token_db':f"{parsed_flodata['tokenIdentification']}"}
-        tokenlist.append(parsed_flodata['tokenIdentification'])
+        contractlist.append(f"{parsed_floData['contractName']}-{outputAddress}")
+    elif parsed_floData['type'] == 'smartContractIncorporation':
+        #return {'type':'smartcontract_db', 'contract_db':f"{parsed_floData['contractName']}-{outputAddress}"}
+        contractlist.append(f"{parsed_floData['contractName']}-{outputAddress}")
+    elif parsed_floData['type'] == 'tokenIncorporation':
+        #return {'type':'token_db', 'token_db':f"{parsed_floData['tokenIdentification']}"}
+        tokenlist.append(parsed_floData['tokenIdentification'])
 
     return tokenlist, contractlist
 
@@ -412,8 +412,8 @@ def return_token_contract_set(rollback_block):
             transaction = latestcache_session.query(LatestTransactions).filter(LatestTransactions.transactionHash == txhash).first() 
             transaction_data = json.loads(transaction.jsonData) 
             inputAddress, outputAddress = find_input_output_addresses(transaction_data) 
-            parsed_flodata = literal_eval(transaction.parsedFloData) 
-            tokenlist, contractlist = getDatabase_from_parsedFloData(parsed_flodata, inputAddress, outputAddress) 
+            parsed_floData = literal_eval(transaction.parsedFloData) 
+            tokenlist, contractlist = getDatabase_from_parsedFloData(parsed_floData, inputAddress, outputAddress) 
             
             for token in tokenlist:
                 tokendb_set.add(token)

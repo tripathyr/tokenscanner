@@ -86,8 +86,8 @@ def create_dummy_transaction_data(flo_text, is_testnet=True):
 
     
     blockinfo = {
-        "time": 1100000000,
-        "height": 123457,
+        "time": 1700060000,
+        "height": 123458,
         "hash": hash
 
     }
@@ -120,8 +120,8 @@ def create_dummy_transaction_data(flo_text, is_testnet=True):
 # REAL PARSING AND PROCESSING
 # -----------------------------
 
-from parsing import parse_flodata
-from tracktokens33_fix2 import processTransaction
+from parsing import parse_floData
+from tracktokens34 import processTransaction
 
 # -----------------------------
 # MAIN DRIVER
@@ -172,11 +172,11 @@ if __name__ == "__main__":
         flo_text = tx_data["floData"]
 
     # ✅ Parse floData again after edits
-    parsed_data = parse_flodata(flo_text, blockinfo, "testnet")
+    parsed_data = parse_floData(flo_text, blockinfo, "testnet")
 
     # ✅ optionally update transaction floData with cleaned text
-    if parsed_data.get("flodata"):
-        tx_data["floData"] = parsed_data["flodata"]
+    if parsed_data.get("floData"):
+        tx_data["floData"] = parsed_data["floData"]
 
     print("\n--- PARSING RESULT ---")
     print(json.dumps(parsed_data, indent=4))

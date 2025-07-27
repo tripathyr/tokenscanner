@@ -327,9 +327,9 @@ def scan_and_fix_blocks(block_numbers, db_name):
 
         parsed_txs = []
         for tx in blockinfo.get("txs", []):
-            flodata = tx.get("floData", "")
-            flodata_clean = flodata.replace("\n", " \n ")
-            parsed = parsing.parse_flodata(flodata_clean, blockinfo, NETWORK)
+            floData = tx.get("floData", "")
+            floData_clean = floData.replace("\n", " \n ")
+            parsed = parsing.parse_floData(floData_clean, blockinfo, NETWORK)
 
             if parsed and parsed.get("type") not in [None, "", "noise"]:
                 parsed_txs.append({

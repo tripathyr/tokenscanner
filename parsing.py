@@ -243,7 +243,7 @@ def outputreturn(*argv):
     elif argv[0] == 'token_incorporation':
         parsed_data = {
             'type': 'tokenIncorporation',
-            'flodata': argv[1], #string 
+            'floData': argv[1], #string 
             'tokenIdentification': argv[2], #hashList[0][:-1] 
             'tokenAmount': argv[3], #initTokens
             'stateF': argv[4]
@@ -253,7 +253,7 @@ def outputreturn(*argv):
         parsed_data = {
             'type': 'transfer', 
             'transferType': 'token', 
-            'flodata': argv[1], #string
+            'floData': argv[1], #string
             'tokenIdentification': argv[2], #hashList[0][:-1]
             'tokenAmount': argv[3], #amount
             'stateF': argv[4]
@@ -267,7 +267,7 @@ def outputreturn(*argv):
             'tokenIdentification': argv[1], #hashList[0][:-1] 
             'contractName': argv[2], #atList[0][:-1]
             'contractAddress': argv[3], #contractaddress[:-1] 
-            'flodata': argv[4], #string
+            'floData': argv[4], #string
             'contractConditions': {
                 'contractAmount' : argv[5],
                 'minimumsubscriptionamount' : argv[6],
@@ -283,7 +283,7 @@ def outputreturn(*argv):
         parsed_data = {
             'type': 'transfer', 
             'transferType': 'smartContract', 
-            'flodata': argv[1], #string
+            'floData': argv[1], #string
             'tokenIdentification': argv[2], #hashList[0][:-1]
             'operation': 'transfer', 
             'tokenAmount': argv[3], #amount 
@@ -309,7 +309,7 @@ def outputreturn(*argv):
             'tokenIdentification': argv[1], #hashList[0][:-1] 
             'contractName': argv[2], #atList[0][:-1]
             'contractAddress': argv[3], #contractaddress[:-1] 
-            'flodata': argv[4], #string
+            'floData': argv[4], #string
             'contractConditions': {
                 'contractAmount' : argv[5],
                 'minimumsubscriptionamount' : argv[6],
@@ -328,7 +328,7 @@ def outputreturn(*argv):
             'tokenIdentification': argv[1], #hashList[0][:-1] 
             'contractName': argv[2], #atList[0][:-1]
             'contractAddress': argv[3], #contractaddress[:-1] 
-            'flodata': argv[4], #string
+            'floData': argv[4], #string
             'contractConditions': {
                 'subtype' : argv[5], #tokenswap
                 'accepting_token' : argv[6],
@@ -346,7 +346,7 @@ def outputreturn(*argv):
             'tokenIdentification': argv[1], #hashList[0][:-1]
             'depositAmount': argv[2], #depositAmount 
             'contractName': argv[3], #atList[0][:-1] 
-            'flodata': argv[4], #string
+            'floData': argv[4], #string
             'depositConditions': {
                 'expiryTime' : argv[5]
             },
@@ -357,7 +357,7 @@ def outputreturn(*argv):
         parsed_data = {
             'type': 'transfer', 
             'transferType': 'smartContract', 
-            'flodata': argv[1], #string 
+            'floData': argv[1], #string 
             'tokenIdentification': argv[2], #hashList[0][:-1] 
             'tokenAmount': argv[3], #amount 
             'contractName': argv[4], #atList[0][:-1] 
@@ -368,7 +368,7 @@ def outputreturn(*argv):
     elif argv[0] == 'nft_create':
         parsed_data = {
             'type': 'nftIncorporation',
-            'flodata': argv[1], #string 
+            'floData': argv[1], #string 
             'tokenIdentification': argv[2], #hashList[0][:-1] 
             'tokenAmount': argv[3], #initTokens,
             'nftHash': argv[4], #nftHash
@@ -379,7 +379,7 @@ def outputreturn(*argv):
         parsed_data = {
             'type': 'transfer',
             'transferType': 'nft',
-            'flodata': argv[1], #string 
+            'floData': argv[1], #string 
             'tokenIdentification': argv[2], #hashList[0][:-1] 
             'tokenAmount': argv[3], #initTokens,
             'stateF': argv[4]
@@ -388,7 +388,7 @@ def outputreturn(*argv):
     elif argv[0] == 'infinite_token_create':
         parsed_data = {
             'type': 'infiniteTokenIncorporation',
-            'flodata': argv[1], #string 
+            'floData': argv[1], #string 
             'tokenIdentification': argv[2], #hashList[0][:-1] 
             'stateF': argv[3]
             }
@@ -1720,7 +1720,7 @@ def process_smart_contract_creation_ce_tokenswap(
 
     
 
-def parse_flodata(text, blockinfo, net):
+def parse_floData(text, blockinfo, net):
     is_testnet = net == 'testnet'
 
     if text == '':

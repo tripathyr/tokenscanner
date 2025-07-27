@@ -1148,7 +1148,6 @@ def transferToken(tokenIdentification, tokenAmount, inputAddress, outputAddress,
     return 1
 
 
-
 def trigger_internal_contract_onvalue(tokenAmount_sum, contractStructure, transaction_data, blockinfo, parsed_data, connection, contract_name, contract_address, transaction_subType):
     # Trigger the contract
     if tokenAmount_sum <= 0:
@@ -1452,6 +1451,110 @@ def process_contract_deposit_trigger(blockinfo, systemdb_session, active_deposit
             continue
 
 
+def refund_expired_untriggered_contracts(blockinfo):
+    session = create_database_session_orm('system_dbs', {'db_name': 'system'}, SystemBase)
+
+    expired_contracts = session.execute(text("""
+        SELECT * FROM activecontracts
+        WHERE contractType = 'one-time-event'
+          AND status = 'expired'
+    """)).fetchall()
+
+    current_block_time = arrow.get(blockinfo["time"])
+
+    for row in expired_contracts:
+        try:
+            # Convert expiryDate (assumed to be timestamp) to arrow object
+            try:
+                expiry_ts = int(float(row.expiryDate))
+                expiryDate = arrow.get(expiry_ts)
+            except Exception:
+                logger.error(f"[refund_expired_untriggered_contracts] ❌ Invalid expiry timestamp for {row.contractName}_{row.contractAddress}: {row.expiryDate}")
+                continue
+
+            # Proceed only if more than 30 days have passed since expiry
+            if current_block_time < expiryDate.shift(days=+30):
+                continue
+
+            # Check if trigger already happened (inside the contract DB)
+            contract_db_name = {
+                'contract_name': row.contractName,
+                'contract_address': row.contractAddress
+            }
+
+            contract_session = create_database_session_orm('smart_contract', contract_db_name, ContractBase)
+
+            has_trigger = (
+                contract_session.query(ContractTransactionHistory)
+                .filter(ContractTransactionHistory.transactionType == 'trigger')
+                .first()
+                is not None
+            )
+
+            if has_trigger:
+                continue
+
+            logger.info(f"⚠️ Auto-refunding expired contract {row.contractName} at {row.contractAddress} due to no trigger after 30 days.")
+
+            transaction_data = {
+                'txid': hashlib.sha256(f"{row.contractName}{blockinfo['height']}".encode('utf-8')).hexdigest(),
+                'blockheight': blockinfo['height'],
+                'time': blockinfo['time']
+            }
+
+            parsed_data = {
+                'type': 'trigger',
+                'contractName': row.contractName,
+                'contractAddress': row.contractAddress,
+                'transactionSubType': 'auto-refund-untriggered'
+            }
+
+            contractStructure = extract_contractStructure(row.contractName, row.contractAddress)
+            conn = create_database_connection('smart_contract', contract_db_name)
+            participants = conn.execute(
+                "SELECT participantAddress, tokenAmount, transactionHash FROM contractparticipants"
+            ).fetchall()
+
+            for p in participants:
+                returnval = transferToken(
+                    contractStructure['tokenIdentification'], p[1], row.contractAddress, p[0],
+                    transaction_data=transaction_data, parsed_data=parsed_data, blockinfo=blockinfo
+                )
+                if returnval == 0:
+                    logger.critical(f"❌ Refund failed for {p[0]} in contract {row.contractName}")
+                    continue
+
+                conn.execute(
+                    'UPDATE contractparticipants SET winningAmount=? WHERE participantAddress=? AND transactionHash=?',
+                    (p[1], p[0], p[2])
+                )
+
+                add_contract_transaction_history(
+                    transactionType='trigger',
+                    transactionSubType='auto-refund-untriggered',
+                    sourceFloAddress=row.contractAddress,
+                    destFloAddress=p[0],
+                    transferAmount=p[1],
+                    blockNumber=blockinfo['height'],
+                    blockHash=blockinfo['hash'],
+                    blocktime=blockinfo['time'],
+                    transactionHash=transaction_data['txid'],
+                    jsonData=json.dumps(transaction_data),
+                    parsedFloData=json.dumps(parsed_data)
+                )
+
+            close_expire_contract(
+                contractStructure, 'closed', transaction_data['txid'], blockinfo['height'], blockinfo['hash'],
+                row.incorporationDate, row.expiryDate, blockinfo['time'],
+                row.expiryDate, 'auto-refund-untriggered',
+                row.contractName, row.contractAddress,
+                row.contractType, None, parsed_data, blockinfo['height']
+            )
+
+        except Exception as e:
+            logger.error(f"[refund_expired_untriggered_contracts] ❌ Error in contract {row.contractName}_{row.contractAddress}: {e}")
+
+
 def checkLocal_time_expiry_trigger_deposit(blockinfo):
     systemdb_session = None
     while True:
@@ -1464,37 +1567,50 @@ def checkLocal_time_expiry_trigger_deposit(blockinfo):
         except Exception as e:
             logger.error(f"Unexpected error during DB connection: {e}")
             time.sleep(DB_RETRY_TIMEOUT)
+
     try:
         active_contracts = []
         active_deposits = []
+
         try:
             active_contracts = return_time_active_contracts(systemdb_session)
         except SQLAlchemyError as e:
             logger.error(f"DB error fetching active contracts: {e}")
         except Exception as e:
             logger.error(f"Unexpected error fetching active contracts: {e}")
+
         try:
             active_deposits = return_time_active_deposits(systemdb_session)
         except SQLAlchemyError as e:
             logger.error(f"DB error fetching active deposits: {e}")
         except Exception as e:
             logger.error(f"Unexpected error fetching active deposits: {e}")
+
         if active_contracts:
             try:
                 process_contract_time_trigger(blockinfo, systemdb_session, active_contracts)
             except Exception as e:
                 logger.error(f"Error processing contract time triggers: {e}")
+
+        # 🔁 NEW: Trigger refund logic for expired untriggered contracts
+        try:
+            refund_expired_untriggered_contracts(blockinfo)
+        except Exception as e:
+            logger.error(f"Error processing refund_expired_untriggered_contracts: {e}")
+
         if active_deposits:
             try:
                 process_contract_deposit_trigger(blockinfo, systemdb_session, active_deposits)
             except Exception as e:
                 logger.error(f"Error processing contract deposit triggers: {e}")
+
     finally:
         if systemdb_session:
             try:
                 systemdb_session.close()
             except Exception as e:
                 logger.warning(f"Error closing system DB session: {e}")
+
 
 
 def check_reorg():
