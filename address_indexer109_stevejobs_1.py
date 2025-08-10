@@ -47,9 +47,9 @@ RPC_PASSWORD = config['ADDRESS_INDEXER'].get('rpc_password', 'rpc')
 RPC_TIMEOUT = 30
 API_TIMEOUT = 60
 DB_RETRY_TIMEOUT = int(config['API'].get('DB_RETRY_TIMEOUT', 60))
-CLEANUP_INTERVAL_SECONDS = 5
-IDLE_TIME_THRESHOLD_TIMEOUT= 5
-CLEANER_THREAD_EXIT_TIMEOUT = 5
+CLEANUP_INTERVAL_SECONDS = 50
+IDLE_TIME_THRESHOLD_TIMEOUT= 50
+CLEANER_THREAD_EXIT_TIMEOUT = 50
 
 
 
@@ -379,6 +379,12 @@ async def initialize_database():
         );
 
         """
+    create_system_data_table_query = """
+        CREATE TABLE IF NOT EXISTS systemData (
+            attribute VARCHAR(255) PRIMARY KEY,
+            value TEXT
+        );
+        """
 
 
 
@@ -400,6 +406,8 @@ async def initialize_database():
             await cursor.execute(create_address_to_tx_table_query)
             await cursor.execute(create_balance_data_table_query)
             await cursor.execute(create_utxos_table_query)
+            await cursor.execute(create_system_data_table_query)
+
 
             # Index for transactions.blockheight
             await cursor.execute("""
@@ -1253,67 +1261,74 @@ async def process_blocks(start_block, end_block, batch_size=200, max_concurrent_
     except Exception as e:
         logger.error(f"Error processing blocks {start_block} to {end_block}: {e}")
 
+
 async def find_and_process_missing_blocks(batch_size=1, max_concurrent_batches=1):
     try:
-        # Temporarily override globals to expand cleaner timeouts so that large missing blocks can be processed
+        from itertools import groupby
+        from operator import itemgetter
+
         with override_globals(
             CLEANUP_INTERVAL_SECONDS=5000,
             IDLE_TIME_THRESHOLD_TIMEOUT=5000,
             CLEANER_THREAD_EXIT_TIMEOUT=5000,
         ):
-            logger.info("Global values temporarily overridden to 1000.")
+            logger.info("Global values temporarily overridden to 5000.")
 
+            # Step 1: Get latest block height
             logger.info("Fetching latest block height from chain...")
             chain_info = await rpc_request("getblockchaininfo")
             if "result" not in chain_info:
                 raise Exception(f"RPC error: {chain_info.get('error')}")
             latest_block = chain_info["result"]["blocks"]
-
             logger.info(f"Latest block on chain: {latest_block}")
 
-            logger.info("Fetching processed blocks from database...")
+            CHUNK_SIZE = 100_000
             conn = await get_mysql_connection()
             async with conn.cursor() as cursor:
-                
-                await cursor.execute("SELECT block_height FROM processed_blocks")
-                rows = await cursor.fetchall()
+
+                for chunk_start in range(0, latest_block + 1, CHUNK_SIZE):
+                    chunk_end = min(latest_block, chunk_start + CHUNK_SIZE - 1)
+                    logger.info(f"🔍 Scanning block range: {chunk_start} to {chunk_end}")
+
+                    # Fetch processed blocks in this chunk
+                    await cursor.execute(
+                        "SELECT block_height FROM processed_blocks WHERE block_height BETWEEN %s AND %s",
+                        (chunk_start, chunk_end)
+                    )
+                    rows = await cursor.fetchall()
+                    processed_set = set(row[0] for row in rows)
+
+                    # Detect missing blocks
+                    full_set = set(range(chunk_start, chunk_end + 1))
+                    missing_blocks = sorted(full_set - processed_set)
+
+                    logger.info(f"➖ Found {len(missing_blocks)} missing blocks in chunk.")
+
+                    if not missing_blocks:
+                        continue
+
+                    # Group into contiguous ranges
+                    ranges = []
+                    for _, group in groupby(enumerate(missing_blocks), lambda x: x[1] - x[0]):
+                        group_list = list(map(itemgetter(1), group))
+                        ranges.append((group_list[0], group_list[-1]))
+
+                    logger.info(f"📦 Will process {len(ranges)} missing block ranges in this chunk.")
+
+                    for start, end in ranges:
+                        logger.info(f"🚀 Processing missing range: {start} to {end}")
+                        await process_blocks(
+                            start_block=start,
+                            end_block=end,
+                            batch_size=batch_size,
+                            max_concurrent_batches=max_concurrent_batches
+                        )
+
             await async_connection_pool.release(conn)
-
-            processed_set = set(row[0] for row in rows)
-
-            all_blocks = set(range(0, latest_block + 1))
-            missing_blocks = sorted(all_blocks - processed_set)
-            logger.info(f"Found {len(missing_blocks)} missing blocks.")
-
-            if not missing_blocks:
-                logger.info("No missing blocks found.")
-                return
-
-            from itertools import groupby
-            from operator import itemgetter
-
-            ranges = []
-            for _, group in groupby(enumerate(missing_blocks), lambda x: x[1] - x[0]):
-                block_range = list(map(itemgetter(1), group))
-                ranges.append((block_range[0], block_range[-1]))
-
-            logger.info(f"Preparing to process {len(ranges)} missing block ranges.")
-
-            for start, end in ranges:
-                logger.info(f"Processing missing range: {start} to {end}")
-                await process_blocks(
-                    start_block=start,
-                    end_block=end,
-                    batch_size=batch_size,
-                    max_concurrent_batches=max_concurrent_batches
-                )
-
-            logger.info("Missing block processing complete.")
+            logger.info("✅ Missing block processing complete across all chunks.")
 
     except Exception as e:
-        logger.error(f"Error during missing block recovery: {e}")
-
-
+        logger.error(f"❌ Error during missing block recovery: {e}")
 
 
 

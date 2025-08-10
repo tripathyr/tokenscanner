@@ -197,7 +197,6 @@ def add_block_hashrecord(block_number, block_hash):
             time.sleep(DB_RETRY_TIMEOUT)
 
 
-
 def detect_reorg():
     API_VERIFY, ROLLBACK_BUFFER = True, 2
     try:

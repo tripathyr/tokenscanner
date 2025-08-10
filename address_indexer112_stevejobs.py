@@ -47,9 +47,9 @@ RPC_PASSWORD = config['ADDRESS_INDEXER'].get('rpc_password', 'rpc')
 RPC_TIMEOUT = 30
 API_TIMEOUT = 60
 DB_RETRY_TIMEOUT = int(config['API'].get('DB_RETRY_TIMEOUT', 60))
-CLEANUP_INTERVAL_SECONDS = 5
-IDLE_TIME_THRESHOLD_TIMEOUT= 5
-CLEANER_THREAD_EXIT_TIMEOUT = 5
+CLEANUP_INTERVAL_SECONDS = 50
+IDLE_TIME_THRESHOLD_TIMEOUT= 50
+CLEANER_THREAD_EXIT_TIMEOUT = 50
 
 
 
@@ -89,36 +89,132 @@ except Exception as e:
     ZMQ_BLOCK_HASH_ADDRESS = None
 
 
-# --- Async RPC Request ---
-async def rpc_request(method, params=None):
+import aiohttp
+from aiohttp.client_exceptions import ServerDisconnectedError, ClientOSError, ClientPayloadError
+import asyncio
+import json
+import logging
+import random
+import time
+import traceback
+
+logger = logging.getLogger(__name__)
+
+# === Globals (kept) ===
+aiohttp_session = None  # shared session (rebuilt on failures)
+
+# === Tunables ===
+RPC_RETRIES = 3                  # number of retries AFTER the first attempt (total attempts = 1 + RPC_RETRIES)
+RPC_SOCK_CONNECT = 30            # seconds to connect
+RPC_SOCK_READ = 180              # seconds per read (large responses)
+CONN_LIMIT = 8                   # total concurrent TCP connections
+CONN_LIMIT_PER_HOST = 4          # per-host concurrent connections
+
+def _exc(e: Exception) -> str:
+    return f"{type(e).__name__}: {e}\n{traceback.format_exc()}"
+
+async def _build_session(*, force_close: bool):
+    """
+    (Re)build a tuned aiohttp ClientSession.
+    If force_close=True, keep-alive is disabled (one request per TCP connection).
+    """
     global aiohttp_session
+    # Close previous session if present
+    try:
+        if aiohttp_session and not aiohttp_session.closed:
+            await aiohttp_session.close()
+    except Exception as ce:
+        logger.warning(f"[rpc] closing old session failed: {_exc(ce)}")
+
+    connector = aiohttp.TCPConnector(
+        limit=CONN_LIMIT,
+        limit_per_host=CONN_LIMIT_PER_HOST,
+        keepalive_timeout=30,
+        enable_cleanup_closed=True,
+        force_close=force_close,   # disable keep-alive when True
+        ttl_dns_cache=300,
+    )
+    timeout = aiohttp.ClientTimeout(
+        total=None,                     # no overall cap; rely on socket timeouts
+        sock_connect=RPC_SOCK_CONNECT,
+        sock_read=RPC_SOCK_READ,
+    )
+    aiohttp_session = aiohttp.ClientSession(connector=connector, timeout=timeout)
+    logger.debug(f"[rpc] built session force_close={force_close}")
+
+async def rpc_request(method, params=None):
+    """
+    Hardened JSON-RPC with retries & session rebuild.
+    Signature unchanged: rpc_request(method, params=None) -> dict
+    Returns parsed JSON on success, or {"error": "..."} on failure.
+    """
+    global aiohttp_session
+    params = params or []
 
     payload = {
         "jsonrpc": "1.0",
         "id": "query",
         "method": method,
-        "params": params or []
+        "params": params,
     }
     auth = aiohttp.BasicAuth(RPC_USER, RPC_PASSWORD)
 
-    try:
-        if aiohttp_session is None:
-            aiohttp_session = aiohttp.ClientSession()
+    attempts_total = 1 + RPC_RETRIES
+    # First attempt uses keep-alive; after a network failure, switch to force_close=True for stability
+    force_close = False
 
-        async with aiohttp_session.post(RPC_ADDRESS, json=payload, auth=auth, timeout=RPC_TIMEOUT) as response:
-            if response.status != 200:
-                raw_error = await response.read()
-                error_text = raw_error.decode("utf-8", errors="replace")
-                logger.error(f"RPC request failed: {response.status} {error_text}")
-                return {"error": "RPC request failed", "status": response.status}
+    for attempt in range(1, attempts_total + 1):
+        # Ensure (or rebuild) session each attempt so force_close changes take effect
+        try:
+            if aiohttp_session is None or aiohttp_session.closed or attempt > 1:
+                await _build_session(force_close=force_close)
+        except Exception as e:
+            logger.error(f"[rpc] build_session failed (attempt {attempt}/{attempts_total}): {_exc(e)}")
+            if attempt == attempts_total:
+                return {"error": str(e)}
+            await asyncio.sleep(0.2 * attempt)
+            continue
 
-            raw = await response.read()
-            text = raw.decode("utf-8", errors="replace")
-            return json.loads(text)
+        t0 = time.perf_counter()
+        try:
+            headers = {
+                "Content-Type": "application/json",
+                "Connection": "close" if force_close else "keep-alive",
+            }
+            async with aiohttp_session.post(RPC_ADDRESS, json=payload, auth=auth, headers=headers) as resp:
+                raw = await resp.read()
+                dt = time.perf_counter() - t0
 
-    except Exception as e:
-        logger.error(f"Error making RPC request: {e}")
-        return {"error": str(e)}
+                if resp.status != 200:
+                    text = raw.decode("utf-8", errors="replace")
+                    logger.error(f"[rpc] {method} HTTP {resp.status} in {dt:.3f}s body={text[:600]}")
+                    return {"error": f"HTTP {resp.status}", "status": resp.status, "body": text}
+
+                # Parse JSON
+                try:
+                    text = raw.decode("utf-8", errors="replace")
+                    return json.loads(text)
+                except Exception as je:
+                    logger.error(f"[rpc] {method} JSON decode error in {dt:.3f}s: {_exc(je)}")
+                    return {"error": f"JSON decode error: {je}"}
+
+        except (ServerDisconnectedError, ClientOSError, ClientPayloadError, asyncio.TimeoutError) as e:
+            dt = time.perf_counter() - t0
+            logger.error(f"[rpc] {method} network/timeout in {dt:.3f}s: {_exc(e)}")
+            if attempt < attempts_total:
+                # After the first network failure, disable keep-alive for subsequent attempts
+                force_close = True
+                # Exponential backoff + small jitter
+                await asyncio.sleep(0.4 * (2 ** (attempt - 1)) + random.random() * 0.2)
+                continue
+            return {"error": str(e)}
+
+        except Exception as e:
+            dt = time.perf_counter() - t0
+            logger.error(f"[rpc] {method} unexpected in {dt:.3f}s: {_exc(e)}")
+            return {"error": str(e)}
+
+
 
 
 
@@ -379,6 +475,12 @@ async def initialize_database():
         );
 
         """
+    create_system_data_table_query = """
+        CREATE TABLE IF NOT EXISTS systemData (
+            attribute VARCHAR(255) PRIMARY KEY,
+            value TEXT
+        );
+        """
 
 
 
@@ -400,6 +502,8 @@ async def initialize_database():
             await cursor.execute(create_address_to_tx_table_query)
             await cursor.execute(create_balance_data_table_query)
             await cursor.execute(create_utxos_table_query)
+            await cursor.execute(create_system_data_table_query)
+
 
             # Index for transactions.blockheight
             await cursor.execute("""
@@ -984,7 +1088,7 @@ async def process_blocks(start_block, end_block, batch_size=200, max_concurrent_
 
 
     async def add_addresses_if_new(cursor, addresses):
-        """Add multiple addresses to the `addresses` table in a batch with retries."""
+        """Add multiple addresses to the addresses table in a batch with retries."""
         query = "INSERT IGNORE INTO addresses (flo_address) VALUES (%s)"
         for attempt in range(retries):
             try:
@@ -1023,7 +1127,7 @@ async def process_blocks(start_block, end_block, batch_size=200, max_concurrent_
         txid = tx["txid"]
         vin_addresses = []
 
-        # Process `vin` and gather all necessary network data first
+        # Process vin and gather all necessary network data first
         vin_data = []
         for vin in tx.get("vin", []):
             try:
@@ -1044,7 +1148,7 @@ async def process_blocks(start_block, end_block, batch_size=200, max_concurrent_
             except Exception as e:
                 logger.error(f"Error processing vin: {vin}, error: {e}")
 
-        # Process `vout` and prepare data
+        # Process vout and prepare data
         vout_addresses = []
         vout_data = []
         for vout_index, vout in enumerate(tx.get("vout", [])):
@@ -1087,7 +1191,7 @@ async def process_blocks(start_block, end_block, batch_size=200, max_concurrent_
         for utxo_row in vout_data:
             await cursor.execute(
                 f"""
-                INSERT INTO `{ADDRESS_INDEXER_DB_NAME}`.utxos (
+                INSERT INTO {ADDRESS_INDEXER_DB_NAME}.utxos (
                     txid, vout, address, amount, satoshis, block_height, spent
                 ) VALUES (%s, %s, %s, %s, %s, %s, FALSE)
                 """,
@@ -1102,9 +1206,9 @@ async def process_blocks(start_block, end_block, batch_size=200, max_concurrent_
         for address in set(vin_addresses + vout_addresses):
             await add_address_tx_mapping(cursor, address, txid)
 
-        # Insert the transaction into the `transactions` table
+        # Insert the transaction into the transactions table
         query = f"""
-        INSERT INTO `{ADDRESS_INDEXER_DB_NAME}`.transactions (
+        INSERT INTO {ADDRESS_INDEXER_DB_NAME}.transactions (
             txid, blockhash, blockheight, time, valueOut, vin_addresses, vout_addresses, raw_transaction_json, floData
         ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
         """
@@ -1253,65 +1357,275 @@ async def process_blocks(start_block, end_block, batch_size=200, max_concurrent_
     except Exception as e:
         logger.error(f"Error processing blocks {start_block} to {end_block}: {e}")
 
-async def find_and_process_missing_blocks(batch_size=1, max_concurrent_batches=1):
+
+import asyncio
+import time
+import traceback
+
+async def find_and_process_missing_blocks():
+    """
+    Diagnostic backfill: ONE BLOCK AT A TIME (no batching), exactly like zmq_block_subscriber:
+        await process_blocks(height, height)
+
+    Adds maximal logging:
+      - Timings and counts for each phase (RPC, SQL, per-block)
+      - Full tracebacks for all exceptions
+      - Temporary wrappers for rpc_request and process_blocks (entry/exit/timing/traceback)
+      - Optional aiohttp TraceConfig to log all HTTP requests if global aiohttp_session is used
+      - Persists progress after EACH height
+    """
+    # ---------- Tunables ----------
+    CHUNK_SIZE = 100_000
+    THROTTLE_SECONDS = 0.15
+    OUTER_RETRIES_PER_BLOCK = 2  # first try + 1 retry
+    SAMPLE_MISSING_LOG = 50      # log first N missing heights as sample
+
+    # ---------- Helpers ----------
+    def _exc_full_str(e: Exception) -> str:
+        return f"{type(e).__name__}: {e}\n{traceback.format_exc()}"
+
+    def _tag(height: int, chunk_start: int = None, chunk_end: int = None) -> str:
+        if chunk_start is not None and chunk_end is not None:
+            return f"[blk:{height} chunk:{chunk_start}-{chunk_end}]"
+        return f"[blk:{height}]"
+
+    # ---------- Declare globals BEFORE any use ----------
+    global rpc_request, process_blocks, aiohttp_session
+
+    # ---------- Save originals and install wrappers ----------
+    _orig_rpc_request = rpc_request
+    _orig_process_blocks = process_blocks
+
+    async def _rpc_wrapper(method, params=None):
+        t0 = time.perf_counter()
+        try:
+            logger.debug(f"[rpcwrap] → {method} params={params!r}")
+            resp = await _orig_rpc_request(method, params)
+            dt = time.perf_counter() - t0
+            if isinstance(resp, dict):
+                keys = list(resp.keys())
+                logger.debug(f"[rpcwrap] ← {method} OK in {dt:.3f}s keys={keys} has_error={resp.get('error') is not None}")
+            else:
+                logger.debug(f"[rpcwrap] ← {method} OK in {dt:.3f}s type={type(resp).__name__}")
+            return resp
+        except Exception as e:
+            dt = time.perf_counter() - t0
+            logger.error(f"[rpcwrap] ✖ {method} in {dt:.3f}s: {_exc_full_str(e)}")
+            raise
+
+    async def _proc_wrapper(start_block, end_block, *args, **kwargs):
+        t0 = time.perf_counter()
+        logger.info(f"[procwrap] ENTER process_blocks({start_block}, {end_block}) args={args} kwargs={kwargs}")
+        try:
+            res = await _orig_process_blocks(start_block, end_block, *args, **kwargs)
+            dt = time.perf_counter() - t0
+            logger.info(f"[procwrap] EXIT  process_blocks({start_block}, {end_block}) OK in {dt:.3f}s")
+            return res
+        except Exception as e:
+            dt = time.perf_counter() - t0
+            logger.error(f"[procwrap] EXIT  process_blocks({start_block}, {end_block}) ERROR after {dt:.3f}s: {_exc_full_str(e)}")
+            raise
+
+    # Install wrappers
+    rpc_request = _rpc_wrapper
+    process_blocks = _proc_wrapper
+
+    # ---------- Optionally rebuild aiohttp_session with TraceConfig for HTTP logs ----------
+    _rebuilt_http_session = False
     try:
-        # Temporarily override globals to expand cleaner timeouts so that large missing blocks can be processed
-        with override_globals(
-            CLEANUP_INTERVAL_SECONDS=5000,
-            IDLE_TIME_THRESHOLD_TIMEOUT=5000,
-            CLEANER_THREAD_EXIT_TIMEOUT=5000,
-        ):
-            logger.info("Global values temporarily overridden to 1000.")
+        import aiohttp  # optional; only if available
+        if 'aiohttp_session' in globals():
+            trace = aiohttp.TraceConfig()
 
-            logger.info("Fetching latest block height from chain...")
-            chain_info = await rpc_request("getblockchaininfo")
-            if "result" not in chain_info:
-                raise Exception(f"RPC error: {chain_info.get('error')}")
-            latest_block = chain_info["result"]["blocks"]
+            @trace.on_request_start
+            async def _on_start(session, ctx, params):
+                logger.debug(f"[http] → {params.method} {params.url}")
 
-            logger.info(f"Latest block on chain: {latest_block}")
+            @trace.on_request_end
+            async def _on_end(session, ctx, params):
+                logger.debug(f"[http] ← {params.method} {params.url} done")
 
-            logger.info("Fetching processed blocks from database...")
-            conn = await get_mysql_connection()
+            @trace.on_request_exception
+            async def _on_exc(session, ctx, params):
+                logger.error(f"[http] ✖ {params.method} {params.url} exception", exc_info=True)
+
+            try:
+                if aiohttp_session is not None and not aiohttp_session.closed:
+                    await aiohttp_session.close()
+                connector = aiohttp.TCPConnector(
+                    limit=8,
+                    limit_per_host=4,
+                    keepalive_timeout=30,
+                    enable_cleanup_closed=True,
+                    ttl_dns_cache=300,
+                    # force_close=True,  # uncomment if you want to disable keep-alive during backfill
+                )
+                timeout = aiohttp.ClientTimeout(total=None, sock_connect=30, sock_read=180)
+                aiohttp_session = aiohttp.ClientSession(
+                    connector=connector,
+                    timeout=timeout,
+                    trace_configs=[trace],
+                )
+                _rebuilt_http_session = True
+                logger.info("[http] Rebuilt aiohttp_session with TraceConfig for detailed HTTP logs")
+            except Exception as e:
+                logger.warning(f"[http] Could not rebuild aiohttp_session: {_exc_full_str(e)}")
+        else:
+            logger.debug("[http] No global aiohttp_session found; HTTP trace not installed")
+    except Exception as e:
+        logger.debug(f"[http] aiohttp not available for tracing: {_exc_full_str(e)}")
+
+    # ---------- Main flow ----------
+    try:
+        # 1) Latest chain height
+        logger.info("[scan] Fetching latest block height from chain...")
+        t0 = time.perf_counter()
+        chain_info = await rpc_request("getblockchaininfo")
+        if not isinstance(chain_info, dict) or "result" not in chain_info:
+            raise Exception(f"RPC error in getblockchaininfo: {chain_info}")
+        latest_block = chain_info["result"]["blocks"]
+        logger.info(f"[scan] Latest block on chain: {latest_block} (took {time.perf_counter()-t0:.3f}s)")
+
+        # 2) DB connection
+        t0 = time.perf_counter()
+        conn = await get_mysql_connection()
+        logger.debug(f"[scan] MySQL connection acquired in {time.perf_counter()-t0:.3f}s")
+
+        try:
+            # 3) Ensure systemData table
+            t0 = time.perf_counter()
             async with conn.cursor() as cursor:
-                
-                await cursor.execute("SELECT block_height FROM processed_blocks")
-                rows = await cursor.fetchall()
-            await async_connection_pool.release(conn)
+                logger.debug("[scan] Ensuring systemData table exists")
+                await cursor.execute(
+                    """
+                    CREATE TABLE IF NOT EXISTS systemData (
+                        attribute VARCHAR(255) NOT NULL,
+                        value VARCHAR(255) NULL,
+                        PRIMARY KEY (attribute)
+                    ) ENGINE=InnoDB
+                      DEFAULT CHARSET=utf8mb4
+                      COLLATE=utf8mb4_unicode_ci
+                    """
+                )
+                await conn.commit()
+            logger.debug(f"[scan] systemData ensured in {time.perf_counter()-t0:.3f}s")
 
-            processed_set = set(row[0] for row in rows)
+            # 4) Determine resume point
+            t0 = time.perf_counter()
+            async with conn.cursor() as cursor:
+                q = "SELECT value FROM systemData WHERE attribute = 'lastScannedBlock'"
+                logger.debug(f"[scan] Executing resume query: {q}")
+                await cursor.execute(q)
+                row = await cursor.fetchone()
+            logger.debug(f"[scan] Resume row={row!r} fetched in {time.perf_counter()-t0:.3f}s")
 
-            all_blocks = set(range(0, latest_block + 1))
-            missing_blocks = sorted(all_blocks - processed_set)
-            logger.info(f"Found {len(missing_blocks)} missing blocks.")
+            last_scanned = 0
+            if row and row[0] is not None:
+                try:
+                    last_scanned = int(str(row[0]).strip())
+                except Exception as e:
+                    logger.warning(f"[scan] Non-numeric lastScannedBlock={row[0]!r}; defaulting to 0. {_exc_full_str(e)}")
+            start_from = last_scanned + 1
 
-            if not missing_blocks:
-                logger.info("No missing blocks found.")
+            if start_from > latest_block:
+                logger.info(f"[scan] Nothing to do. lastScannedBlock={last_scanned} >= latest_block={latest_block}")
                 return
 
-            from itertools import groupby
-            from operator import itemgetter
+            logger.info(f"[scan] Resuming scan from {start_from} to {latest_block}")
+            logger.debug(f"[scan] Config: CHUNK_SIZE={CHUNK_SIZE}, THROTTLE_SECONDS={THROTTLE_SECONDS}, "
+                         f"OUTER_RETRIES_PER_BLOCK={OUTER_RETRIES_PER_BLOCK}, HTTP_trace={_rebuilt_http_session}")
 
-            ranges = []
-            for _, group in groupby(enumerate(missing_blocks), lambda x: x[1] - x[0]):
-                block_range = list(map(itemgetter(1), group))
-                ranges.append((block_range[0], block_range[-1]))
+            # 5) Iterate across chunks ONLY to bound SQL select size
+            for chunk_start in range(start_from, latest_block + 1, CHUNK_SIZE):
+                chunk_end = min(latest_block, chunk_start + CHUNK_SIZE - 1)
+                logger.info(f"[scan] Scanning chunk {chunk_start}..{chunk_end}")
 
-            logger.info(f"Preparing to process {len(ranges)} missing block ranges.")
+                # Fetch processed heights in this chunk
+                t_chunk_sql = time.perf_counter()
+                async with conn.cursor() as cursor:
+                    logger.debug(f"[scan] Querying processed_blocks for {chunk_start}..{chunk_end}")
+                    await cursor.execute(
+                        "SELECT block_height FROM processed_blocks WHERE block_height BETWEEN %s AND %s",
+                        (chunk_start, chunk_end),
+                    )
+                    rows = await cursor.fetchall()
+                sql_dt = time.perf_counter() - t_chunk_sql
+                processed_set = set(r[0] for r in rows)
+                logger.debug(f"[scan] processed_rows={len(rows)} unique={len(processed_set)} SQLdt={sql_dt:.3f}s")
 
-            for start, end in ranges:
-                logger.info(f"Processing missing range: {start} to {end}")
-                await process_blocks(
-                    start_block=start,
-                    end_block=end,
-                    batch_size=batch_size,
-                    max_concurrent_batches=max_concurrent_batches
-                )
+                # Compute missing heights
+                all_heights = set(range(chunk_start, chunk_end + 1))
+                missing_heights = sorted(all_heights - processed_set)
+                logger.info(f"[scan] chunk {chunk_start}..{chunk_end} missing_count={len(missing_heights)}")
+                if missing_heights:
+                    logger.debug(f"[scan] sample missing (first {SAMPLE_MISSING_LOG}): {missing_heights[:SAMPLE_MISSING_LOG]}")
 
-            logger.info("Missing block processing complete.")
+                if not missing_heights:
+                    continue
+
+                # 6) EXACT parity with ZMQ path: one height at a time -> process_blocks(h, h)
+                for height in missing_heights:
+                    tag = _tag(height, chunk_start, chunk_end)
+                    t_block = time.perf_counter()
+
+                    for attempt in range(1, OUTER_RETRIES_PER_BLOCK + 1):
+                        logger.info(f"{tag} process_blocks({height}, {height}) attempt {attempt}/{OUTER_RETRIES_PER_BLOCK}")
+                        try:
+                            t_call = time.perf_counter()
+                            await process_blocks(height, height)
+                            logger.info(f"{tag} process_blocks OK in {time.perf_counter()-t_call:.3f}s")
+                            break  # success
+                        except Exception as e:
+                            msg = str(e) or type(e).__name__
+                            logger.error(f"{tag} process_blocks ERROR: {msg}")
+                            logger.error(f"{tag} traceback:\n{_exc_full_str(e)}")
+
+                            # If you want to special-case disconnects, uncomment:
+                            # if ("Server disconnected" in msg or "ServerDisconnectedError" in msg) and attempt < OUTER_RETRIES_PER_BLOCK:
+                            #     logger.warning(f"{tag} Detected RPC disconnect; short backoff then retry")
+                            #     await asyncio.sleep(1.0 * attempt)
+                            #     continue
+                            break  # give up on this height; we still persist progress
+
+                    # 7) Persist progress (even if skipped)
+                    try:
+                        t_up = time.perf_counter()
+                        async with conn.cursor() as cursor:
+                            await cursor.execute(
+                                """
+                                INSERT INTO systemData (attribute, value)
+                                VALUES (%s, %s)
+                                ON DUPLICATE KEY UPDATE value = VALUES(value)
+                                """,
+                                ('lastScannedBlock', str(height)),
+                            )
+                            await conn.commit()
+                        logger.info(f"{tag} progress saved: lastScannedBlock={height} (commit {time.perf_counter()-t_up:.3f}s)")
+                    except Exception as e:
+                        logger.error(f"{tag} progress commit FAILED: {_exc_full_str(e)}")
+
+                    await asyncio.sleep(THROTTLE_SECONDS)
+                    logger.debug(f"{tag} total block time {time.perf_counter()-t_block:.3f}s")
+
+            logger.info("[scan] Completed missing block processing for all chunks.")
+
+        finally:
+            # Release DB connection
+            try:
+                t_rel = time.perf_counter()
+                await async_connection_pool.release(conn)
+                logger.debug(f"[scan] Released MySQL connection in {time.perf_counter()-t_rel:.3f}s")
+            except Exception as e:
+                logger.error(f"[scan] Error releasing MySQL connection: {_exc_full_str(e)}")
 
     except Exception as e:
-        logger.error(f"Error during missing block recovery: {e}")
+        logger.error(f"[scan] FATAL: {_exc_full_str(e)}")
+        raise
+    finally:
+        # Restore originals to avoid side effects
+        rpc_request = _orig_rpc_request
+        process_blocks = _orig_process_blocks
+        logger.debug("[scan] Restored original rpc_request and process_blocks")
 
 
 
@@ -3265,63 +3579,72 @@ async def perform_startup_checks():
 async def cleanup_utxos_via_rpc(batch_size=1, lookback_blocks=None):
     """
     Cleans up UTXOs using the RPC gettxout call.
-    
+
     If lookback_blocks is specified, only UTXOs from the last
     N blocks are scanned. Otherwise, all UTXOs are scanned.
-    
+
     :param batch_size: commit frequency
     :param lookback_blocks: number of blocks to look back (int), or None for full cleanup
     """
-
     conn = await get_mysql_connection()
     deleted_count = 0
 
     try:
         async with conn.cursor() as cursor:
-            
-
-            # Determine block height range if lookback is specified
+            lower_bound = None
             if lookback_blocks is not None:
                 # Get latest block height
                 chain_info = await rpc_request("getblockchaininfo")
                 if "result" not in chain_info:
                     raise Exception(f"RPC error: {chain_info.get('error')}")
                 latest_block = chain_info["result"]["blocks"]
-
                 lower_bound = max(0, latest_block - lookback_blocks)
                 logger.info(f"Fetching UTXOs from blocks >= {lower_bound} (last {lookback_blocks} blocks)...")
-
-                await cursor.execute("""
-                    SELECT txid, vout
-                    FROM utxos
-                    WHERE block_height >= %s
-                """, (lower_bound,))
             else:
                 logger.info("Fetching all UTXOs...")
-                await cursor.execute("SELECT txid, vout FROM utxos")
 
-            utxos = await cursor.fetchall()
-            total = len(utxos)
-            logger.info(f"Checking {total} UTXOs via RPC for spend status...")
+            last_id = 0
+            LIMIT_SIZE = 100000
 
-            for i, (txid, vout) in enumerate(utxos):
-                try:
-                    response = await rpc_request("gettxout", [txid, vout, True])
-                    if response.get("result") is None:
-                        await cursor.execute(
-                            "DELETE FROM utxos WHERE txid = %s AND vout = %s",
-                            (txid, vout)
-                        )
-                        if cursor.rowcount > 0:
-                            deleted_count += 1
-                except Exception as e:
-                    logger.warning(f"UTXO check error for {txid}:{vout}: {e}")
+            while True:
+                if lower_bound is not None:
+                    await cursor.execute("""
+                        SELECT id, txid, vout FROM utxos
+                        WHERE id > %s AND block_height >= %s
+                        ORDER BY id ASC
+                        LIMIT %s
+                    """, (last_id, lower_bound, LIMIT_SIZE))
+                else:
+                    await cursor.execute("""
+                        SELECT id, txid, vout FROM utxos
+                        WHERE id > %s
+                        ORDER BY id ASC
+                        LIMIT %s
+                    """, (last_id, LIMIT_SIZE))
 
-                if (i + 1) % batch_size == 0:
-                    await conn.commit()
-                    logger.info(f"Processed {i + 1}/{total} UTXOs - Deleted so far: {deleted_count}")
+                utxos = await cursor.fetchall()
+                if not utxos:
+                    break  # Done
 
-            await conn.commit()
+                for i, (utxo_id, txid, vout) in enumerate(utxos):
+                    try:
+                        response = await rpc_request("gettxout", [txid, vout, True])
+                        if response.get("result") is None:
+                            await cursor.execute(
+                                "DELETE FROM utxos WHERE txid = %s AND vout = %s",
+                                (txid, vout)
+                            )
+                            if cursor.rowcount > 0:
+                                deleted_count += 1
+                    except Exception as e:
+                        logger.warning(f"UTXO check error for {txid}:{vout}: {e}")
+
+                    if (i + 1) % batch_size == 0:
+                        await conn.commit()
+
+                await conn.commit()
+                last_id = utxos[-1][0]  # Advance to last seen id
+
             logger.info(f"RPC-based UTXO cleanup complete. Total deleted: {deleted_count}")
 
     except Exception as e:

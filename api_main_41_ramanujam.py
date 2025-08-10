@@ -335,7 +335,7 @@ def set_configs(config):
 
     # Host/port settings
     APIHOST = config.get("API", "HOST", fallback="0.0.0.0")
-    APIPORT = config.getint("API", "PORT", fallback=5017)
+    APIPORT = config.getint("API", "PORT", fallback=5222)
 
     # Network/admin
     APP_ADMIN = config.get("DEFAULT", "APP_ADMIN", fallback="")

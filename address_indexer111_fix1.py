@@ -17,6 +17,7 @@ from uuid import uuid4
 
 # Third-party Libraries
 import aiohttp
+from aiohttp import ClientError, ServerDisconnectedError
 import aiomysql
 import psutil
 import zmq
@@ -47,9 +48,9 @@ RPC_PASSWORD = config['ADDRESS_INDEXER'].get('rpc_password', 'rpc')
 RPC_TIMEOUT = 30
 API_TIMEOUT = 60
 DB_RETRY_TIMEOUT = int(config['API'].get('DB_RETRY_TIMEOUT', 60))
-CLEANUP_INTERVAL_SECONDS = 5
-IDLE_TIME_THRESHOLD_TIMEOUT= 5
-CLEANER_THREAD_EXIT_TIMEOUT = 5
+CLEANUP_INTERVAL_SECONDS = 50
+IDLE_TIME_THRESHOLD_TIMEOUT= 50
+CLEANER_THREAD_EXIT_TIMEOUT = 50
 
 
 
@@ -379,6 +380,12 @@ async def initialize_database():
         );
 
         """
+    create_system_data_table_query = """
+        CREATE TABLE IF NOT EXISTS systemData (
+            attribute VARCHAR(255) PRIMARY KEY,
+            value TEXT
+        );
+        """
 
 
 
@@ -400,6 +407,8 @@ async def initialize_database():
             await cursor.execute(create_address_to_tx_table_query)
             await cursor.execute(create_balance_data_table_query)
             await cursor.execute(create_utxos_table_query)
+            await cursor.execute(create_system_data_table_query)
+
 
             # Index for transactions.blockheight
             await cursor.execute("""
@@ -955,33 +964,30 @@ async def get_last_processed_block():
             logger.error(f"Failed to release connection: {e}")
 
 
+
 async def process_blocks(start_block, end_block, batch_size=200, max_concurrent_batches=5, retries=5):
-    """Process blocks from start_block to end_block with batching, deduplication, retries, and concurrency."""
-    # Constants for dynamic concurrency control
-    BASE_CONCURRENT_BATCHES = 5  # Default concurrency level
-    MAX_CONCURRENT_BATCHES = 20   # Upper limit
-    MIN_CONCURRENT_BATCHES = 2    # Lower limit
-    HIGH_CPU_THRESHOLD = 80       # Reduce concurrency if CPU usage is above this
+    """Process blocks from start_block to end_block with batching, deduplication, retries, concurrency, and proper session cleanup."""
+    global aiohttp_session
+    BASE_CONCURRENT_BATCHES = 5
+    MAX_CONCURRENT_BATCHES = 20
+    MIN_CONCURRENT_BATCHES = 2
+    HIGH_CPU_THRESHOLD = 80
     LOW_CPU_THRESHOLD = 40  
 
     semaphore = asyncio.Semaphore(max_concurrent_batches)
 
     def adjust_concurrency():
         """Dynamically adjust concurrency based on CPU usage."""
-        global semaphore
+        nonlocal semaphore
         cpu_usage = psutil.cpu_percent(interval=1)
-
         if cpu_usage > HIGH_CPU_THRESHOLD:
             new_limit = max(MIN_CONCURRENT_BATCHES, semaphore._value - 2)
         elif cpu_usage < LOW_CPU_THRESHOLD:
             new_limit = min(MAX_CONCURRENT_BATCHES, semaphore._value + 2)
         else:
-            new_limit = semaphore._value  # Keep it unchanged
-
-        # Update semaphore value dynamically
+            new_limit = semaphore._value
         semaphore = asyncio.Semaphore(new_limit)
         logger.info(f"Adjusted concurrency to {new_limit} batches (CPU Usage: {cpu_usage}%)")
-
 
     async def add_addresses_if_new(cursor, addresses):
         """Add multiple addresses to the `addresses` table in a batch with retries."""
@@ -1128,190 +1134,277 @@ async def process_blocks(start_block, end_block, batch_size=200, max_concurrent_
         except Exception as e:
             logger.error(f"Error inserting transaction {txid}: {e}")
 
-
     async def process_single_block(block_height):
-        """Process a single block while respecting the semaphore limit."""
+        """Process a single block with retry and backoff and close sessions on failure."""
         global aiohttp_session
+        MAX_ATTEMPTS = 5
+
         async with semaphore:
-            # Get block hash
-            blockhash_response = await rpc_request("getblockhash", [block_height])
-            if "result" not in blockhash_response:
-                logger.error(f"Block number {block_height} not found.")
-                return
-            blockhash = blockhash_response["result"]
-
-            # Reuse global aiohttp session if available
-            if aiohttp_session is None:
-                aiohttp_session = aiohttp.ClientSession()
-
-            # Get block data
-            block_data_url = f"{SELF_URL}/api/block/{blockhash}"
-            async with aiohttp_session.get(block_data_url, timeout=API_TIMEOUT) as response:
-                if response.status != 200:
-                    logger.error(f"Failed to fetch block data for block number {block_height}.")
-                    return
-                block_data = await response.json()
-
-            # Extract block time
-            block_time = block_data.get("time")
-            if not block_time:
-                logger.error(f"Block {block_height} does not contain a valid time.")
-                return
-
-            conn = await get_mysql_connection()
-            try:
-                async with conn.cursor() as cursor:
-                    # Select the correct database context
-                    
-                    logger.info(f"Processing block {block_height}")
-
-                    # Fetch existing transactions for the block
-                    await cursor.execute(
-                        "SELECT txid FROM transactions WHERE blockheight = %s",
-                        (block_height,),
-                    )
-                    existing_txids = {row[0] for row in await cursor.fetchall()}
-                    logger.info(f"Existing transactions for block {block_height}: {list(existing_txids)}")
-
-                    # Process transactions in the block
-                    for tx in block_data.get("txs", []):
-                        txid = tx["txid"]
-                        if txid in existing_txids:
-                            logger.info(f"Transaction {txid} already exists. Rechecking mappings.")
-                        else:
-                            logger.info(f"Transaction {txid} missing. Adding to the database.")
-                            await process_transaction(cursor, tx, blockhash, block_height, block_time)
-
-                    # Mark block as processed with block_time
-                    await cursor.execute(
-                        """
-                        INSERT INTO processed_blocks (block_height, block_hash, processed_at)
-                        VALUES (%s, %s, FROM_UNIXTIME(%s))
-                        ON DUPLICATE KEY UPDATE 
-                            block_hash = %s,
-                            processed_at = FROM_UNIXTIME(%s)
-                        """,
-                        (block_height, blockhash, block_time, blockhash, block_time),
-                    )
-
-
-                    await conn.commit()
-                    logger.info(f"Block {block_height} processed successfully.")
-            except Exception as e:
-                logger.error(f"Error processing block {block_height}: {e}")
-            finally:
+            for attempt in range(1, MAX_ATTEMPTS + 1):
                 try:
-                    async_connection_pool.release(conn)
-                except Exception as release_error:
-                    logger.error(f"Failed to release connection for block {block_height}: {release_error}")
+                    blockhash_response = await rpc_request("getblockhash", [block_height])
+                    if "result" not in blockhash_response:
+                        logger.error(f"Block number {block_height} not found.")
+                        return
+                    blockhash = blockhash_response["result"]
 
+                    # Ensure aiohttp session
+                    if aiohttp_session is None or aiohttp_session.closed:
+                        aiohttp_session = aiohttp.ClientSession()
 
+                    block_data_url = f"{SELF_URL}/api/block/{blockhash}"
+                    async with aiohttp_session.get(block_data_url, timeout=API_TIMEOUT) as response:
+                        if response.status != 200:
+                            raise Exception(f"Bad response status {response.status}")
+                        block_data = await response.json()
 
+                    block_time = block_data.get("time")
+                    if not block_time:
+                        logger.error(f"Block {block_height} does not contain a valid time.")
+                        return
+
+                    conn = await get_mysql_connection()
+                    try:
+                        async with conn.cursor() as cursor:
+                            logger.info(f"Processing block {block_height}")
+
+                            await cursor.execute(
+                                "SELECT txid FROM transactions WHERE blockheight = %s",
+                                (block_height,),
+                            )
+                            existing_txids = {row[0] for row in await cursor.fetchall()}
+
+                            for tx in block_data.get("txs", []):
+                                txid = tx["txid"]
+                                if txid not in existing_txids:
+                                    await process_transaction(cursor, tx, blockhash, block_height, block_time)
+
+                            await cursor.execute(
+                                """
+                                INSERT INTO processed_blocks (block_height, block_hash, processed_at)
+                                VALUES (%s, %s, FROM_UNIXTIME(%s))
+                                ON DUPLICATE KEY UPDATE 
+                                    block_hash = %s,
+                                    processed_at = FROM_UNIXTIME(%s)
+                                """,
+                                (block_height, blockhash, block_time, blockhash, block_time),
+                            )
+                            await conn.commit()
+                            logger.info(f"Block {block_height} processed successfully.")
+                        return  # success
+                    finally:
+                        await async_connection_pool.release(conn)
+
+                except (ServerDisconnectedError, ClientError, asyncio.TimeoutError) as e:
+                    logger.error(f"Network error processing block {block_height}: {e}")
+                    if attempt < MAX_ATTEMPTS:
+                        delay = attempt * 2
+                        logger.info(f"Retrying block {block_height} in {delay}s (attempt {attempt}/{MAX_ATTEMPTS})")
+
+                        # ✅ Close session on failure to prevent leaks
+                        if aiohttp_session and not aiohttp_session.closed:
+                            await aiohttp_session.close()
+                            aiohttp_session = None
+
+                        await asyncio.sleep(delay)
+                    else:
+                        logger.error(f"❌ Gave up on block {block_height} after {MAX_ATTEMPTS} attempts")
+                        return
+
+                except Exception as e:
+                    logger.error(f"Unhandled error processing block {block_height}: {e}")
+                    return
 
     # Process blocks in batches
     try:
         for batch_start in range(start_block, end_block + 1, batch_size):
             batch_end = min(batch_start + batch_size - 1, end_block)
-            batch_tasks = [
-                process_single_block(block_height) for block_height in range(batch_start, batch_end + 1)
-            ]
-            logger.info(f"Processing batch {batch_start} to {batch_end} ({batch_start - start_block + 1}/{end_block - start_block + 1} blocks processed so far)")
-            
-            start_time = time.time()  # Track batch processing time
-            
-            # Process blocks concurrently, with exception handling
-            results = await asyncio.gather(*batch_tasks, return_exceptions=True)
-            failed_blocks = []  # To track blocks that failed in this batch
+            logger.info(f"Processing batch {batch_start} to {batch_end}")
 
-            for block_height, result in zip(range(batch_start, batch_end + 1), results):
-                if isinstance(result, Exception):
-                    logger.error(f"Error processing block {block_height}: {result}")
-                    failed_blocks.append(block_height)  # Add to retry list
-                else:
-                    logger.info(f"Successfully processed block {block_height}")
-            
-            # Retry failed blocks
+            batch_tasks = [process_single_block(block_height) for block_height in range(batch_start, batch_end + 1)]
+            results = await asyncio.gather(*batch_tasks, return_exceptions=True)
+
+            failed_blocks = [
+                block_height for block_height, result in zip(range(batch_start, batch_end + 1), results)
+                if isinstance(result, Exception) or result is None
+            ]
+
+            # Retry failed blocks at batch level
             for retry_attempt in range(1, retries + 1):
                 if not failed_blocks:
-                    break  # No blocks to retry
-                
-                logger.info(f"Retrying failed blocks: {failed_blocks} (attempt {retry_attempt}/{retries})")
-                retry_tasks = [process_single_block(block_height) for block_height in failed_blocks]
-                retry_results = await asyncio.gather(*retry_tasks, return_exceptions=True)
+                    break
+                logger.warning(f"Retrying failed blocks: {failed_blocks} (batch retry {retry_attempt}/{retries})")
 
-                # Update failed_blocks with any blocks that still fail
+                retry_results = await asyncio.gather(
+                    *[process_single_block(b) for b in failed_blocks], return_exceptions=True
+                )
                 failed_blocks = [
                     block_height for block_height, result in zip(failed_blocks, retry_results)
-                    if isinstance(result, Exception)
+                    if isinstance(result, Exception) or result is None
                 ]
 
             if failed_blocks:
-                logger.error(f"Failed to process blocks after {retries} retries: {failed_blocks}")
+                logger.error(f"❌ Failed to process blocks after all retries: {failed_blocks}")
 
-            logger.info(f"Successfully processed batch {batch_start} to {batch_end} in {time.time() - start_time:.2f} seconds")
-        logger.info(f"Processed blocks {start_block} to {end_block}.")
+            logger.info(f"✅ Finished batch {batch_start} to {batch_end}")
+
     except Exception as e:
         logger.error(f"Error processing blocks {start_block} to {end_block}: {e}")
 
+    finally:
+        # ✅ Final cleanup: close aiohttp session at end of entire run
+        if aiohttp_session and not aiohttp_session.closed:
+            await aiohttp_session.close()
+            aiohttp_session = None
+
+    logger.info(f"✅ Processed blocks {start_block} to {end_block}")
+
+
 async def find_and_process_missing_blocks(batch_size=1, max_concurrent_batches=1):
+    """
+    Scan for missing processed blocks in 100,000-block chunks.
+    Persist progress to systemData.attribute='lastScannedBlock' after each chunk.
+    Create systemData if it doesn't exist, with string 'value'.
+    """
     try:
-        # Temporarily override globals to expand cleaner timeouts so that large missing blocks can be processed
+        from itertools import groupby
+        from operator import itemgetter
+
         with override_globals(
             CLEANUP_INTERVAL_SECONDS=5000,
             IDLE_TIME_THRESHOLD_TIMEOUT=5000,
             CLEANER_THREAD_EXIT_TIMEOUT=5000,
         ):
-            logger.info("Global values temporarily overridden to 1000.")
+            logger.info("Global values temporarily overridden to 5000.")
 
+            # Step 1: Get latest block height from chain
             logger.info("Fetching latest block height from chain...")
             chain_info = await rpc_request("getblockchaininfo")
             if "result" not in chain_info:
                 raise Exception(f"RPC error: {chain_info.get('error')}")
             latest_block = chain_info["result"]["blocks"]
-
             logger.info(f"Latest block on chain: {latest_block}")
 
-            logger.info("Fetching processed blocks from database...")
+            CHUNK_SIZE = 100_000
+
             conn = await get_mysql_connection()
-            async with conn.cursor() as cursor:
-                
-                await cursor.execute("SELECT block_height FROM processed_blocks")
-                rows = await cursor.fetchall()
-            await async_connection_pool.release(conn)
+            try:
+                async with conn.cursor() as cursor:
+                    # --- Ensure the systemData table exists (string value) ---
+                    await cursor.execute(
+                        """
+                        CREATE TABLE IF NOT EXISTS systemData (
+                            attribute VARCHAR(255) NOT NULL,
+                            value VARCHAR(255) NULL,
+                            PRIMARY KEY (attribute)
+                        ) ENGINE=InnoDB
+                          DEFAULT CHARSET=utf8mb4
+                          COLLATE=utf8mb4_unicode_ci
+                        """
+                    )
+                    await conn.commit()
 
-            processed_set = set(row[0] for row in rows)
+                    # Step 2: Determine resume point (value is stored as string)
+                    await cursor.execute(
+                        "SELECT value FROM systemData WHERE attribute = 'lastScannedBlock'"
+                    )
+                    row = await cursor.fetchone()
 
-            all_blocks = set(range(0, latest_block + 1))
-            missing_blocks = sorted(all_blocks - processed_set)
-            logger.info(f"Found {len(missing_blocks)} missing blocks.")
+                    if row and row[0] is not None:
+                        try:
+                            last_scanned = int(str(row[0]).strip())
+                        except ValueError:
+                            logger.warning(
+                                "Non-numeric lastScannedBlock value found in systemData: %r. "
+                                "Defaulting to 0.", row[0]
+                            )
+                            last_scanned = 0
+                    else:
+                        last_scanned = 0
 
-            if not missing_blocks:
-                logger.info("No missing blocks found.")
-                return
+                    start_from = last_scanned + 1
+                    if start_from > latest_block:
+                        logger.info(
+                            f"Nothing to do. lastScannedBlock={last_scanned} is >= latest_block={latest_block}"
+                        )
+                        return
 
-            from itertools import groupby
-            from operator import itemgetter
+                    logger.info(f"📌 Resuming full missing scan from block height: {start_from}")
 
-            ranges = []
-            for _, group in groupby(enumerate(missing_blocks), lambda x: x[1] - x[0]):
-                block_range = list(map(itemgetter(1), group))
-                ranges.append((block_range[0], block_range[-1]))
+                    # Step 3: Iterate through chunks
+                    for chunk_start in range(start_from, latest_block + 1, CHUNK_SIZE):
+                        chunk_end = min(latest_block, chunk_start + CHUNK_SIZE - 1)
+                        logger.info(f"🔍 Scanning block range: {chunk_start} to {chunk_end}")
 
-            logger.info(f"Preparing to process {len(ranges)} missing block ranges.")
+                        # Fetch processed blocks in this chunk
+                        await cursor.execute(
+                            "SELECT block_height FROM processed_blocks WHERE block_height BETWEEN %s AND %s",
+                            (chunk_start, chunk_end),
+                        )
+                        rows = await cursor.fetchall()
+                        processed_set = set(row[0] for row in rows)
 
-            for start, end in ranges:
-                logger.info(f"Processing missing range: {start} to {end}")
-                await process_blocks(
-                    start_block=start,
-                    end_block=end,
-                    batch_size=batch_size,
-                    max_concurrent_batches=max_concurrent_batches
-                )
+                        # Detect missing blocks
+                        full_set = set(range(chunk_start, chunk_end + 1))
+                        missing_blocks = sorted(full_set - processed_set)
+                        logger.info(f"➖ Found {len(missing_blocks)} missing blocks in chunk.")
 
-            logger.info("Missing block processing complete.")
+                        if missing_blocks:
+                            # Group into contiguous ranges
+                            ranges = []
+                            for _, group in groupby(
+                                enumerate(missing_blocks), lambda x: x[1] - x[0]
+                            ):
+                                group_list = list(map(itemgetter(1), group))
+                                ranges.append((group_list[0], group_list[-1]))
+
+                            logger.info(
+                                f"📦 Will process {len(ranges)} missing block ranges in this chunk."
+                            )
+
+                            # Process each range
+                            for idx, (start, end) in enumerate(ranges, 1):
+                                logger.info(f"🚀 Processing missing range: {start} to {end}")
+                                await process_blocks(
+                                    start_block=start,
+                                    end_block=end,
+                                    batch_size=batch_size,
+                                    max_concurrent_batches=max_concurrent_batches,
+                                )
+
+                                # ✅ Yield after each range
+                                if idx % 1 == 0:
+                                    await asyncio.sleep(0)
+
+                        # ✅ Persist progress after this chunk (store as string)
+                        upsert_query = """
+                            INSERT INTO systemData (attribute, value)
+                            VALUES (%s, %s)
+                            ON DUPLICATE KEY UPDATE value = VALUES(value)
+                        """
+                        await cursor.execute(
+                            upsert_query,
+                            ('lastScannedBlock', str(chunk_end))  # store as string
+                        )
+                        await conn.commit()
+                        logger.info(f"💾 Progress saved: lastScannedBlock = {chunk_end}")
+
+                        # ✅ Yield after each chunk so Hypercorn can process other tasks
+                        await asyncio.sleep(0)
+
+                    logger.info("✅ Missing block processing complete across all chunks.")
+
+            finally:
+                await async_connection_pool.release(conn)
 
     except Exception as e:
-        logger.error(f"Error during missing block recovery: {e}")
+        logger.error(f"❌ Error during missing block recovery: {e}")
+        raise
+
+
+
+
+
 
 
 

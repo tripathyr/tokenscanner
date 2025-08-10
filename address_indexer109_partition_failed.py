@@ -334,14 +334,17 @@ async def initialize_database():
         """
 
     create_address_to_tx_table_query = """
-        CREATE TABLE IF NOT EXISTS address_to_tx (
-            address VARCHAR(255),
-            txid VARCHAR(255),
-            PRIMARY KEY (address, txid),
-            INDEX idx_address (address),  
-            INDEX idx_txid (txid)  
-        );
-        """
+    CREATE TABLE IF NOT EXISTS address_to_tx (
+        address VARCHAR(255),
+        txid VARCHAR(255),
+        address_hash BIGINT UNSIGNED GENERATED ALWAYS AS (CRC32(address)) STORED,
+        PRIMARY KEY (address, txid, address_hash),
+        INDEX idx_address (address),
+        INDEX idx_txid (txid)
+    )
+    PARTITION BY HASH(address_hash) PARTITIONS 128;
+    """
+
 
     create_balance_data_table_query = """
         CREATE TABLE IF NOT EXISTS balance_data (
@@ -707,9 +710,9 @@ async def process_address_externalsource(flo_address):
                     stored_txids_query = """
                     SELECT txid
                     FROM address_to_tx
-                    WHERE address = %s;
+                    WHERE address = %s AND address_hash = CRC32(%s);
                     """
-                    await cursor.execute(stored_txids_query, (flo_address,))
+                    await cursor.execute(stored_txids_query, (flo_address, flo_address))
                     rows = await cursor.fetchall()
             finally:
                 async_connection_pool.release(conn)
@@ -874,8 +877,8 @@ async def store_transaction_data(transaction_data):
     ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
     """
     mapping_query = f"""
-    INSERT IGNORE INTO `{ADDRESS_INDEXER_DB_NAME}`.address_to_tx (address, txid)
-    VALUES (%s, %s)
+    INSERT IGNORE INTO `{ADDRESS_INDEXER_DB_NAME}`.address_to_tx (address, txid, address_hash)
+    VALUES (%s, %s, CRC32(%s))
     """
     utxo_insert_query = f"""
     INSERT INTO `{ADDRESS_INDEXER_DB_NAME}`.utxos (
@@ -908,8 +911,9 @@ async def store_transaction_data(transaction_data):
             # Insert address-to-tx mappings
             mappings = [(address, txid) for address in set(vin_addresses + vout_addresses)]
             for address, txid in mappings:
-                await cursor.execute(mapping_query, (address, txid))
+                await cursor.execute(mapping_query, (address, txid, address))
                 logger.info(f"Mapped address {address} to transaction {txid}.")
+
 
             # Update UTXOs
             for spent_txid, spent_vout in spent_utxos:
@@ -1005,7 +1009,8 @@ async def process_blocks(start_block, end_block, batch_size=200, max_concurrent_
         for attempt in range(retries):
             try:
                 await cursor.execute(
-                    "INSERT IGNORE INTO address_to_tx (address, txid) VALUES (%s, %s)", (address, txid)
+                    "INSERT IGNORE INTO address_to_tx (address, txid, address_hash) VALUES (%s, %s, CRC32(%s))",
+                    (address, txid, address)
                 )
                 logger.info(f"Successfully mapped address {address} to transaction {txid}")
                 return
@@ -1017,6 +1022,7 @@ async def process_blocks(start_block, end_block, batch_size=200, max_concurrent_
                     raise
                 await asyncio.sleep(0.5)
         logger.error(f"Failed to add address-to-tx mapping for {address} and {txid} after {retries} retries.")
+
 
     async def process_transaction(cursor, tx, blockhash, block_height, block_time):
         """Process a single transaction, adding it to the database, mappings, and UTXOs."""
@@ -1252,6 +1258,7 @@ async def process_blocks(start_block, end_block, batch_size=200, max_concurrent_
         logger.info(f"Processed blocks {start_block} to {end_block}.")
     except Exception as e:
         logger.error(f"Error processing blocks {start_block} to {end_block}: {e}")
+
 
 async def find_and_process_missing_blocks(batch_size=1, max_concurrent_batches=1):
     try:
@@ -1577,15 +1584,17 @@ async def calculate_balance_and_update(conn, flo_address, from_scratch=False):
     SELECT t.*
     FROM `{ADDRESS_INDEXER_DB_NAME}`.transactions t
     JOIN `{ADDRESS_INDEXER_DB_NAME}`.address_to_tx at ON t.txid = at.txid
-    WHERE at.address = %s;
+    WHERE at.address = %s AND at.address_hash = CRC32(%s);
     """
+
 
     new_transactions_query = f"""
     SELECT t.*
     FROM `{ADDRESS_INDEXER_DB_NAME}`.transactions t
     JOIN `{ADDRESS_INDEXER_DB_NAME}`.address_to_tx at ON t.txid = at.txid
-    WHERE at.address = %s AND t.blockheight > %s;
+    WHERE at.address = %s AND at.address_hash = CRC32(%s) AND t.blockheight > %s;
     """
+
 
     store_balance_query = """
     REPLACE INTO balance_data (
@@ -1675,14 +1684,15 @@ async def fetch_and_calculate_address_data(conn, flo_address, page, page_size, d
     SELECT COUNT(*) as total
     FROM `transactions` t
     JOIN `address_to_tx` at ON t.txid = at.txid
-    WHERE at.address = %s;
+    WHERE at.address = %s AND at.address_hash = CRC32(%s);
     """
+
 
     paginated_query = """
     SELECT t.*
     FROM `transactions` t
     JOIN `address_to_tx` at ON t.txid = at.txid
-    WHERE at.address = %s
+    WHERE at.address = %s AND at.address_hash = CRC32(%s)
     ORDER BY t.blockheight DESC
     LIMIT %s OFFSET %s;
     """
@@ -1695,12 +1705,14 @@ async def fetch_and_calculate_address_data(conn, flo_address, page, page_size, d
         async with conn.cursor(aiomysql.DictCursor) as cursor:
             offset = (page - 1) * page_size
 
-            await cursor.execute(count_query, (flo_address,))
+            await cursor.execute(count_query, (flo_address, flo_address))
             total_count = (await cursor.fetchone())["total"]
             total_pages = max(1, (total_count + page_size - 1) // page_size)
 
-            await cursor.execute(paginated_query, (flo_address, page_size, offset))
+            await cursor.execute(paginated_query, (flo_address, flo_address, page_size, offset))
             paginated_transactions = await cursor.fetchall()
+
+    
 
         # ---- CONNECTION RELEASED HERE ----
 
@@ -1761,7 +1773,9 @@ async def fetch_and_calculate_address_data(conn, flo_address, page, page_size, d
         logger.error(f"Error during address data fetch/calculation: {e}")
         raise
 
-
+    finally:
+        # ✅ Ensure connection is returned to pool
+        async_connection_pool.release(conn)
 
 # Fetches from internal address index
 @address_indexer_app.route('/api/v2/address/<flo_address>', methods=['GET'])

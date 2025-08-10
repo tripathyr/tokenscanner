@@ -47,9 +47,9 @@ RPC_PASSWORD = config['ADDRESS_INDEXER'].get('rpc_password', 'rpc')
 RPC_TIMEOUT = 30
 API_TIMEOUT = 60
 DB_RETRY_TIMEOUT = int(config['API'].get('DB_RETRY_TIMEOUT', 60))
-CLEANUP_INTERVAL_SECONDS = 5
-IDLE_TIME_THRESHOLD_TIMEOUT= 5
-CLEANER_THREAD_EXIT_TIMEOUT = 5
+CLEANUP_INTERVAL_SECONDS = 50
+IDLE_TIME_THRESHOLD_TIMEOUT= 50
+CLEANER_THREAD_EXIT_TIMEOUT = 50
 
 
 
@@ -379,6 +379,12 @@ async def initialize_database():
         );
 
         """
+    create_system_data_table_query = """
+        CREATE TABLE IF NOT EXISTS systemData (
+            attribute VARCHAR(255) PRIMARY KEY,
+            value TEXT
+        );
+        """
 
 
 
@@ -400,6 +406,8 @@ async def initialize_database():
             await cursor.execute(create_address_to_tx_table_query)
             await cursor.execute(create_balance_data_table_query)
             await cursor.execute(create_utxos_table_query)
+            await cursor.execute(create_system_data_table_query)
+
 
             # Index for transactions.blockheight
             await cursor.execute("""
@@ -1253,65 +1261,152 @@ async def process_blocks(start_block, end_block, batch_size=200, max_concurrent_
     except Exception as e:
         logger.error(f"Error processing blocks {start_block} to {end_block}: {e}")
 
+
 async def find_and_process_missing_blocks(batch_size=1, max_concurrent_batches=1):
+    """
+    Scan for missing processed blocks in 100,000-block chunks.
+    Persist progress to systemData.attribute='lastScannedBlock' after each chunk.
+    Create systemData if it doesn't exist, with string 'value'.
+    """
     try:
-        # Temporarily override globals to expand cleaner timeouts so that large missing blocks can be processed
+        from itertools import groupby
+        from operator import itemgetter
+
         with override_globals(
             CLEANUP_INTERVAL_SECONDS=5000,
             IDLE_TIME_THRESHOLD_TIMEOUT=5000,
             CLEANER_THREAD_EXIT_TIMEOUT=5000,
         ):
-            logger.info("Global values temporarily overridden to 1000.")
+            logger.info("Global values temporarily overridden to 5000.")
 
+            # Step 1: Get latest block height from chain
             logger.info("Fetching latest block height from chain...")
             chain_info = await rpc_request("getblockchaininfo")
             if "result" not in chain_info:
                 raise Exception(f"RPC error: {chain_info.get('error')}")
             latest_block = chain_info["result"]["blocks"]
-
             logger.info(f"Latest block on chain: {latest_block}")
 
-            logger.info("Fetching processed blocks from database...")
+            CHUNK_SIZE = 100_000
+
             conn = await get_mysql_connection()
-            async with conn.cursor() as cursor:
-                
-                await cursor.execute("SELECT block_height FROM processed_blocks")
-                rows = await cursor.fetchall()
-            await async_connection_pool.release(conn)
+            try:
+                async with conn.cursor() as cursor:
+                    # --- Ensure the systemData table exists (string value) ---
+                    await cursor.execute(
+                        """
+                        CREATE TABLE IF NOT EXISTS systemData (
+                            attribute VARCHAR(255) NOT NULL,
+                            value VARCHAR(255) NULL,
+                            PRIMARY KEY (attribute)
+                        ) ENGINE=InnoDB
+                          DEFAULT CHARSET=utf8mb4
+                          COLLATE=utf8mb4_unicode_ci
+                        """
+                    )
+                    await conn.commit()
 
-            processed_set = set(row[0] for row in rows)
+                    # Step 2: Determine resume point (value is stored as string)
+                    await cursor.execute(
+                        "SELECT value FROM systemData WHERE attribute = 'lastScannedBlock'"
+                    )
+                    row = await cursor.fetchone()
 
-            all_blocks = set(range(0, latest_block + 1))
-            missing_blocks = sorted(all_blocks - processed_set)
-            logger.info(f"Found {len(missing_blocks)} missing blocks.")
+                    if row and row[0] is not None:
+                        try:
+                            last_scanned = int(str(row[0]).strip())
+                        except ValueError:
+                            logger.warning(
+                                "Non-numeric lastScannedBlock value found in systemData: %r. "
+                                "Defaulting to 0.", row[0]
+                            )
+                            last_scanned = 0
+                    else:
+                        last_scanned = 0
 
-            if not missing_blocks:
-                logger.info("No missing blocks found.")
-                return
+                    start_from = last_scanned + 1
+                    if start_from > latest_block:
+                        logger.info(
+                            f"Nothing to do. lastScannedBlock={last_scanned} is >= latest_block={latest_block}"
+                        )
+                        return
 
-            from itertools import groupby
-            from operator import itemgetter
+                    logger.info(f"📌 Resuming full missing scan from block height: {start_from}")
 
-            ranges = []
-            for _, group in groupby(enumerate(missing_blocks), lambda x: x[1] - x[0]):
-                block_range = list(map(itemgetter(1), group))
-                ranges.append((block_range[0], block_range[-1]))
+                    # Step 3: Iterate through chunks
+                    for chunk_start in range(start_from, latest_block + 1, CHUNK_SIZE):
+                        chunk_end = min(latest_block, chunk_start + CHUNK_SIZE - 1)
+                        logger.info(f"🔍 Scanning block range: {chunk_start} to {chunk_end}")
 
-            logger.info(f"Preparing to process {len(ranges)} missing block ranges.")
+                        # Fetch processed blocks in this chunk
+                        await cursor.execute(
+                            "SELECT block_height FROM processed_blocks WHERE block_height BETWEEN %s AND %s",
+                            (chunk_start, chunk_end),
+                        )
+                        rows = await cursor.fetchall()
+                        processed_set = set(row[0] for row in rows)
 
-            for start, end in ranges:
-                logger.info(f"Processing missing range: {start} to {end}")
-                await process_blocks(
-                    start_block=start,
-                    end_block=end,
-                    batch_size=batch_size,
-                    max_concurrent_batches=max_concurrent_batches
-                )
+                        # Detect missing blocks
+                        full_set = set(range(chunk_start, chunk_end + 1))
+                        missing_blocks = sorted(full_set - processed_set)
+                        logger.info(f"➖ Found {len(missing_blocks)} missing blocks in chunk.")
 
-            logger.info("Missing block processing complete.")
+                        if missing_blocks:
+                            # Group into contiguous ranges
+                            ranges = []
+                            for _, group in groupby(
+                                enumerate(missing_blocks), lambda x: x[1] - x[0]
+                            ):
+                                group_list = list(map(itemgetter(1), group))
+                                ranges.append((group_list[0], group_list[-1]))
+
+                            logger.info(
+                                f"📦 Will process {len(ranges)} missing block ranges in this chunk."
+                            )
+
+                            # Process each range
+                            for idx, (start, end) in enumerate(ranges, 1):
+                                logger.info(f"🚀 Processing missing range: {start} to {end}")
+                                await process_blocks(
+                                    start_block=start,
+                                    end_block=end,
+                                    batch_size=batch_size,
+                                    max_concurrent_batches=max_concurrent_batches,
+                                )
+
+                                # ✅ Yield after each range
+                                if idx % 1 == 0:
+                                    await asyncio.sleep(0)
+
+                        # ✅ Persist progress after this chunk (store as string)
+                        upsert_query = """
+                            INSERT INTO systemData (attribute, value)
+                            VALUES (%s, %s)
+                            ON DUPLICATE KEY UPDATE value = VALUES(value)
+                        """
+                        await cursor.execute(
+                            upsert_query,
+                            ('lastScannedBlock', str(chunk_end))  # store as string
+                        )
+                        await conn.commit()
+                        logger.info(f"💾 Progress saved: lastScannedBlock = {chunk_end}")
+
+                        # ✅ Yield after each chunk so Hypercorn can process other tasks
+                        await asyncio.sleep(0)
+
+                    logger.info("✅ Missing block processing complete across all chunks.")
+
+            finally:
+                await async_connection_pool.release(conn)
 
     except Exception as e:
-        logger.error(f"Error during missing block recovery: {e}")
+        logger.error(f"❌ Error during missing block recovery: {e}")
+        raise
+
+
+
+
+
 
 
 

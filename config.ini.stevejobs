@@ -10,15 +10,15 @@ APP_ADMIN = FNcvkz9PZNZM3HcxM1XTrVL4tgivmCkHp9
 API_VERIFY = False
 
 
-BLOCKBOOK_MAINNET_URL_LIST = http://127.0.0.1/
-BLOCKBOOK_TESTNET_URL_LIST = http://127.0.0.1/
+BLOCKBOOK_MAINNET_URL_LIST = http://127.0.0.1:9060/
+BLOCKBOOK_TESTNET_URL_LIST = http://127.0.0.1:9060/
 
 
 
 
 [MYSQL]
-USERNAME = new_user
-PASSWORD = user_password
+USERNAME = FUfB6cwSsGDbQpmA7Qs8zQJxU3Hp
+PASSWORD = RAcifrTM2V75ipy5MeLYaDU3UNcUXtrit933TGM5o7Yj2fs8XdP5!
 HOST = localhost
 DATABASE_PREFIX = rm
 
@@ -30,9 +30,9 @@ API_TIMEOUT = 60
 
 [ADDRESS_INDEXER]
 HOST = 0.0.0.0
-PORT = 80
+PORT = 9060
 SUFFIX = _data2
-URL = https://flocha.in
+URL = https://blockbook.flocard.app
 rpc_address=http://127.0.0.1:8066/
 rpc_user=rpc
 rpc_password=rpc

@@ -47,9 +47,9 @@ RPC_PASSWORD = config['ADDRESS_INDEXER'].get('rpc_password', 'rpc')
 RPC_TIMEOUT = 30
 API_TIMEOUT = 60
 DB_RETRY_TIMEOUT = int(config['API'].get('DB_RETRY_TIMEOUT', 60))
-CLEANUP_INTERVAL_SECONDS = 5
-IDLE_TIME_THRESHOLD_TIMEOUT= 5
-CLEANER_THREAD_EXIT_TIMEOUT = 5
+CLEANUP_INTERVAL_SECONDS = 50
+IDLE_TIME_THRESHOLD_TIMEOUT= 50
+CLEANER_THREAD_EXIT_TIMEOUT = 50
 
 
 
@@ -1253,49 +1253,73 @@ async def process_blocks(start_block, end_block, batch_size=200, max_concurrent_
     except Exception as e:
         logger.error(f"Error processing blocks {start_block} to {end_block}: {e}")
 
+
 async def find_and_process_missing_blocks(batch_size=1, max_concurrent_batches=1):
     try:
-        # Temporarily override globals to expand cleaner timeouts so that large missing blocks can be processed
+        from itertools import groupby
+        from operator import itemgetter
+
         with override_globals(
             CLEANUP_INTERVAL_SECONDS=5000,
             IDLE_TIME_THRESHOLD_TIMEOUT=5000,
             CLEANER_THREAD_EXIT_TIMEOUT=5000,
         ):
-            logger.info("Global values temporarily overridden to 1000.")
+            logger.info("Global values temporarily overridden to 5000.")
 
+            # Step 1: Get latest block height
             logger.info("Fetching latest block height from chain...")
             chain_info = await rpc_request("getblockchaininfo")
             if "result" not in chain_info:
                 raise Exception(f"RPC error: {chain_info.get('error')}")
             latest_block = chain_info["result"]["blocks"]
-
             logger.info(f"Latest block on chain: {latest_block}")
 
-            logger.info("Fetching processed blocks from database...")
             conn = await get_mysql_connection()
             async with conn.cursor() as cursor:
-                
-                await cursor.execute("SELECT block_height FROM processed_blocks")
-                rows = await cursor.fetchall()
+
+                # Step 2: Ensure numbers table exists
+                logger.info("Ensuring numbers table exists...")
+                await cursor.execute("CREATE TABLE IF NOT EXISTS numbers (n INT PRIMARY KEY)")
+
+                # Step 3: Check current max value in numbers table
+                await cursor.execute("SELECT MAX(n) FROM numbers")
+                row = await cursor.fetchone()
+                current_max = row[0] if row[0] is not None else -1
+
+                # Step 4: Populate up to latest_block if needed
+                if current_max < latest_block:
+                    logger.info(f"Populating numbers table from {current_max+1} to {latest_block}...")
+                    values = [(i,) for i in range(current_max + 1, latest_block + 1)]
+                    BATCH_SIZE = 10000
+                    for i in range(0, len(values), BATCH_SIZE):
+                        await cursor.executemany("INSERT IGNORE INTO numbers (n) VALUES (%s)", values[i:i+BATCH_SIZE])
+                    logger.info(f"Numbers table extended to {latest_block}")
+
+                # Step 5: Find all missing block heights via LEFT JOIN
+                logger.info("Querying for missing block heights using LEFT JOIN...")
+                await cursor.execute("""
+                    SELECT n.n
+                    FROM numbers n
+                    LEFT JOIN processed_blocks p ON p.block_height = n.n
+                    WHERE p.block_height IS NULL AND n.n <= %s
+                    ORDER BY n.n
+                """, (latest_block,))
+                missing_rows = await cursor.fetchall()
+
             await async_connection_pool.release(conn)
 
-            processed_set = set(row[0] for row in rows)
-
-            all_blocks = set(range(0, latest_block + 1))
-            missing_blocks = sorted(all_blocks - processed_set)
+            missing_blocks = [row[0] for row in missing_rows]
             logger.info(f"Found {len(missing_blocks)} missing blocks.")
 
             if not missing_blocks:
                 logger.info("No missing blocks found.")
                 return
 
-            from itertools import groupby
-            from operator import itemgetter
-
+            # Step 6: Group consecutive blocks into ranges
             ranges = []
             for _, group in groupby(enumerate(missing_blocks), lambda x: x[1] - x[0]):
-                block_range = list(map(itemgetter(1), group))
-                ranges.append((block_range[0], block_range[-1]))
+                group_list = list(map(itemgetter(1), group))
+                ranges.append((group_list[0], group_list[-1]))
 
             logger.info(f"Preparing to process {len(ranges)} missing block ranges.")
 
@@ -1312,8 +1336,6 @@ async def find_and_process_missing_blocks(batch_size=1, max_concurrent_batches=1
 
     except Exception as e:
         logger.error(f"Error during missing block recovery: {e}")
-
-
 
 
 
