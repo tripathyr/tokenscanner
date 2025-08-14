@@ -2796,7 +2796,7 @@ html_content = """
             $('#api-result').html('');
 
             if (/^[a-zA-Z0-9]{34,36}$/.test(inputValue)) {
-                apiUrl = `/api/address/${inputValue}?page=1&pageSize=1000`;
+                apiUrl = `/api/address/${inputValue}?page=1&pageSize=100`;
             } else if (/^[a-fA-F0-9]{64}$/.test(inputValue)) {
                 apiUrl = `/api/hash/${inputValue}`;
             } else if (/^\d+$/.test(inputValue)) {
@@ -2842,7 +2842,7 @@ html_content = """
                 <div class="card shadow-sm mb-3">
                     <div class="card-body">
                         <h5 class="card-title">FLO Address: 
-                            <a href="/address/${data.addrStr}" onclick="fetchData('/api/address/${data.addrStr}?page=1&pageSize=1000'); return false;">${data.addrStr}</a>
+                            <a href="/address/${data.addrStr}" onclick="fetchData('/api/address/${data.addrStr}?page=1&pageSize=100'); return false;">${data.addrStr}</a>
                         </h5>
                         <p class="secondary-field">
                             <strong>Balance:</strong> ${data.balance} <br>

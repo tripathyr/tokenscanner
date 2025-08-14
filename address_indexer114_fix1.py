@@ -573,8 +573,18 @@ async def b_process_transactions(transactions, blockhash, blockheight):
     return processed_txs
 
 
+import sys, logging
+logger = logging.getLogger(__name__)
+
+def log_true_caller():
+    f = sys._getframe(2)  # 0=this func, 1=b_process_block, 2=the real caller
+    logger.info("[b_process_block] caller: %s() at %s:%d",
+                f.f_code.co_name, f.f_code.co_filename, f.f_lineno)
+
 async def b_process_block(blockhash):
     try:
+        log_true_caller()
+
         # Fetch block data directly from flod RPC
         block_data = await b_fetch_block_data_flod(blockhash)
 
@@ -1415,6 +1425,7 @@ async def process_all_transactions_for_coinbase(flo_address, results, page=1, pa
     transactions = []
     processed_blocks = set()
 
+    logger.info(f"Point D")
     block_api_url = f"{SELF_URL}/api/block"
 
     store_balance_query = """
@@ -1914,11 +1925,21 @@ async def address_fetch(flo_address):
 
 
 
+
+
 @address_indexer_app.route('/api/v2/block/<blockhash>', methods=['GET'])
 @address_indexer_app.route('/api/v1/block/<blockhash>', methods=['GET'])
 @address_indexer_app.route('/api/block/<blockhash>', methods=['GET'])
 async def get_block_by_hash(blockhash):
     """API to fetch block details by blockhash."""
+    logger.info(
+        "HTTP caller: ip=%s rule=%s path=%s referer=%s ua=%s",
+        request.headers.get("X-Forwarded-For") or request.remote_addr,
+        getattr(request.url_rule, "rule", None),
+        request.path,
+        request.headers.get("Referer", ""),
+        request.headers.get("User-Agent", ""),
+    )
 
     if not is_valid_hash(blockhash):
         return jsonify({"error": "Invalid block hash"}), 400
@@ -1933,6 +1954,7 @@ async def get_block_by_hash(blockhash):
 
         # Handle returned error dicts
         if isinstance(block_output, dict) and "error" in block_output:
+            logger.info(f"Point X1")
             logger.error(f"Block processing returned error for blockhash {blockhash}: {block_output['error']}")
             return jsonify(block_output), 500
 
@@ -2106,6 +2128,7 @@ async def get_block_or_tx(hash_value):
 
     try:
         # Construct URLs
+        
         block_url = f"{SELF_URL}/api/block/{hash_value}"
         transaction_url = f"{SELF_URL}/api/tx/{hash_value}"
 
@@ -2113,6 +2136,7 @@ async def get_block_or_tx(hash_value):
         if aiohttp_session is None:
             aiohttp_session = aiohttp.ClientSession()
 
+        logger.info(f"Point A")
         # Fetch block and transaction data in parallel
         block_task = aiohttp_session.get(block_url, timeout=API_TIMEOUT)
         tx_task = aiohttp_session.get(transaction_url, timeout=API_TIMEOUT)
@@ -2185,6 +2209,7 @@ async def get_block_by_number(block_height):
         if aiohttp_session is None:
             aiohttp_session = aiohttp.ClientSession()
 
+        logger.info(f"Point B")
         async with aiohttp_session.get(block_data_url, timeout=API_TIMEOUT) as block_data_response:
             if block_data_response.status != 200:
                 return jsonify({"error": f"Failed to fetch block data for block number {block_height}"}), block_data_response.status
@@ -2986,6 +3011,7 @@ async def submit():
         api_url = f"{SELF_URL}/api/address/{input_value}?page={page}&pageSize={page_size}"
     elif len(input_value) == 64 and all(c in '0123456789abcdefABCDEF' for c in input_value):  # Hash format
         if "block" in data.get('api_type', ''):  # Check if it's a block or tx hash
+            logger.info(f"Point C")
             api_url = f"{SELF_URL}/api/block/{input_value}"
         else:
             api_url = f"{SELF_URL}/api/tx/{input_value}"
